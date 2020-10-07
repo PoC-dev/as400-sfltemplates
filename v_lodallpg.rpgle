@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-all SFL.
      H*
-     H* $Id: v_lodallpg.rpgle,v 1.25 2020/07/04 11:52:59 poc Exp $
+     H* $Id: v_lodallpg.rpgle,v 1.32 2020/10/07 12:59:11 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -52,6 +52,7 @@
      H* 60..69: Detail record cursor placement. (DSPF)
      H*- Other Stuff:
      H*     71: READC from Subfile EOF.
+     H*     73: Suppress DSPF write in main loop (prevents enter-jumping).
      H*     77: We must handle deletion of records, since at least one record
      H*         was marked for deletion.
      H*     78: Indicate DUPREC was called.
@@ -111,12 +112,17 @@
      D* File Error status variable to track READ/WRITE/UPDATE/DELETE.
      DFSTAT            S              5S 0
      D*
+     D* How many times did we loop through "read changed SFL records?".
+     DREADC$           S              2S 0
      D*************************************************************************
      C* Start the main loop: Write SFLCTL and wait for keypress to read.
      C*  This will be handled after *INZSR was implicitly called by RPG for
      C*  the first time we run.
      C     *IN03         DOUEQ     *ON
      C     *IN12         OREQ      *ON
+     C*------------------------------------------
+     C* Only write changed screen if there actually was a change.
+     C     *IN73         IFEQ      *OFF
      C*
      C* Show  F-Key footer display.
      C                   WRITE     MAINBTM
@@ -162,6 +168,10 @@
      C*----------------------------
      C* Show Subfile control record and wait for keypress.
      C                   EXFMT     MAINCTL
+     C*------------------------------------------
+     C                   ELSE
+     C                   READ      MAINCTL
+     C                   ENDIF
      C*
      C* Jump out immediately if user pressed F3. We need this additionally
      C*  to the DOUEQ-Loop to prevent another loop-cycle and thus late exit.
@@ -202,9 +212,11 @@
      C* Only read from SFL if SFL actually has entries!
      C     *IN31         IFEQ      *ON
      C*
+     C* Reset loop-counter.
+     C                   Z-ADD     *ZERO         READC$
+     C*
      C* Loop and read changed records from the SFL. This implicitly affects the
-     C*  SFL RRN variable! In any case, read start at record 1.
-     C                   Z-ADD     1             SFLRCDNBR
+     C*  SFL RRN variable! Read starts automatically at record 1.
      C     *ZERO         DOWEQ     *ZERO
      C                   READC     MAINSFL                                71
      C     *IN71         IFEQ      *ON
@@ -213,6 +225,9 @@
      C     *IN99         OREQ      *ON
      C                   LEAVE
      C                   ENDIF
+     C*
+     C* We passed EOF-Check, so we may increment the loop counter.
+     C                   ADD       1             READC$
      C*------------------------------------------------------------------------
      C* Better use SELECT/WHENxx than CASExx: There's no "OTHER" with CASExx
      C*  but we need to ignore a blank/invalid selection with a new loop
@@ -260,6 +275,14 @@
      C*
      C* End of readc-loop!
      C                   ENDDO
+     C*
+     C* If we directly hit EOF, don't rewrite screen, prevents jumping.
+     C     READC$        IFEQ      *ZERO
+     C                   MOVE      *ON           *IN73
+     C                   ELSE
+     C                   MOVE      *OFF          *IN73
+     C                   ENDIF
+     C*
      C* End of If-IN31-ON.
      C                   ENDIF
      C*
@@ -737,7 +760,7 @@
      C                   MOVEA     '010'         *IN(42)
      C                   ENDIF
      C*
-     C* Set Error indicators accoring to carry-over indicators set before.
+     C* Set Error indicators according to carry-over indicators set before.
      C                   EXSR      INHERITERR
      C                   EXFMT     DETAILFRM
      C                   EXSR      RSTDSPMOD
@@ -791,9 +814,6 @@
      C* Unconditionally unlock, so others can use the record.
      C                   UNLOCK    V_SFLPF
      C*
-     C* Keep cursor on the selected record.
-     C                   SUB       1             SFLRCDNBR
-     C*
      C                   ENDSR
      C*************************************************************************
      C     DSPREC        BEGSR
@@ -823,12 +843,12 @@
      C* Show matching todo-string.
      C                   MOVEA     '001'         *IN(42)
      C*
-     C* Set Error indicators accoring to carry-over indicators set before.
+     C* Set Error indicators according to carry-over indicators set before.
      C                   EXSR      INHERITERR
      C                   EXFMT     DETAILFRM
      C                   EXSR      RSTDSPMOD
      C*
-     C* Whee! User pressed a key! May we add (duplicate) or change a record?
+     C* Whee! User pressed a key!
      C     *IN03         IFEQ      *ON
      C     *IN12         OREQ      *ON
      C                   LEAVESR

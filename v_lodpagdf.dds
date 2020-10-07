@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.13 2020/07/03 18:11:02 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.15 2020/07/13 11:18:25 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -82,11 +82,15 @@
      A*         ##End of definitions. Here be real screen elements.
      A                                  1 31'Listendarstellung'
      A                                      DSPATR(HI)
-     A                                  3  2'Ggfs. Suchbegriff eingeben oder -
-     A                                      Opt wählen, jeweils Eingabetaste -
-     A                                      drücken.'
+     A                                  3  7'Listenanfang bei . . .'
+     A*           POSTO     R        I  3 32REFFLD(KEYVAL V_SFLPF)
+     A            POSTO          4Y 0I  3 32
+     A  41                                  DSPATR(PC)
+     A                                  3 40'(Wert)'
+     A                                  5  2'Auswahl eingeben und -
+     A                                      Eingabetaste drücken.'
      A                                      COLOR(BLU)
-     A                                  4  3'2=Ändern  3=Duplizieren  -
+     A                                  6  3'2=Ändern  3=Duplizieren  -
      A                                      4=Löschen  5=Anzeigen'
      A                                      COLOR(BLU)
      A*         ##Pitfall! Beware! If you refer to a zoned numeric field by
@@ -98,11 +102,6 @@
      A*         ##For having numeric values, do *not* refer to the PF
      A*           definition but use your own numeric (Y) one. Problem does
      A*           not exist for mixed (A) fields.
-     A                                  6  7'Listenanfang bei . . .'
-     A*           POSTO     R        I  6 32REFFLD(KEYVAL V_SFLPF)
-     A            POSTO          4Y 0I  6 32
-     A  41                                  DSPATR(PC)
-     A                                  6 40'(Wert)'
      A  35                              7 70'Beginn ...' DSPATR(HI)
      A                                  8  2'Opt' DSPATR(HI)
      A                                  8  7'Wert' DSPATR(HI)
@@ -110,7 +109,7 @@
      A* Footer of the form -----------------------------------------------------
      A* A subfile control record may contain elements above or below
      A* the actual subfile, but not both.
-     A          R MAINBTM                   OVERLAY PUTRETAIN
+     A          R MAINBTM
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
      A          H                           HLPARA(22 69 22 80)
@@ -124,7 +123,7 @@
      A                                      F12=Abbrechen'
      A                                      COLOR(BLU)
      A* No data instead of SFL -------------------------------------------------
-     A          R MAINND                    OVERLAY PUTRETAIN
+     A          R MAINND                    OVERLAY
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
      A          H                           HLPARA(*RCD)
@@ -147,7 +146,6 @@
      A                                      VLDCMDKEY(29 'Any valid key')
      A*                                   ##Basic Settings for subfile ctrl.
      A                                      OVERLAY
-     A                                      PUTRETAIN
      A  91                                  SFLMSGID(ERR0012 GENERICMSG 91)
      A  93                                  SFLMSGID(ERR1218 GENERICMSG 93)
      A  96                                  SFLMSGID(INF0999 GENERICMSG 96)
@@ -176,14 +174,14 @@
      A* Footer of the form -----------------------------------------------------
      A* A subfile control record may contain elements above or below
      A* the actual subfile, but not both.
-     A          R DLTBTM                    OVERLAY PUTRETAIN
+     A          R DLTBTM
      A                                      HLPTITLE('Vorlage - Löschabfrage')
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODPAGHP)
      A                                 23  2'F1=Hilfe   F12=Abbrechen'
      A                                      COLOR(BLU)
      A* No data instead of SFL -------------------------------------------------
-     A          R DLTND                     OVERLAY PUTRETAIN
+     A          R DLTND                     OVERLAY
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
      A          H                           HLPARA(*RCD)

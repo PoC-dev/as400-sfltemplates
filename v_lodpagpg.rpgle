@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.26 2020/07/03 19:01:20 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.34 2020/10/07 13:04:21 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -288,8 +288,7 @@
      C     *IN31         IFEQ      *ON
      C*
      C* Loop and read changed records from the SFL. This implicitly affects the
-     C*  SFL RRN variable! In any case, read start at record 1.
-     C                   Z-ADD     1             SFLRCDNBR
+     C*  SFL RRN variable! Read starts automatically at record 1.
      C     *ZERO         DOWEQ     *ZERO
      C                   READC     MAINSFL                                71
      C     *IN71         IFEQ      *ON
@@ -414,10 +413,8 @@
      C*------------------------------------------------------------------------
      C* End of OPT-Handling (IN29 = OFF).
      C                   ENDIF
-     C*
      C* End of main loop.
      C                   ENDDO
-     C*
      C* Properly end *PGM.
      C                   RETURN
      C*========================================================================
@@ -453,7 +450,7 @@
      C*  shortening of strings and the like.
      C                   EXSR      PREPSFLDTA
      C*
-     C* Reset opt to blank to prevent stray OPT entries to be duplicated.
+     C* Reset OPT to blank to prevent stray OPT entries to be duplicated.
      C                   MOVE      *BLANK        OPT
      C*
      C* Reset error *INs.
@@ -943,7 +940,7 @@
      C                   MOVEA     '010'         *IN(42)
      C                   ENDIF
      C*
-     C* Set Error indicators accoring to carry-over indicators set before.
+     C* Set Error indicators according to carry-over indicators set before.
      C                   EXSR      INHERITERR
      C                   EXFMT     DETAILFRM
      C                   EXSR      RSTDSPMOD
@@ -1026,12 +1023,12 @@
      C* Show matching todo-string.
      C                   MOVEA     '001'         *IN(42)
      C*
-     C* Set Error indicators accoring to carry-over indicators set before.
+     C* Set Error indicators according to carry-over indicators set before.
      C                   EXSR      INHERITERR
      C                   EXFMT     DETAILFRM
      C                   EXSR      RSTDSPMOD
      C*
-     C* Whee! User pressed a key! May we add (duplicate) or change a record?
+     C* Whee! User pressed a key!
      C     *IN03         IFEQ      *ON
      C     *IN12         OREQ      *ON
      C                   LEAVESR
