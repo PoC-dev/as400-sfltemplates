@@ -1,0 +1,8 @@
+     A* Record Format Name -----------------------------------------------------
+     A          R MAXID                     PFILE(V_SFLPF)
+     A* Data fields
+     A            ID
+     A* Indexes
+     A          K ID
+     A* For vim ----------------------------------------------------------------
+     A* vim: syntax=dds colorcolumn=81 autoindent

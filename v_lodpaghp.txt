@@ -1,0 +1,96 @@
+.* $Id: v_lodpaghp.txt,v 1.2 2020/04/19 13:44:43 poc Exp $
+:PNLGRP.
+:HELP NAME='GLOBAL'.Vorlage
+:P.Die Load-Paged Vorlage dient als Beispiel einer hinreichend kompletten
+Applikation mit Position-To Feature im Schlüsselfeld, als auch den üblichen
+Funktionen Ändern, Duplizieren, Löschen (mit Abfrage!), Ansehen und neuen
+Eintrag erstellen.
+:EHELP.
+:HELP NAME='MAIN/POSTO'.Listenanfang bei
+:XH3.Listenanfang bei
+:P.Hier können Anfangsbuchstaben des Primärschlüssels eingegeben werden. Ein
+Druck auf die Eingabetaste positioniert den Listenausschnitt zur ersten
+teilweisen textuellen Übereinstimmung, bzw. zum nächstkleineren numerischen
+Wert.
+:EHELP.
+:HELP NAME='MAIN/SFLOPTS'.Auswahloptionen
+:XH3.Auswahloptionen
+:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte
+:HP3.
+OPT
+:EHP3.
+eingegeben werden können:
+:PARML.
+:PT.2=Ändern
+:PD.Markierte Einträge können in einer gesonderten Bildschirmanzeige individuell
+angepasst werden.
+:PT.3=Duplizieren
+:PD.Markierte Einträge können in einer gesonderten Bildschirmanzeige individuell
+angepasst werden. Diese werden allerdings als neuer Datensatz gespeichert. Es
+darf daher kein doppelter Schlüsselwert eingegeben werden.
+:PT.4=Löschen
+:PD.Markierte Einträge werden zum Löschen vorgemerkt. In einer weiteren
+Bildschirmanzeige kann dieser Vorgang bestätigt oder abgebrochen werden.
+:PT.5=Anzeigen
+:PD.Wie Option 2, allerdings können keine Änderungen durchgeführt werden.
+:EPARML.
+:EHELP.
+:HELP NAME='MAIN/BEGINN'.Beginn-Indikator
+:XH3.Beginn-Indikator
+:P.Diese Anzeige wird dann eingeblendet, wenn die Anzeige am Beginn angekommen
+ist und keine vorigen Datensätze mehr vorhanden sind.
+:EHELP.
+:HELP NAME='MAIN/SFLHDR'.Bedeutung der Spalten
+:XH3.Bedeutung der Spalten
+:P.Die tabellarische Datenausgabe beinhaltet folgende Spalten:
+:PARML.
+:PT.Opt
+:PD.In dieser Spalte wird eine Auswahlziffer eingegeben, um den Datensatz zum
+einen zu Selektieren und zum anderen vorzugeben, was das System mit diesem Satz
+tun soll.
+:PT.Wert
+:PD.Ein numerischer Wert ohne Dezimalziffern.
+:PT.Eintrag
+:PD.Text zum numerischen Wert.
+:EPARML.
+:EHELP.
+:HELP NAME='MAIN/SFLDTA'.Datenbereich
+:XH3.Datenbereich
+:P.Hier sind einige Zeilen der in einer Tabelle vorhandenen Daten sichtbar. Ggfs.
+sind einige Einträge gekürzt dargestellt. Änderungen können hier nicht direkt
+vorgenommen werden.
+:P.In der OPT-Spalte können die bereits erwähnten Selektionen zum Arbeiten mit
+dem jeweilgen Datensatz eingetragen werden.
+:P.Die Selektionen gehen beim Scrollen verloren. Das bedeutet, es können stets
+nur die momentan sichtbaren Datensätze bearbeitet werden.
+:EHELP.
+:HELP NAME='MAIN/ENDE'.Ende-Indikator
+:XH3.Ende-Indikator
+:P.Diese Anzeige wird dann eingeblendet, wenn die Anzeige am Ende angekommen
+ist und keine weiteren Datensätze mehr vorhanden sind.
+:EHELP.
+:HELP NAME='MAIN/SFLBTM'.Funktionstasten
+:XH3.Funktionstasten
+:PARML.
+:PT.F1=Hilfe
+:PD.Ruft die Cursor-positionsabhängige Hilfefunktion auf.
+:PT.F3=Verlassen
+:PD.Beendet die Listenansicht und gibt die Kontrolle an das
+applikationsspezifische Menü zurück.
+:PT.F5=Aktualisieren
+:PD.Forciert einen Neuaufbau des dargestellten Listenausschnittes aus der
+Datenbank.
+:PT.F6=Neu
+:PD.Ruft die Bildschirmanzeige zum Hinzufügen eines neuen Datensatzes auf.
+:PT.F12=Abbrechen
+:PD.Beendet die momentan aufgerufene Funktion und kehrt zur vorherigen Anzeige
+zurück.
+:EPARML.
+:EHELP.
+:HELP NAME='MAIN/SFLND'.Keine Daten gefunden
+:XH3.Keine Daten gefunden
+:P.Diese Anzeige wird dann eingeblendet, wenn keine Datensätze für die
+Listendarstellung gefunden werden konnten.
+:P.Dies kann an einer leeren Datenbankdatei liegen.
+:EHELP.
+:EPNLGRP.
