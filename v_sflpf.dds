@@ -1,0 +1,41 @@
+     A* Copyright 2007-2021 Patrik Schindler <poc@pocnet.net>.
+     A*
+     A* This file is part of a collection of templates for easy creation of
+     A*  subfile-based applications on AS/400, iSeries and IBM i.
+     A*
+     A* This is free software; you can redistribute it and/or modify it
+     A*  under the terms of the GNU General Public License as published by the
+     A*  Free Software Foundation; either version 2 of the License, or (at your
+     A*  option) any later version.
+     A*
+     A* It is distributed in the hope that it will be useful, but WITHOUT
+     A*  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     A*  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+     A*  for more details.
+     A*
+     A* You should have received a copy of the GNU General Public License along
+     A*  with it; if not, write to the Free Software Foundation, Inc., 59
+     A*  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
+     A*  http://www.gnu.org/licenses/gpl.html
+     A*
+     A* This is an example of a Physical File. Here, actual data will be con-
+     A*  tained. It may only have one record format and it serves both load-
+     A*  paged and load-all subfiles equally well.
+     A* It is mainly used for being read into a detail-edit screen and writing
+     A*  new or changed records. To prevent duplicate primary key values, and
+     A*  speeding up reading into a detail-edit screen, we *also* utilize a
+     A*  key field.
+     A*
+     A* $Id: v_sflpf.dds,v 1.4 2021/03/19 17:16:16 poc Exp $
+     A*
+     A* Globals ----------------------------------------------------------------
+     A                                      UNIQUE
+     A* Record Format Name -----------------------------------------------------
+     A          R SFLTBL
+     A* Data fields
+     A            KEYVAL         4S 0
+     A            VALFLD        50A
+     A* Index field(s)
+     A          K KEYVAL
+     A* For vim ----------------------------------------------------------------
+     A* vim: syntax=dds colorcolumn=81 autoindent

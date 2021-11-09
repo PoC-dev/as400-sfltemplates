@@ -1,0 +1,50 @@
+     A* Copyright 2007-2021 Patrik Schindler <poc@pocnet.net>.
+     A*
+     A* This file is part of a collection of templates for easy creation of
+     A*  subfile-based applications on AS/400, iSeries and IBM i.
+     A*
+     A* This is free software; you can redistribute it and/or modify it
+     A*  under the terms of the GNU General Public License as published by the
+     A*  Free Software Foundation; either version 2 of the License, or (at your
+     A*  option) any later version.
+     A*
+     A* It is distributed in the hope that it will be useful, but WITHOUT
+     A*  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     A*  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+     A*  for more details.
+     A*
+     A* You should have received a copy of the GNU General Public License along
+     A*  with it; if not, write to the Free Software Foundation, Inc., 59
+     A*  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
+     A*  http://www.gnu.org/licenses/gpl.html
+     A*
+     A* This file is an example of a logical file, depending on a physical file.
+     A*  it is thought as an aid for positioning a load-paged subfile with
+     A*  high efficiency. Thus, for positioning backwards, we just read the key
+     A*  field. For positioning forward, we only need those fields which are
+     A*  referenced in the SFL.
+     A* It is important to know that each record format shares the database
+     A*  file pointer with each other: It is a *file* pointer, not a record-
+     A*  format pointer. If we have an equal record format in the physical file
+     A*  and in this logical file, we could use the PF instead of FWDPOS. But
+     A*  additional code is necessary to keep file pointers in sync, which
+     A*  complicates matters without need.
+     A*
+     A* $Id: v_poslf.dds,v 1.3 2021/03/19 17:16:16 poc Exp $
+     A*
+     A* Record Format Name -----------------------------------------------------
+     A          R BCKPOS                    PFILE(V_SFLPF)
+     A* Data fields
+     A            KEYVAL
+     A* Indexes
+     A          K KEYVAL
+     A*
+     A* Record Format Name -----------------------------------------------------
+     A          R FWDPOS                    PFILE(V_SFLPF)
+     A* Data fields
+     A            KEYVAL
+     A            VALFLD
+     A* Indexes
+     A          K KEYVAL
+     A* For vim ----------------------------------------------------------------
+     A* vim: syntax=dds colorcolumn=81 autoindent
