@@ -134,7 +134,8 @@ Additionally, there are:
 - V_SFLPFLOD writes test data into V_SFLPF, so it must not be done by
   hand.
 - CHANGELOG, old entries before I moved the source files to CVS.
-- CRTMSGD is an (yet untested)
+- CRTMSGD is an (yet untested) REXX script to batch create a message file with
+  predefined text and second-level help.
 
 File suffix descriptions, PDM types:
 - PF = Physical File, a database table where records will be allocated within.
@@ -664,4 +665,4 @@ http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf
 
 vim: textwidth=78 autoindent
 
-$Id: readme.txt,v 1.14 2021/03/19 17:16:16 poc Exp $
+$Id: readme.txt,v 1.15 2021/12/27 00:34:41 poc Exp $
