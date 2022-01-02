@@ -1,0 +1,14 @@
+ascii
+get SRCLIB/SFLVORLAGE.CHANGELOG  changelog.txt
+get SRCLIB/SFLVORLAGE.CRTMSGD    crtmsgd.rexx
+get SRCLIB/SFLVORLAGE.README     readme.txt
+get SRCLIB/SFLVORLAGE.V_LODALLDF v_lodalldf.dds
+get SRCLIB/SFLVORLAGE.V_LODALLHP v_lodallhp.txt
+get SRCLIB/SFLVORLAGE.V_LODALLPG v_lodallpg.rpgle
+get SRCLIB/SFLVORLAGE.V_LODPAGDF v_lodpagdf.dds
+get SRCLIB/SFLVORLAGE.V_LODPAGHP v_lodpaghp.txt
+get SRCLIB/SFLVORLAGE.V_LODPAGPG v_lodpagpg.rpgle
+get SRCLIB/SFLVORLAGE.V_POSLF    v_poslf.dds
+get SRCLIB/SFLVORLAGE.V_SFLPF    v_sflpf.dds
+get SRCLIB/SFLVORLAGE.V_SFLPFLOD v_sflpflod.rpgle
+quit

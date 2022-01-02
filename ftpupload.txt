@@ -1,0 +1,14 @@
+ascii
+put changelog.txt     SRCLIB/SFLVORLAGE.CHANGELOG
+put crtmsgd.rexx      SRCLIB/SFLVORLAGE.CRTMSGD
+put readme.txt        SRCLIB/SFLVORLAGE.README
+put v_lodalldf.dds    SRCLIB/SFLVORLAGE.V_LODALLDF
+put v_lodallhp.txt    SRCLIB/SFLVORLAGE.V_LODALLHP
+put v_lodallpg.rpgle  SRCLIB/SFLVORLAGE.V_LODALLPG
+put v_lodpagdf.dds    SRCLIB/SFLVORLAGE.V_LODPAGDF
+put v_lodpaghp.txt    SRCLIB/SFLVORLAGE.V_LODPAGHP
+put v_lodpagpg.rpgle  SRCLIB/SFLVORLAGE.V_LODPAGPG
+put v_poslf.dds       SRCLIB/SFLVORLAGE.V_POSLF
+put v_sflpf.dds       SRCLIB/SFLVORLAGE.V_SFLPF
+put v_sflpflod.rpgle  SRCLIB/SFLVORLAGE.V_SFLPFLOD
+quit
