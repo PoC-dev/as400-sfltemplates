@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.18 2021/11/09 23:01:12 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.19 2022/01/02 00:22:01 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -236,4 +236,4 @@
      A            CSREC         10A  H
      A            CSFLD         10A  H
      A* For vim ----------------------------------------------------------------
-     A* vim: syntax=dds colorcolumn=81 autoindent
+     A* vim: syntax=dds colorcolumn=81 autoindent noignorecase

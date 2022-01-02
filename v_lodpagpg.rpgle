@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.39 2021/11/09 23:01:12 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.40 2022/01/02 00:22:01 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -179,7 +179,7 @@
      C     *IN03         DOUEQ     *ON
      C     *IN12         OREQ      *ON
      C*
-     C* Show  F-Key footer display.
+     C* Show F-Key footer display.
      C                   WRITE     MAINBTM
      C*
      C* Make sure, we have an indicator of "no records" when SFL is empty.

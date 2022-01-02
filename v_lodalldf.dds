@@ -22,7 +22,7 @@
      A*  for proper handling of most SFL based tasks. It is tailored for scroll-
      A*  handling by the OS, aka load-all.
      A*
-     A* $Id: v_lodalldf.dds,v 1.14 2021/03/19 17:16:16 poc Exp $
+     A* $Id: v_lodalldf.dds,v 1.15 2022/01/02 00:22:01 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -207,4 +207,4 @@
      A            CSREC         10A  H
      A            CSFLD         10A  H
      A* For vim ----------------------------------------------------------------
-     A* vim: syntax=dds colorcolumn=81 autoindent
+     A* vim: syntax=dds colorcolumn=81 autoindent noignorecase

@@ -1,5 +1,5 @@
 /* Create global message file */
-/* $Id: crtmsgd.rexx,v 1.6 2021/11/09 23:01:12 poc Exp $ */
+/* $Id: crtmsgd.rexx,v 1.7 2022/01/02 00:22:01 poc Exp $ */
 
 SAY "Creating Message File and messages...";
 
@@ -47,4 +47,5 @@ SAY "Creating Message File and messages...";
 "Systemprogrammierer gemeldet werden. Einige Einträge sind nicht ",
 "sichtbar.') SEV(10) TYPE(*NONE) LEN(*NONE)";
 
-/* vim: syntax=rexx textwidth=72 colorcolumn=81 autoindent */
+/* vim: ft=rexx textwidth=72 colorcolumn=81 autoindent
+ */

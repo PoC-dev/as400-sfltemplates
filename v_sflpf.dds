@@ -26,7 +26,7 @@
      A*  speeding up reading into a detail-edit screen, we *also* utilize a
      A*  key field.
      A*
-     A* $Id: v_sflpf.dds,v 1.4 2021/03/19 17:16:16 poc Exp $
+     A* $Id: v_sflpf.dds,v 1.5 2022/01/02 00:22:01 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      UNIQUE
@@ -38,4 +38,4 @@
      A* Index field(s)
      A          K KEYVAL
      A* For vim ----------------------------------------------------------------
-     A* vim: syntax=dds colorcolumn=81 autoindent
+     A* vim: syntax=dds colorcolumn=81 autoindent noignorecase

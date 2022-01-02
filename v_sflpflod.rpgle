@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_sflpflod.rpgle,v 1.2 2021/03/19 17:16:16 poc Exp $
+     H* $Id: v_sflpflod.rpgle,v 1.3 2022/01/02 00:22:01 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -152,4 +152,4 @@
      C*
      C                   RETURN
      C*************************************************************************
-     C* vim: syntax=rpgle colorcolumn=81 autoindent
+     C* vim: syntax=rpgle colorcolumn=81 autoindent noignorecase
