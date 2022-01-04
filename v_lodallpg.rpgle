@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-all SFL.
      H*
-     H* $Id: v_lodallpg.rpgle,v 1.37 2022/01/02 00:22:01 poc Exp $
+     H* $Id: v_lodallpg.rpgle,v 1.38 2022/01/04 12:17:26 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -116,7 +116,7 @@
      DREADC$           S              2S 0
      D*
      D* Struct for QMHSNDPM Data.
-     DQMHSNDPMDS       DS
+     DQMHSNDPMDS       DS                  INZ
      D MsgID                          7A
      D MsgFile                       20A
      D MsgData                      256A

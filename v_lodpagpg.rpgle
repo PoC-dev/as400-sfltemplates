@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.40 2022/01/02 00:22:01 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.41 2022/01/04 12:17:26 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -107,10 +107,10 @@
      D* Needed for proper UPDATE of SFL: An overlay of our current data from
      D*  the main file. Beware, this is *not* a copy but just a pointer (of a
      D*  different kind).
-     DT_SFLTBL       E DS                  EXTNAME(V_SFLPF:SFLTBL)
+     DT_SFLTBL       E DS                  EXTNAME(V_SFLPF:SFLTBL) INZ
      D* To actually store stuff, we need separate space. V4 doesn't know about
      D*  LIKEDS, so we need to build the struct by hand.
-     DC_SFLTBL         DS
+     DC_SFLTBL         DS                  INZ
      D C_KEYVAL                            LIKE(KEYVAL)
      D C_VALFLD                            LIKE(VALFLD)
      D*
@@ -120,7 +120,7 @@
      DVALFLD$          S                   LIKE(VALFLD)
      D*
      D* DS for holding dynamic data for shortening Strings.
-     DSTRSHRTDS        DS
+     DSTRSHRTDS        DS                  INZ
      D STRLEN_CUR                     3S 0
      D STRLEN_MIN                     3S 0
      D STRLEN_MAX                     3S 0
@@ -148,7 +148,7 @@
      DREADPVAL         S              2S 0
      D*
      D* Struct for QMHSNDPM Data.
-     DQMHSNDPMDS       DS
+     DQMHSNDPMDS       DS                  INZ
      D MsgID                          7A
      D MsgFile                       20A
      D MsgData                      256A
