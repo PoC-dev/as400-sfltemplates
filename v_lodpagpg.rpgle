@@ -1,4 +1,4 @@
-     HCOPYRIGHT('2007-2021 Patrik Schindler <poc@pocnet.net>')
+     HCOPYRIGHT('2007-2022 Patrik Schindler <poc@pocnet.net>')
      H*
      H* This file is part of a collection of templates for easy creation of
      H*  subfile-based applications on AS/400, i5/OS and IBM i.
@@ -330,6 +330,8 @@
      C                   SELECT
      C     OPT           WHENEQ    '2'
      C                   EXSR      CHGREC
+     C* We possibly have locked a record before.
+     C                   UNLOCK    V_SFLPF
      C*
      C     OPT           WHENEQ    '3'
      C                   EXSR      DUPREC
@@ -903,9 +905,6 @@
      C* Set Reload-Indicator to reflect changes.
      C                   MOVE      *ON           *IN79
      C*
-     C* Unlock after insert, so others can use the record.
-     C                   UNLOCK    V_SFLPF
-     C*
      C* If there was no change in display (IN28).
      C                   ELSE
      C                   MOVE      *ON           *IN85
@@ -994,8 +993,6 @@
      C* Whee! User pressed a key! May we add (duplicate) or change a record?
      C     *IN03         IFEQ      *ON
      C     *IN12         OREQ      *ON
-     C* We possibly have locked a record before.
-     C                   UNLOCK    V_SFLPF
      C                   LEAVESR
      C                   ENDIF
      C*
@@ -1036,9 +1033,6 @@
      C*
      C* Set Reload-Indicator to reflect changes.
      C                   MOVE      *ON           *IN79
-     C*
-     C* Unconditionally unlock, so others can use the record.
-     C                   UNLOCK    V_SFLPF
      C*
      C                   ENDSR
      C*************************************************************************
