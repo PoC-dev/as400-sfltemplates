@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-all SFL.
      H*
-     H* $Id: v_lodallpg.rpgle,v 1.38 2022/01/04 12:17:26 poc Exp $
+     H* $Id: v_lodallpg.rpgle,v 1.40 2022/05/13 07:53:50 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -98,7 +98,7 @@
      DVALFLD$          S                   LIKE(VALFLD)
      D*
      D* DS for holding dynamic data for shortening Strings.
-     DSTRSHRTDS        DS
+     DSTRSHRTDS        DS                  INZ
      D STRLEN_CUR                     3S 0
      D STRLEN_MIN                     3S 0
      D STRLEN_MAX                     3S 0
