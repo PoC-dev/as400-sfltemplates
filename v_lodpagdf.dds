@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.19 2022/01/02 00:22:01 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.20 2022/05/18 19:33:06 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -182,8 +182,7 @@
      A                                      COLOR(BLU)
      A* No data instead of SFL -------------------------------------------------
      A          R DLTND                     OVERLAY
-     A                                      HLPTITLE('Vorlage - Listen-
-     A                                      darstellung')
+     A                                      HLPTITLE('Vorlage - Löschabfrage')
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('MAIN/SFLND' V_LODPAGHP)
      A                                  8  7'(Keine Datensätze zum Anzeigen.)'
