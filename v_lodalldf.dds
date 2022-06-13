@@ -22,7 +22,7 @@
      A*  for proper handling of most SFL based tasks. It is tailored for scroll-
      A*  handling by the OS, aka load-all.
      A*
-     A* $Id: v_lodalldf.dds,v 1.17 2022/06/13 19:01:15 poc Exp $
+     A* $Id: v_lodalldf.dds,v 1.18 2022/06/13 19:28:23 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -178,18 +178,16 @@
      A*         ##Help Area definition for this screen.
      A                                      HLPTITLE('Vorlage - Details')
      A          H                           HLPARA(1 1 1 80)
-     A                                      HLPPNLGRP('DETAIL/MODE' V_DETAILDHP)
+     A                                      HLPPNLGRP('DETAIL/MODE' V_DTLDHP)
      A          H                           HLPARA(3 1 3 80)
-     A                                      HLPPNLGRP('DETAIL/OPTIONS'
-     A                                      V_DETAILDHP)
+     A                                      HLPPNLGRP('DETAIL/OPTIONS' V_DTLDHP)
      A          H                           HLPARA(5 1 5 80)
-     A                                      HLPPNLGRP('FIELD/KEVAL' V_DETAILDHP)
+     A                                      HLPPNLGRP('FIELD/KEVAL' V_DTLDHP)
      A          H                           HLPARA(7 1 7 80)
-     A                                      HLPPNLGRP('FIELD/VALFLD'
-     A                                      V_DETAILDHP)
+     A                                      HLPPNLGRP('FIELD/VALFLD' V_DTLDHP)
      A          H                           HLPARA(23 1 23 80)
-     A                                      HLPPNLGRP('DETAILS/FKEYS'
-     A                                      V_DETAILDHP)
+     A                                      HLPPNLGRP('DETAIL/FKEYS'
+     A                                      V_DTLDHP)
      A*         ##End of definitions. Here be real screen elements.
      A  42N43                           1 30'Neuen Eintrag erfassen'
      A                                      DSPATR(HI)
