@@ -66,8 +66,14 @@
      A                                      darstellung')
      A          H                           HLPARA(3 1 4 80)
      A                                      HLPPNLGRP('MAIN/SFLOPTS' V_LODALLHP)
-     A          H                           HLPARA(6 1 6 80)
-     A                                      HLPPNLGRP('MAIN/SFLHDR' V_LODALLHP)
+     A          H                           HLPARA(*CNST 1)
+     A                                      HLPPNLGRP('SFLHDR/OPT' V_LODALLHP)
+     A          H                           HLPARA(*CNST 2)
+     A                                      HLPPNLGRP('SFLHDR/KEYVAL'
+     A                                      V_LODALLHP)
+     A          H                           HLPARA(*CNST 3)
+     A                                      HLPPNLGRP('SFLHDR/VALFLD'
+     A                                      V_LODALLHP)
      A          H                           HLPARA(7 1 21 80)
      A                                      HLPPNLGRP('MAIN/SFLDTA' V_LODALLHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
@@ -81,12 +87,12 @@
      A                                  4  3'2=Ändern  3=Duplizieren  -
      A                                      4=Löschen  5=Anzeigen'
      A                                      COLOR(BLU)
-     A                                  6  2'Opt' DSPATR(HI)
-     A                                  6  7'Wert' DSPATR(HI)
-     A                                  6 13'Eintrag' DSPATR(HI)
+     A                                  6  2'Opt' DSPATR(HI) HLPID(1)
+     A                                  6  7'Wert' DSPATR(HI) HLPID(2)
+     A                                  6 13'Eintrag' DSPATR(HI) HLPID(3)
      A* Footer of the form -----------------------------------------------------
-     A* A subfile control record may contain elements above or below
-     A* the actual subfile, but not both.
+     A* A subfile control record may contain elements above or below the actual
+     A* subfile, but not both.
      A          R MAINBTM
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
@@ -150,8 +156,8 @@
      A                                  6  7'Wert' DSPATR(HI)
      A                                  6 13'Eintrag' DSPATR(HI)
      A* Footer of the form -----------------------------------------------------
-     A* A subfile control record may contain elements above or below
-     A* the actual subfile, but not both.
+     A* A subfile control record may contain elements above or below the actual
+     A* subfile, but not both.
      A          R DLTBTM
      A                                      HLPTITLE('Vorlage - Löschabfrage')
      A          H                           HLPARA(*RCD)
@@ -160,15 +166,31 @@
      A                                      COLOR(BLU)
      A* ------------------------------------------------------------------------
      A* ------------------------------------------------------------------------
-     A* One form for displaying further details, or editing existing, or
-     A* adding new records. We can switch this form to "looks like
-     A* output only fields" with IN44.
+     A* One form for displaying further details, or editing existing, or adding
+     A* new records. We can switch this form to "looks like output only fields" 
+     A* with IN44.
      A          R DETAILFRM
      A                                      CHGINPDFT(LC UL)
      A                                      CHANGE(28 'Content has changed')
      A                                      CA03(03 'Verlassen')
      A                                      CA12(12 'Abbrechen')
      A                                      RTNCSRLOC(*RECNAME &CSREC &CSFLD)
+     A*         ##Help Area definition for this screen.
+     A                                      HLPTITLE('Vorlage - Details')
+     A          H                           HLPARA(1 1 1 80)
+     A                                      HLPPNLGRP('DETAIL/MODE' V_DETAILDHP)
+     A          H                           HLPARA(3 1 3 80)
+     A                                      HLPPNLGRP('DETAIL/OPTIONS'
+     A                                      V_DETAILDHP)
+     A          H                           HLPARA(5 1 5 80)
+     A                                      HLPPNLGRP('FIELD/KEVAL' V_DETAILDHP)
+     A          H                           HLPARA(7 1 7 80)
+     A                                      HLPPNLGRP('FIELD/VALFLD'
+     A                                      V_DETAILDHP)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('DETAILS/FKEYS'
+     A                                      V_DETAILDHP)
+     A*         ##End of definitions. Here be real screen elements.
      A  42N43                           1 30'Neuen Eintrag erfassen'
      A                                      DSPATR(HI)
      A N42 43                           1 32'Eintrag ändern'
