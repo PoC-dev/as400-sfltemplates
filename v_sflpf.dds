@@ -1,4 +1,4 @@
-     A* Copyright 2007-2021 Patrik Schindler <poc@pocnet.net>.
+     A* Copyright 2007-2022 Patrik Schindler <poc@pocnet.net>.
      A*
      A* This file is part of a collection of templates for easy creation of
      A*  subfile-based applications on AS/400, iSeries and IBM i.
@@ -26,7 +26,7 @@
      A*  speeding up reading into a detail-edit screen, we *also* utilize a
      A*  key field.
      A*
-     A* $Id: v_sflpf.dds,v 1.5 2022/01/02 00:22:01 poc Exp $
+     A* $Id: v_sflpf.dds,v 1.6 2022/06/13 18:39:01 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      UNIQUE

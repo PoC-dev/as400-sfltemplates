@@ -1,4 +1,4 @@
-     A* Copyright 2007-2021 Patrik Schindler <poc@pocnet.net>.
+     A* Copyright 2007-2022 Patrik Schindler <poc@pocnet.net>.
      A*
      A* This file is part of a collection of templates for easy creation of
      A*  subfile-based applications on AS/400, iSeries and IBM i.
@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.20 2022/05/18 19:33:06 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.21 2022/06/13 18:39:01 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
