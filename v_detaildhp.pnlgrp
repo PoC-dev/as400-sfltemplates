@@ -1,0 +1,110 @@
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81
+:PNLGRP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/MODE'.Modus
+:XH3.Modus
+:P.In diesem Bereich wird ausgegeben, in welchem Modus die Datenfelder derzeit
+dargestellt werden:
+:PARML.
+:PT.Neuen Eintrag erfassen
+:PD.Falls F6=Neu gewählt wurde, sind alle Datenfelder leer und zum Ausfüllen
+bereit. Falls Opt :HP1.3=Duplizieren:EHP1. gewählt wurde, werden die Werte vom
+markierten Datensatz übernommen, damit nur Änderungen eingetragen werden müssen.
+Das Betätigen der Eingabetaste legt einen neuen Datensatz an.
+:PT.Eintrag ändern
+:PD.Die vorhandenen Werte des Datensatzes werden angezeigt, damit diese
+korrigiert werden können.
+:PT.Eintrag anzeigen
+:PD.Die vorhandenen Werte des Datensatzes werden ohne Änderungsmöglichkeiten
+angezeigt.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/OPTIONS'.Tätigkeiten
+:XH3.Tätigkeiten
+:P.Hier kann der Anwender sehen, welche Tätigkeit er im derzeitigen Modus
+durchführen kann.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/WPNNAME'.Waffenname
+:XH3.Waffenname
+:P.In diesem Feld wird der Name der Waffe hinterlegt.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/LNG'.Sprache
+:XH3.Sprache
+:P.In diesem Feld wird die Sprache für den genannten Eintrag hinterlegt. Gültige
+Werte sind:
+:PARML.
+:PT.DEU
+:PD.Deutsch
+:PT.ENU
+:PD.US-Englisch
+:EPARML.
+:NOTE.Dieses Feld wird in der Listendarstellung derzeit nicht genutzt. Der
+Anwender sollte hier bis auf weiteres nur "DEU" eintragen und deutschsprachige
+Waffennamen benutzen.
+:ENOTE.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/RARITY'.Rarität
+:XH3.Rarität
+:P.Hier wird der Raritätsstatus der Waffe hinterlegt. Gültige Werte sind:
+:PARML.
+:PT.N
+:PD.Normaler Status
+:PT.R
+:PD.Rarer Status (Selten)
+:PT.L
+:PD.Legendärer Status
+:PT.?
+:PD.Unbekannter Status
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/DMG'.Schadenswerte
+:XH3.Schadenswerte
+:P.In den nachfolgenden Feldern werden die Werte des minimalen und maximalen
+Schadens der Waffe hinterlegt.
+:NOTE.Das in der Listendarstellung sichtbare arithmetische Mittel aus beiden
+Werten Min und Max wird automatisch berechnet.
+:ENOTE.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/DMG_MIN'.Minimaler Schaden
+:XH3.Minimaler Schaden
+:P.In diesem Feld wird der Wert des minimalen Schadens der Waffe hinterlegt.
+Dies ist die kleinere Zahl der in den Waffenstatistiken in Fallout Shelter
+sichtbaren Schadenswerte einer Waffe.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/DMG_MAX'.Maximaler Schaden
+:XH3.Maximaler Schaden
+:P.In diesem Feld wird der Wert des maximalen Schadens der Waffe hinterlegt.
+Dies ist die größere Zahl der in den Waffenstatistiken in Fallout Shelter
+sichtbaren Schadenswerte einer Waffe.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='FIELD/STAMP'.Geändert
+:XH3.Geändert
+:P.In diesem Feld wird automatisch ein Zeitstempel der letzten Ändeung
+hinterlegt. Das ermöglicht dem Anwender eine Bewerung ob der Eintrag
+möglicherweise veraltet ist und in einer Aktuellen Version von Fallout Shelter
+verifiziert werden sollte.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAILS/FKEYS'.Funktionstasten
+:XH3.Funktionstasten
+:PARML.
+:PT.F1=Hilfe
+:PD.Ruft die cursorpositionsabhängige Hilfefunktion auf.
+:PT.F3=Verlassen
+:PD.Beendet die Detailansicht und gibt die Kontrolle an das vorherige Menü
+zurück.
+:PT.F12=Abbrechen
+:PD.Beendet die momentan aufgerufene Funktion und kehrt zur vorherigen Anzeige
+zurück.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:EPNLGRP.

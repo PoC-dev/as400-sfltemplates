@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.41 2022/01/04 12:17:26 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.42 2022/02/24 17:44:55 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
