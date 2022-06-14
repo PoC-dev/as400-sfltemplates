@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.24 2022/06/13 19:43:59 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.25 2022/06/14 17:01:45 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -73,7 +73,6 @@
      A                                      HLPPNLGRP('MAIN/SFLOPTS' V_LODPAGHP)
      A          H                           HLPARA(7 70 7 80)
      A                                      HLPPNLGRP('MAIN/BEGINN' V_LODPAGHP)
-     A          H                           HLPARA(8 1 8 80)
      A          H                           HLPARA(*CNST 1)
      A                                      HLPPNLGRP('SFLHDR/OPT' V_LODPAGHP)
      A          H                           HLPARA(*CNST 2)
@@ -82,7 +81,6 @@
      A          H                           HLPARA(*CNST 3)
      A                                      HLPPNLGRP('SFLHDR/VALFLD'
      A                                      V_LODPAGHP)
-     A                                      HLPPNLGRP('MAIN/SFLDTA' V_LODPAGHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
      A            SFLSIZ         5S 0P
      A*         ##End of definitions. Here be real screen elements.
@@ -210,12 +208,11 @@
      A          H                           HLPARA(3 1 3 80)
      A                                      HLPPNLGRP('DETAIL/OPTIONS' V_DTLDHP)
      A          H                           HLPARA(5 1 5 80)
-     A                                      HLPPNLGRP('FIELD/KEVAL' V_DTLDHP)
+     A                                      HLPPNLGRP('DFIELD/KEYVAL' V_DTLDHP)
      A          H                           HLPARA(7 1 7 80)
-     A                                      HLPPNLGRP('FIELD/VALFLD' V_DTLDHP)
+     A                                      HLPPNLGRP('DFIELD/VALFLD' V_DTLDHP)
      A          H                           HLPARA(23 1 23 80)
-     A                                      HLPPNLGRP('DETAIL/FKEYS'
-     A                                      V_DTLDHP)
+     A                                      HLPPNLGRP('DETAIL/FKEYS' V_DTLDHP)
      A*         ##End of definitions. Here be real screen elements.
      A  42N43                           1 30'Neuen Eintrag erfassen'
      A                                      DSPATR(HI)

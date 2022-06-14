@@ -26,12 +26,12 @@ angezeigt.
 durchführen kann.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='FIELD/KEYVAL'.Wert
+:HELP NAME='DFIELD/KEYVAL'.Wert
 :XH3.Wert
 :P.In diesem Feld wird ein numerischer Wert hinterlegt.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='FIELD/VALFLD'.Eintrag
+:HELP NAME='DFIELD/VALFLD'.Eintrag
 :XH3.Eintrag
 :P.In diesem Feld wird ein Text hinterlegt.
 :EHELP.

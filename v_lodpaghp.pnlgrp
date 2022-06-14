@@ -1,4 +1,4 @@
-.* $Id: v_lodpaghp.pnlgrp,v 1.5 2022/06/13 18:24:24 poc Exp $
+.* $Id: v_lodpaghp.pnlgrp,v 1.6 2022/06/14 17:01:45 poc Exp $
 .* vim: ft=pnlgrp textwidth=80 colorcolumn=81
 :PNLGRP.
 .* -----------------------------------------------------------------------------
@@ -13,10 +13,10 @@ vor allen weiteren referenzierten Hilfeabschnitten angezeigt wird.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/POSTO'.Listenanfang bei
 :XH3.Listenanfang bei
-:P.Hier können Anfangsbuchstaben des Primärschlüssels eingegeben werden. Ein
-Druck auf die Eingabetaste positioniert den Listenausschnitt zur ersten
-(teilweisen) textuellen Übereinstimmung, bzw. zum nächstkleineren numerischen
-Wert.
+:P.Hier können Ziffern als numerische Werte, oder Anfangsbuchstaben des
+Primärschlüssels eingegeben werden; je nach Art des Primärschlüssels. Ein Druck
+auf die Eingabetaste positioniert den Listenausschnitt zur ersten (teilweisen)
+textuellen Übereinstimmung, bzw. zum nächstkleineren numerischen Wert.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLOPTS'.Auswahloptionen
@@ -64,10 +64,12 @@ Selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
 :HELP NAME='SFLHDR/KEYVAL'.Spalte Wert
 :XH3.Spalte Wert
 :P.Hier wird ein numerischer Wert ausgegeben.
+:EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='SFLHDR/VALFLD'.Spalte Eintrag
 :XH3.Spalte Eintrag
 :P.Hier wird ein kurzer Textstring ausgegeben.
+:EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLDTA'.Datenbereich
 :XH3.Datenbereich
