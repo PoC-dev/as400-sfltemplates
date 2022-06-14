@@ -51,11 +51,19 @@ Since I developed these files for my own usage, and my primary language is
  longer and you don't know what went wrong and where. Google Translator is
  there to assist.
 
-Programming Style is outdated in many ways. But because of that, the code
- should compile even on the oldest machines/OS releases supporting ILE. So
- even very old machines can be made useful again.
+Programming Style is outdated in many ways. The templates were developed on
+ V4R5 of OS/400, and are expected to work on all V4 versions.
 
-Using this examples assumes you are able to:
+Actual tests with available machines show, they trigger strange compilation
+ errors on i5/OS V5R4, and compile just fine for IBM i 7.2 (V7R2). In addition,
+ some BIFs and exception handling functions are not available in V3R2 and
+ earlier. Porting the code to V3R2 might not happen, though. The same is even
+ more true for V2R3: It completely lacks ILE RPG. For both of these unsupported
+ releases, I've planned to reimplement the code itself in ILE C, and translate
+ the German texts to english - because both of my CISC machines feature English
+ OS versions.
+
+Using these examples assumes you are able to:
 - Create a source physical file with a record length of at least 112 chars
   (hint: CRTSRCPF),
 - How to use PDM to work with file members (hint: WRKMBRPDM),
@@ -128,6 +136,7 @@ The example project comprises of three (groups of) files:
   project.
 - V_LODPAGDF, V_LODPAGPG, V_POSLF, and V_LODPAGHP are template files for a
   Load-Paged project with a position-to field.
+- V_DTLDHP is a shared help panelgroup for the details screen.
 
 Additionally, there are:
 - V_SFLMAXID for fast creation of primary key values.
@@ -437,10 +446,26 @@ Online Help is an often neglected topic. The AS/400 facilities make it
  comparatively easy to create helpful online help, because the help text can
  be made different for different cursor positions on screen.
 
-Help Panels are created with something that resembles HTML in a crude way. Not
- all Features of basic HTML are provided, also. See the examples and try out
- the help on different cursor positions in the SFL itself. (Currently the
- Details-Screen has no help facility.)
+Help Panels are created with something that resembles HTML in a crude way
+ (called GML). Not all Features of basic HTML are provided, also. See the
+ examples and try out the help on different cursor positions in the SFL
+ itself.
+
+You can add references to help entries by
+- absolute screen positions (rectangle),
+- numbered static screen elements,
+- whole record,
+- other means.
+
+The mentioned only part of all possibilities because these are which I used in
+the example display files.
+
+You can also add cross references to other help files thru hyperlinks.
+Example:
+
+:LINK PERFORM='DSPHELP HELPSECTION HELPPNLGRPOBJ'.
+This is the text appearing within the link
+:ELINK.
 
 See "Further Reading" below: Application Display Programming has a chapter
  about Help Panels.
@@ -642,6 +667,15 @@ More nasty are run time errors. This means, the code is basically working, but
 Always remember that the templates as delivered work and have no known run
  time failures.
 
+PNLGRP
+------
+Change the text as required. Add more sections for newly introduced fields in
+your display files. Note: You need to create references to your help text in
+the DSPF itself!
+
+If done, save and exit. Type 14 into the OPT field in PDM to create your
+ panel group.
+
 
 Further Reading
 ===============
@@ -665,4 +699,4 @@ http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf
 
 vim: textwidth=78 autoindent
 
-$Id: readme.txt,v 1.15 2021/12/27 00:34:41 poc Exp $
+$Id: readme.txt,v 1.16 2022/06/14 18:10:19 poc Exp $
