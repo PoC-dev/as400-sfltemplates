@@ -1,0 +1,69 @@
+.* $Id: v_sfldlthp.pnlgrp,v 1.1 2022/06/18 21:08:47 poc Exp $
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81
+:PNLGRP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLOPTS'.Auswahloptionen
+:XH3.Auswahloptionen
+:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte :HP3.Opt:EHP3.
+eingegeben werden können.
+:PARML.
+:PT.4=Löschen
+:PD.Markierte Einträge werden gelöscht.
+:PT.Leer=Nicht löschen
+:PD.Markierte Einträge werden nicht gelöscht.
+:EPARML.
+:NOTE.Ein Datensatz kann nur von einer Arbeitsstation gleichzeitig bearbeitet
+werden. Ist ein Datensatz bereits durch einen anderen Benutzer gesperrt, kann
+dieser auf der anfragenden Arbeitsstation nicht gelöscht werden.
+:ENOTE.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/OPT'.Spalte Opt
+:XH3.Spalte Opt
+:P.In diese Spalte eine Auswahlziffer eingegeben, um den Datensatz zum einen zu
+Selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/FIELDS'.Weitere Spalten
+:XH3.Weitere Spalten
+:P.Zur Identifikation des Datensatzes werden einige Felder ähnlich der
+Haupt-Listenansicht dargestellt.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLDTA'.Datenbereich
+:XH3.Datenbereich
+:P.Hier sind die Datensätze aus der Gesamtheit aller zum Löschen markierten
+Datensätze sichtbar.
+:NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.
+:ENOTE.
+:P.Diese Bildschirmmaske dient dazu, einen Löschvorgang entweder zu bestätigen
+oder abzubrechen, bzw. dies in Teilen zu tun.
+:P.Nur Einträge, die mit :HP1.Opt=4:EHP1. markiert sind, werden beim Drücken der
+Eingabetaste gelöscht.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/ENDE'.Ende-Indikator
+:XH3.Ende-Indikator
+:P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
+Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden
+sind.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLBTM'.Funktionstasten
+:XH3.Funktionstasten
+:PARML.
+:PT.F1=Hilfe
+:PD.Ruft die cursorpositionsabhängige Hilfefunktion auf.
+:PT.F12=Abbrechen
+:PD.Beendet die momentan aufgerufene Funktion und kehrt zur vorherigen Anzeige
+zurück.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLND'.Keine Datensätze zum Anzeigen
+:XH3.Keine Datensätze zum Anzeigen
+:P.Diese Anzeige wird dann eingeblendet, wenn keine Datensätze für die
+Listendarstellung gefunden werden konnten.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:EPNLGRP.

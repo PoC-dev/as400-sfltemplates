@@ -22,7 +22,7 @@
      A*  for proper handling of most SFL based tasks. It is tailored for scroll-
      A*  handling by the OS, aka load-all.
      A*
-     A* $Id: v_lodalldf.dds,v 1.19 2022/06/14 17:01:44 poc Exp $
+     A* $Id: v_lodalldf.dds,v 1.20 2022/06/18 21:08:47 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -141,8 +141,17 @@
      A  34                                  SFLEND(*MORE)
      A*         ##Help Area definition for this screen.
      A                                      HLPTITLE('Vorlage - Löschabfrage')
-     A          H                           HLPARA(6 1 6 80)
-     A                                      HLPPNLGRP('MAIN/SFLHDR' V_LODALLHP)
+     A          H                           HLPARA(3 1 4 80)
+     A                                      HLPPNLGRP('DELETE/SFLOPTS'
+     A                                      V_SFLDLTHP)
+     A          H                           HLPARA(*CNST 1)
+     A                                      HLPPNLGRP('DELETE/OPT' V_SFLDLTHP)
+     A          H                           HLPARA(6 7 6 80)
+     A                                      HLPPNLGRP('DELETE/FIELDS'
+     A                                      V_SFLDLTHP)
+     A          H                           HLPARA(7 1 21 80)
+     A                                      HLPPNLGRP('DELETE/SFLDTA'
+     A                                      V_SFLDLTHP)
      A            SFLDLTNBR      3S 0H      SFLRCDNBR(CURSOR)
      A*         ##End of definitions. Here be real screen elements.
      A                                  1 29'Löschen von Einträgen'
@@ -152,7 +161,7 @@
      A                                      COLOR(BLU)
      A                                  4  3'4=Löschen  Leer=Nicht löschen'
      A                                      COLOR(BLU)
-     A                                  6  2'Opt' DSPATR(HI)
+     A                                  6  2'Opt' DSPATR(HI) HLPID(1)
      A                                  6  7'Wert' DSPATR(HI)
      A                                  6 13'Eintrag' DSPATR(HI)
      A* Footer of the form -----------------------------------------------------
@@ -160,8 +169,11 @@
      A* subfile, but not both.
      A          R DLTBTM
      A                                      HLPTITLE('Vorlage - Löschabfrage')
+     A          H                           HLPARA(22 76 22 80)
+     A                                      HLPPNLGRP('DELETE/ENDE' V_SFLDLTHP)
      A          H                           HLPARA(*RCD)
-     A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODALLHP)
+     A                                      HLPPNLGRP('DELETE/SFLBTM'
+     A                                      V_SFLDLTHP)
      A                                 23  2'F1=Hilfe   F12=Abbrechen'
      A                                      COLOR(BLU)
      A* ------------------------------------------------------------------------

@@ -137,6 +137,7 @@ The example project comprises of three (groups of) files:
 - V_LODPAGDF, V_LODPAGPG, V_POSLF, and V_LODPAGHP are template files for a
   Load-Paged project with a position-to field.
 - V_DTLDHP is a shared help panelgroup for the details screen.
+- V_SFLDLTHP is a shared help panelgroup for the delete confirmation screen.
 
 Additionally, there are:
 - V_SFLMAXID for fast creation of primary key values.
@@ -699,4 +700,4 @@ http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf
 
 vim: textwidth=78 autoindent
 
-$Id: readme.txt,v 1.16 2022/06/14 18:10:19 poc Exp $
+$Id: readme.txt,v 1.17 2022/06/18 21:08:47 poc Exp $

@@ -10,6 +10,7 @@ get SRCLIB/SFLVORLAGE.V_LODPAGDF  v_lodpagdf.dds
 get SRCLIB/SFLVORLAGE.V_LODPAGHP  v_lodpaghp.pnlgrp
 get SRCLIB/SFLVORLAGE.V_LODPAGPG  v_lodpagpg.rpgle
 get SRCLIB/SFLVORLAGE.V_POSLF     v_poslf.dds
-get SRCLIB/SFLVORLAGE.V_SFLPF     v_sflpf.dds
+get SRCLIB/SFLVORLAGE.V_SFLDLTHP  v_sfldlthp.pnlgrp
 get SRCLIB/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
+get SRCLIB/SFLVORLAGE.V_SFLPF     v_sflpf.dds
 quit
