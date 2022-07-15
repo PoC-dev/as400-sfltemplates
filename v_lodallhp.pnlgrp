@@ -66,13 +66,9 @@ bereits erwähnten Selektionen in der Opt-Spalte da.
 über alles einzufügen. Die Hilfetexte sollen hilfreich sein, daher bringt es dem
 Anwender nichts, wenn er detailliert gesagt bekommt, wo er was zu machen hat,
 wenn er keine Klarheit über die Zusammenhänge erlangen kann.
-:EHELP.
-.* -----------------------------------------------------------------------------
-:HELP NAME='MAIN/ENDE'.Ende-Indikator
-:XH3.Ende-Indikator
-:P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
-Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden
-sind.
+:P.Eine Anzeige am rechten unteren Ende des scrollbaren Bereichs macht darauf
+aufmerksam, wenn die Liste der dargestellten Datensätze am Ende angekommen ist
+und keine weiteren Datensätze mehr vorhanden sind.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLBTM'.Funktionstasten

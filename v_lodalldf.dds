@@ -96,8 +96,6 @@
      A          R MAINBTM
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
-     A          H                           HLPARA(22 69 22 80)
-     A                                      HLPPNLGRP('MAIN/ENDE' V_LODALLHP)
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODALLHP)
      A                                 23  2'F1=Hilfe   -
