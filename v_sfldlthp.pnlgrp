@@ -1,4 +1,4 @@
-.* $Id: v_sfldlthp.pnlgrp,v 1.1 2022/06/18 21:08:47 poc Exp $
+.* $Id: v_sfldlthp.pnlgrp,v 1.2 2022/07/29 18:11:11 poc Exp $
 .* vim: ft=pnlgrp textwidth=80 colorcolumn=81
 :PNLGRP.
 .* -----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ oder abzubrechen, bzw. dies in Teilen zu tun.
 Eingabetaste gelöscht.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='DELETE/ENDE'.Ende-Indikator
+:HELP NAME='DELETE/END'.Ende-Indikator
 :XH3.Ende-Indikator
 :P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
 Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden

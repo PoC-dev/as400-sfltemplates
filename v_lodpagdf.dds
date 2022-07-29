@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.26 2022/06/18 21:08:47 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.27 2022/07/29 18:11:11 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -117,7 +117,7 @@
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
      A          H                           HLPARA(22 69 22 80)
-     A                                      HLPPNLGRP('MAIN/ENDE' V_LODPAGHP)
+     A                                      HLPPNLGRP('MAIN/END' V_LODPAGHP)
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODPAGHP)
      A                                 23  2'F1=Hilfe   -

@@ -1,4 +1,4 @@
-.* $Id: v_lodpaghp.pnlgrp,v 1.6 2022/06/14 17:01:45 poc Exp $
+.* $Id: v_lodpaghp.pnlgrp,v 1.7 2022/07/29 18:11:11 poc Exp $
 .* vim: ft=pnlgrp textwidth=80 colorcolumn=81
 :PNLGRP.
 .* -----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ Anwender nichts, wenn er detailliert gesagt bekommt, wo er was zu machen hat,
 wenn er keine Klarheit über die Zusammenhänge erlangen kann.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='MAIN/ENDE'.Ende-Indikator
+:HELP NAME='MAIN/END'.Ende-Indikator
 :XH3.Ende-Indikator
 :P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
 Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden
