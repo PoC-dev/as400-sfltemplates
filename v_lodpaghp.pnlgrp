@@ -1,4 +1,4 @@
-.* $Id: v_lodpaghp.pnlgrp,v 1.7 2022/07/29 18:11:11 poc Exp $
+.* $Id: v_lodpaghp.pnlgrp,v 1.8 2022/07/29 18:20:33 poc Exp $
 .* vim: ft=pnlgrp textwidth=80 colorcolumn=81
 :PNLGRP.
 .* -----------------------------------------------------------------------------
@@ -48,7 +48,7 @@ unnötigerweise zum Bearbeiten gesperrt hat.
 :ENOTE.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='MAIN/BEGINN'.Beginn-Indikator
+:HELP NAME='MAIN/START'.Beginn-Indikator
 :XH3.Beginn-Indikator
 :P.Diese Anzeige wird dann eingeblendet, wenn die Anzeige am ersten Datensatz in
 der Sortierfolge angekommen ist und daher keine vorigen Datensätze mehr
