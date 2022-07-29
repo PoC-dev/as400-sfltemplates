@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.28 2022/07/29 18:20:33 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.29 2022/07/29 18:30:15 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -109,7 +109,7 @@
      A  35                              7 70'Beginn ...' DSPATR(HI) HLPID(1)
      A                                  8  2'Opt' DSPATR(HI) HLPID(2)
      A                                  8  7'Wert' DSPATR(HI) HLPID(3)
-     A                                  8 13'Eintrag' DSPATR(HI)  HLPID(4)
+     A                                  8 13'Eintrag' DSPATR(HI) HLPID(4)
      A* Footer of the form -----------------------------------------------------
      A* A subfile control record may contain elements above or below the actual
      A* subfile, but not both.
@@ -185,12 +185,12 @@
      A                                  6  7'Wert' DSPATR(HI)
      A                                  6 13'Eintrag' DSPATR(HI)
      A* Footer of the form -----------------------------------------------------
-     A* A subfile control record may contain elements above or below
-     A* the actual subfile, but not both.
+     A* A subfile control record may contain elements above or below the actual
+     A* subfile, but not both.
      A          R DLTBTM
      A                                      HLPTITLE('Vorlage - Löschabfrage')
      A          H                           HLPARA(22 76 22 80)
-     A                                      HLPPNLGRP('DELETE/ENDE' V_SFLDLTHP)
+     A                                      HLPPNLGRP('DELETE/END' V_SFLDLTHP)
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('DELETE/SFLBTM'
      A                                      V_SFLDLTHP)
