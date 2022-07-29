@@ -1,0 +1,26 @@
+2020-02-15, PoC
+First official version, as many bugs caught as possible.
+
+2020-02-17, PoC
+Fixed minor typos, removed unneeded ERRSTR.
+
+2020-02-18, PoC
+Use INFDS for Database record count.
+Introduce CHECKNULL for emptying NULL fields without inheriting previous values.
+
+2020-02-19, PoC
+Fixed minor typos in DSPF (LC/UL).
+Fixed minor typos in Code.
+
+2020-02-23, PoC
+DSPF-Detail-Recfmt: Added Help-Key,
+Added logic for showing correct string when duplicating records.
+
+2020-02-24
+CA/CF same in both DSPFs now.
+Option description for deletion starts now in col 3, as in regular SFL.
+
+2020-04-18
+Removed SETOF(IN12), so this will be feed back to the caller and handled there.
+
+For further changes, see CVS entries on leela.
