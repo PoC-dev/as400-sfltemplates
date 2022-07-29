@@ -71,14 +71,14 @@
      A                                      HLPPNLGRP('MAIN/POSTO' V_LODPAGHP)
      A          H                           HLPARA(5 2 6 63)
      A                                      HLPPNLGRP('MAIN/SFLOPTS' V_LODPAGHP)
-     A          H                           HLPARA(7 70 7 80)
-     A                                      HLPPNLGRP('MAIN/START' V_LODPAGHP)
      A          H                           HLPARA(*CNST 1)
-     A                                      HLPPNLGRP('SFLHDR/OPT' V_LODPAGHP)
+     A                                      HLPPNLGRP('MAIN/START' V_LODPAGHP)
      A          H                           HLPARA(*CNST 2)
+     A                                      HLPPNLGRP('SFLHDR/OPT' V_LODPAGHP)
+     A          H                           HLPARA(*CNST 3)
      A                                      HLPPNLGRP('SFLHDR/KEYVAL'
      A                                      V_LODPAGHP)
-     A          H                           HLPARA(*CNST 3)
+     A          H                           HLPARA(*CNST 4)
      A                                      HLPPNLGRP('SFLHDR/VALFLD'
      A                                      V_LODPAGHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
@@ -106,10 +106,10 @@
      A                                  6  3'2=Ändern  3=Duplizieren  -
      A                                      4=Löschen  5=Anzeigen'
      A                                      COLOR(BLU)
-     A  35                              7 70'Beginn ...' DSPATR(HI)
-     A                                  8  2'Opt' DSPATR(HI) HLPID(1)
-     A                                  8  7'Wert' DSPATR(HI) HLPID(2)
-     A                                  8 13'Eintrag' DSPATR(HI)  HLPID(3)
+     A  35                              7 70'Beginn ...' DSPATR(HI) HLPID(1)
+     A                                  8  2'Opt' DSPATR(HI) HLPID(2)
+     A                                  8  7'Wert' DSPATR(HI) HLPID(3)
+     A                                  8 13'Eintrag' DSPATR(HI)  HLPID(4)
      A* Footer of the form -----------------------------------------------------
      A* A subfile control record may contain elements above or below the actual
      A* subfile, but not both.
