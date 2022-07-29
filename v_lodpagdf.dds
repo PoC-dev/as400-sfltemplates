@@ -23,7 +23,7 @@
      A*  handling by the programmer, aka load-paged. The deletion confirmation
      A*  is load-all, though.
      A*
-     A* $Id: v_lodpagdf.dds,v 1.29 2022/07/29 18:30:15 poc Exp $
+     A* $Id: v_lodpagdf.dds,v 1.30 2022/07/29 18:48:11 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
