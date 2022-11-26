@@ -72,13 +72,11 @@
      A          H                           HLPARA(5 2 6 63)
      A                                      HLPPNLGRP('MAIN/SFLOPTS' V_LODPAGHP)
      A          H                           HLPARA(*CNST 1)
-     A                                      HLPPNLGRP('MAIN/START' V_LODPAGHP)
-     A          H                           HLPARA(*CNST 2)
      A                                      HLPPNLGRP('SFLHDR/OPT' V_LODPAGHP)
-     A          H                           HLPARA(*CNST 3)
+     A          H                           HLPARA(*CNST 2)
      A                                      HLPPNLGRP('SFLHDR/KEYVAL'
      A                                      V_LODPAGHP)
-     A          H                           HLPARA(*CNST 4)
+     A          H                           HLPARA(*CNST 3)
      A                                      HLPPNLGRP('SFLHDR/VALFLD'
      A                                      V_LODPAGHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
@@ -106,18 +104,16 @@
      A                                  6  3'2=Ändern  3=Duplizieren  -
      A                                      4=Löschen  5=Anzeigen'
      A                                      COLOR(BLU)
-     A  35                              7 70'Beginn ...' DSPATR(HI) HLPID(1)
-     A                                  8  2'Opt' DSPATR(HI) HLPID(2)
-     A                                  8  7'Wert' DSPATR(HI) HLPID(3)
-     A                                  8 13'Eintrag' DSPATR(HI) HLPID(4)
+     A  35                              7 70'Beginn ...' DSPATR(HI)
+     A                                  8  2'Opt' DSPATR(HI) HLPID(1)
+     A                                  8  7'Wert' DSPATR(HI) HLPID(2)
+     A                                  8 13'Eintrag' DSPATR(HI) HLPID(3)
      A* Footer of the form -----------------------------------------------------
      A* A subfile control record may contain elements above or below the actual
      A* subfile, but not both.
      A          R MAINBTM
      A                                      HLPTITLE('Vorlage - Listen-
      A                                      darstellung')
-     A          H                           HLPARA(22 69 22 80)
-     A                                      HLPPNLGRP('MAIN/END' V_LODPAGHP)
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODPAGHP)
      A                                 23  2'F1=Hilfe   -
@@ -189,8 +185,6 @@
      A* subfile, but not both.
      A          R DLTBTM
      A                                      HLPTITLE('Vorlage - Löschabfrage')
-     A          H                           HLPARA(22 76 22 80)
-     A                                      HLPPNLGRP('DELETE/END' V_SFLDLTHP)
      A          H                           HLPARA(*RCD)
      A                                      HLPPNLGRP('DELETE/SFLBTM'
      A                                      V_SFLDLTHP)

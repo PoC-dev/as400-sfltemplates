@@ -42,13 +42,6 @@ oder abzubrechen, bzw. dies in Teilen zu tun.
 Eingabetaste gelöscht.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='DELETE/END'.Ende-Indikator
-:XH3.Ende-Indikator
-:P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
-Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden
-sind.
-:EHELP.
-.* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/SFLBTM'.Funktionstasten
 :XH3.Funktionstasten
 :PARML.

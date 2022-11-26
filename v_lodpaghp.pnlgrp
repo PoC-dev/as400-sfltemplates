@@ -48,13 +48,6 @@ unnötigerweise zum Bearbeiten gesperrt hat.
 :ENOTE.
 :EHELP.
 .* -----------------------------------------------------------------------------
-:HELP NAME='MAIN/START'.Beginn-Indikator
-:XH3.Beginn-Indikator
-:P.Diese Anzeige wird dann eingeblendet, wenn die Anzeige am ersten Datensatz in
-der Sortierfolge angekommen ist und daher keine vorigen Datensätze mehr
-aufgerufen werden können.
-:EHELP.
-.* -----------------------------------------------------------------------------
 :HELP NAME='SFLHDR/OPT'.Spalte Opt
 :XH3.Spalte Opt
 :P.In diese Spalte eine Auswahlziffer eingegeben, um den Datensatz zum einen zu
@@ -82,13 +75,6 @@ bereits erwähnten Selektionen in der Opt-Spalte da.
 über alles einzufügen. Die Hilfetexte sollen hilfreich sein, daher bringt es dem
 Anwender nichts, wenn er detailliert gesagt bekommt, wo er was zu machen hat,
 wenn er keine Klarheit über die Zusammenhänge erlangen kann.
-:EHELP.
-.* -----------------------------------------------------------------------------
-:HELP NAME='MAIN/END'.Ende-Indikator
-:XH3.Ende-Indikator
-:P.Diese Anzeige macht darauf aufmerksam, wenn die Liste der dargestellten
-Datensätze am Ende angekommen ist und keine weiteren Datensätze mehr vorhanden
-sind.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLBTM'.Funktionstasten
