@@ -15,4 +15,5 @@ get SRCLIB/SFLVORLAGE.V_SFLDLTHP  v_sfldlthp.pnlgrp
 get SRCLIB/SFLVORLAGE.V_SFLMAXID  v_sflmaxid.dds
 get SRCLIB/SFLVORLAGE.V_SFLPF     v_sflpf.dds
 get SRCLIB/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
+get SRCLIB/SFLVORLAGE.MAKEFILE    makefile
 quit

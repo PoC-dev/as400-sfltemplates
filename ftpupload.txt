@@ -15,4 +15,5 @@ put v_sfldlthp.pnlgrp    SRCLIB/SFLVORLAGE.V_SFLDLTHP
 put v_sflmaxid.dds       SRCLIB/SFLVORLAGE.V_SFLMAXID
 put v_sflpf.dds          SRCLIB/SFLVORLAGE.V_SFLPF
 put v_sflpflod.rpgle     SRCLIB/SFLVORLAGE.V_SFLPFLOD
+put makefile             SRCLIB/SFLVORLAGE.MAKEFILE
 quit

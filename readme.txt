@@ -146,6 +146,8 @@ Additionally, there are:
 - CHANGELOG, old entries before I moved the source files to CVS.
 - CRTMSGD is an (yet untested) REXX script to batch create a message file with
   predefined text and second-level help.
+- MAKEFILE is a makefile template for TMKMAKE on OS/400. For details, see
+  https://try-as400.pocnet.net/wiki/Setting_up_TMKMAKE
 
 File suffix descriptions, PDM types:
 - PF = Physical File, a database table where records will be allocated within.
@@ -573,6 +575,10 @@ The list view can be more tricky. I strongly recommend to use a text editor
  with a monospaced font and cursor position display to test-build one subfile
  line. Example (starts in Column 2 as in the real screen):
 
+Ruler...
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
  Opt  Field1                      Field2                         Field3
   _   __________________________  _____________________________  ______________
 
@@ -595,7 +601,7 @@ The list view can be more tricky. I strongly recommend to use a text editor
   record.
 
 You can always type Option 17 in PDM to call SDA. It helps greatly for
- reviewing screens without code being written yet using SDA option 12. Maybe
+ reviewing screens without code being written yet, using SDA option 12. Maybe
  refrain from saving changes made in SDA: It will delete all comments and most
  likely reorder statements.
 
