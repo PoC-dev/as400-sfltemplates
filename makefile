@@ -1,4 +1,4 @@
-# $Id$
+# $Id: makefile,v 1.2 2023/02/24 10:59:46 poc Exp $
 
 # Note: To understand this file, accustom yourself with
 # - make: https://en.wikipedia.org/wiki/Make_(software)
@@ -63,12 +63,12 @@ V_LODPAGPG<PGM>: V_LODPAGPG.$(SRCFILE)<FILE> V_LODPAGDF<FILE> +
 # Common files ------------------------------------------------------------------
 # Note: V_SFLMAXID is not listed because generation will fail without
 # customization.
-commonfiles: V_DTLDHP<PNLGRP> V_DTLDHP<PNLGRP> V_SFLPFLOD<PGM>
+commonfiles: V_DTLDHP<PNLGRP> V_SFLDLTHP<PNLGRP> V_SFLPFLOD<PGM>
 
 V_DTLDHP<PNLGRP>: V_DTLDHP.$(SRCFILE)<FILE>
     CRTPNLGRP PNLGRP($(@F)) SRCFILE($(SRCFILE))
 
-V_DTLDHP<PNLGRP>: V_SFLDLTHP.$(SRCFILE)<FILE>
+V_SFLDLTHP<PNLGRP>: V_SFLDLTHP.$(SRCFILE)<FILE>
     CRTPNLGRP PNLGRP($(@F)) SRCFILE($(SRCFILE))
 
 
