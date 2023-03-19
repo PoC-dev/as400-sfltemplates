@@ -1,4 +1,4 @@
-     A* Copyright 2007-2022 Patrik Schindler <poc@pocnet.net>.
+     A* Copyright 2007-2023 Patrik Schindler <poc@pocnet.net>.
      A*
      A* This file is part of a collection of templates for easy creation of
      A*  subfile-based applications on AS/400, iSeries and IBM i.
@@ -22,7 +22,7 @@
      A*  for proper handling of most SFL based tasks. It is tailored for scroll-
      A*  handling by the OS, aka load-all.
      A*
-     A* $Id: v_lodalldf.dds,v 1.22 2022/07/29 18:11:11 poc Exp $
+     A* $Id: v_lodalldf.dds,v 1.24 2023/03/19 21:44:44 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)

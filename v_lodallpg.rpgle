@@ -1,4 +1,4 @@
-     HCOPYRIGHT('2007-2022 Patrik Schindler <poc@pocnet.net>')
+     HCOPYRIGHT('2007-2023 Patrik Schindler <poc@pocnet.net>')
      H*
      H* This file is part of a collection of templates for easy creation of
      H*  subfile-based applications on AS/400, i5/OS and IBM i.
@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-all SFL.
      H*
-     H* $Id: v_lodallpg.rpgle,v 1.40 2022/05/13 07:53:50 poc Exp $
+     H* $Id: v_lodallpg.rpgle,v 1.41 2023/03/19 21:44:45 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)

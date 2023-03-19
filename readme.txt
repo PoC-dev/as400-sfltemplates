@@ -706,4 +706,4 @@ http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf
 
 vim: textwidth=78 autoindent
 
-$Id: readme.txt,v 1.17 2022/06/18 21:08:47 poc Exp $
+$Id: readme.txt,v 1.18 2023/02/24 10:32:01 poc Exp $

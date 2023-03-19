@@ -1,4 +1,4 @@
-     A* Copyright 2007-2022 Patrik Schindler <poc@pocnet.net>.
+     A* Copyright 2007-2023 Patrik Schindler <poc@pocnet.net>.
      A*
      A* This file is part of a collection of templates for easy creation of
      A*  subfile-based applications on AS/400, iSeries and IBM i.
@@ -30,7 +30,7 @@
      A*  additional code is necessary to keep file pointers in sync, which
      A*  complicates matters without need.
      A*
-     A* $Id: v_poslf.dds,v 1.5 2022/06/13 18:39:01 poc Exp $
+     A* $Id: v_poslf.dds,v 1.6 2023/03/19 21:44:45 poc Exp $
      A*
      A* Record Format Name -----------------------------------------------------
      A          R BCKPOS                    PFILE(V_SFLPF)
