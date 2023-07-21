@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.43 2023/03/19 21:44:45 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.44 2023/07/21 15:42:19 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -49,7 +49,7 @@
      H*     35: Begin-of-File, BOF from Database file.
      H*- General DSPF Conditioning:
      H*     41: Place Cursor in Pos-To Field.
-     H*     42: Indicate ADDREC was called. (DSPF)
+     H*     42: Indicate ADDREC/DUPREC was called. (DSPF)
      H*     43: Indicate CHGREC was called. (DSPF)
      H*     44: Indicate DSPREC was called. (DSPF)
      H* 60..69: Detail record cursor placement. (DSPF)
