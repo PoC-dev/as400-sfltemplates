@@ -127,6 +127,130 @@ Compiler logs are extremely verbose and finding errors can be tricky.
  rushing.
 
 
+What is a subfile, precisely?
+=============================
+Basically, subfiles allow to present multiple records of data on a single
+screen display. In practice, this facility is used to show the user a tabular
+display of data, and a choice field. The data helps the user to associate the
+presented data with a given record in a database file, and the choice field
+enables the user to tell the system what he wants to do with the selected
+field. This display should be familiar with AS/400 users. Many "work with"
+screens present such a list view.
+
+At the definition level, subfiles are comprised of two associated "record
+formats". (A record format is one of possibly many different ways to access,
+and present data. See the IBM "DDS Reference" book for details.)
+
+One part of the subfile is the subfile record format itself. It defines the
+layout of one record, while the system later will take care of the repetition
+of this one definition to fill the screen. I'm talking about a record and not
+a line, because one record is perfectly allowed to occupy multiple lines on a
+screen.
+
+The second part is the subfile control format. It mainly defines the
+functioning of the subfile itself in regard of scrolling logic. Also, you
+assign a counting variable via the SFLRCDNBR statement. This serves the same
+purpose as the automatically generated "relative record number" in phyical
+(database) files: You can address a certain record unambiguously. Note that
+subfiles cannot have an index field, thus the counting variable is the only
+way to address individual records in a subfile. The main challenge is to
+establish an association of a database field with a SFL field, because both
+facilities usually do not share a common way of addressing a record.
+The subfile control format also may contain static screen elements (such as
+headings, or a screen footer listing the allowed function keys), or even
+further, non tabular database fields, for displaying a user name, the system
+name, etc.
+
+Subfile- and subfile control records are not allowed to overlap. Also, while
+subfile control records are allowed to contain actual screen elements, those
+elements must be grouped either before or after the subfile record. If you
+need elements above and below the subfile display, you need to introduce a
+separate record format containing the "leftover" screen elements.
+
+At the programming level, subfiles (usually) work like this:
+- You prepare the subfile by either clearing or initializing it (set the
+  associated indicator to *ON and write the control record).
+- In a loop:
+-- You READ the next record from a database file into the variables which have
+   been created implicitly by referencing the database file.
+-- You set the SFLRCDNBR variable to the next free record number of the
+   subfile.
+-- You WRITE the data including the implcitly saved SFLRCDNBR to the SFL
+   record format.
+-- Test for EOF or other conditions signalling that all desired records have
+   been copied to the SFL. Possibly use this condition to indicate SFLEND.
+- Update the associated SFLDSP/SFLDSPCTL indicators, and WRITE the control
+  record format to make the display appear on screen.
+
+Note: You need to make sure that the subfile itself must contain at least one
+record. If an empty SFL is tried to be displayed (SFLDSP set), the application
+will crash.
+
+Handling user input from a subfile works like this:
+- Use READC to read the next changed subfile record. It reads the complete
+  record, not just the edited field. SFLRCDNBR is implicitly set.
+- Branch to the desired function depending on the user's selection.
+- Optional: If the user changed a record on disk by using the aforementioned
+  function, you may choose to UPDATE the single changed record in the SFL.
+  This saves time and CPU-cycles compared to reloading the complete SFL to
+  show the current database records.
+- Test for EOF to exit the loop.
+
+
+The AS/400 basically supports two and a half variants of subfiles:
+
+1.   Type Load-All will be fed all records in a database file at once. Scroll
+     handling is done by the OS. Preserving option values beyond scrolling
+     boundaries is handled by the OS. Drawbacks are: The more records to load,
+     the more delay until the SFL is displayed. Fixed maximum number of
+     records. Keeping Data in the PF and on screen in sync means frequent
+     reloads. Implementing means to scroll to a certain record (find by
+     primary key) is very cumbersome and needs help of some kind of table,
+     array or other facilities to have a mapping of SFL line numbers (AKA:
+     RRNs) to primary key values in the PF. It is not implemented in this
+     example for the sake of simplicity.
+1.5. A subtype of Load-All is the Expandable Subfile. The SFL gets loaded a
+     small amount of records (one screen page). Thus, the delay until
+     displaying this screen is small. Every keypress for page down instructs
+     the program to load the next bunch of records. The SFL will be expanded
+     in memory on the fly as needed. Scrollback is still handled by the OS.
+     Scrolldown-Handling must be implemented by the programmer. All other
+     restrictions from the Load-All variant still apply.
+2.   Type Load-Paged means that the SFL is as big as one screen of data.
+     There's about 200 lines of additiomnal code needed to make handling the
+     SFL as neat as with a Load-All SFL. Keeping Data in sync is more likely
+     because data must be read into the SFL for every scroll. It's relatively
+     easy to implement a position-to feature for jumping to a certain record.
+     Also, there is no limit to the apparent number of records. Since data is
+     re-read from disk with every scroll, any selection (OPT-Field) what to do
+     with the record(s) in question are lost with every scroll. There are
+     different means how to save the selection values and refill them when
+     needed, but for the sake of simplicity, there is no selection saver
+     implemented (yet).
+
+This project provides definitions for both Load-All and Load-Paged SFLs.
+ Expandable subfiles can be created by extending the Load-All Subfile with
+ elements from the Load-Paged DSPF and Code.
+Additionally, there are definitions for a prompting screen when records are to
+ be deleted. This is always a type Load-All, because normally, only a few
+ records at once are to be deleted.
+Finally, there is a record format containing all fields contained in the PF,
+ for creation, duplication, editing, and viewing of all data.
+
+For reasons stated above, Load-All SFLs are best when there are only a few
+ records to be handled, less than about half dozen scrolls. That's most likely
+ small enough to not need a position-to feature and the delay between loading
+ and displaying stays small even on older machines.
+
+On a side note, Variant 1, or 1.5 are most likely the ones to be used when
+ records are to be selected with SQL, as a result set. While there's no big
+ difference in dealing with a file pointer compared to a SQL cursor, variant 2
+ adds complexity without any additional benefit.
+
+See "Further Reading" below to learn more about display files and how to
+ create application displays.
+
+
 Description of Files
 ====================
 The example project comprises of three (groups of) files:
@@ -308,74 +432,6 @@ With some effort of creativity, it's possible to create sort of pseudo
 The DSPF here provides record formats for a list- and a details screen, both in
  24x80 only. Some restrictions apply when dynamically switching modes
  dynamically, so this is out of scope for this project.
-
-A Word on Subfiles
-------------------
-Subfiles are a special variant of a defined screen appearance. The AS/400
- basically supports two and a half variants of subfiles:
-
-1.   Type Load-All will be fed all records in a database file at once. Scroll
-     handling is done by the OS. Preserving option values beyond scrolling
-     boundaries is handled by the OS. Drawbacks are: The more records to load,
-     the more delay until the SFL is displayed. Fixed maximum number of
-     records. Keeping Data in the PF and on screen in sync means frequent
-     reloads. Implementing means to scroll to a certain record (find by
-     primary key) is very cumbersome and needs help of some kind of table,
-     array or other facilities to have a mapping of SFL line numbers (AKA:
-     RRNs) to primary key values in the PF. It is not implemented in this
-     example for the sake of simplicity.
-1.5. A subtype of Load-All is the Expandable Subfile. The SFL gets loaded a
-     small amount of records (one screen page). Thus, the delay until
-     displaying this screen is small. Every keypress for page down instructs
-     the program to load the next bunch of records. The SFL will be expanded
-     in memory on the fly as needed. Scrollback is still handled by the OS.
-     Scrolldown-Handling must be implemented by the programmer. All other
-     restrictions from the Load-All variant still apply.
-2.   Type Load-Paged means that the SFL is as big as one screen of data.
-     There's about 200 lines of additiomnal code needed to make handling the
-     SFL as neat as with a Load-All SFL. Keeping Data in sync is more likely
-     because data must be read into the SFL for every scroll. It's relatively
-     easy to implement a position-to feature for jumping to a certain record.
-     Also, there is no limit to the apparent number of records. Since data is
-     re-read from disk with every scroll, any selection (OPT-Field) what to do
-     with the record(s) in question are lost with every scroll. There are
-     different means how to save the selection values and refill them when
-     needed, but for the sake of simplicity, there is no selection saver
-     implemented (yet).
-
-Subfiles usually form a composite screen from at least two record formats in a
- display file:
-- First, there's the subfile definition itself, which describes one record,
-  the first line of screen appearance. One record may span more than one line.
-- Second, there's the Subfile Control Record, which defines the appearance of
-  the subfile record itself. Additionally, it may contain additional screen
-  elements. A Subfile Control Record's elements might be located either above
-  or below the subfile record itself. It cannot contain elements above and
-  below the subfile itself.
-- Often there is a third record for providing elements for the location the
-  Subfile Control Record can not.
-
-This project provides definitions for both Load-All and Load-Paged SFLs.
- Expandable subfiles can be created by extending the Load-All Subfile with
- elements from the Load-Paged DSPF and Code.
-Additionally, there are definitions for a prompting screen when records are to
- be deleted. This is always a type Load-All, because normally, only a few
- records at once are to be deleted.
-Finally, there is a record format containing all fields contained in the PF,
- for creation, duplication, editing, and viewing of all data.
-
-For reasons stated above, Load-All SFLs are best when there are only a few
- records to be handled, less than about half dozen scrolls. That's most likely
- small enough to not need a position-to feature and the delay between loading
- and displaying stays small even on older machines.
-
-On a side note, Variant 1, or 1.5 are most likely the ones to be used when
- records are to be selected with SQL, as a result set. While there's no big
- difference in dealing with a file pointer compared to a SQL cursor, variant 2
- adds complexity without any additional benefit.
-
-See "Further Reading" below to learn more about display files and how to
- create spplication displays.
 
 
 The Driver Program
