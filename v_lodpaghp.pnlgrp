@@ -1,5 +1,4 @@
 .* $Id: v_lodpaghp.pnlgrp,v 1.9 2022/11/26 22:36:36 poc Exp $
-.* vim: ft=pnlgrp textwidth=80 colorcolumn=81
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Vorlage
@@ -104,3 +103,4 @@ Listendarstellung gefunden werden konnten.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :EPNLGRP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81
