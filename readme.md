@@ -111,8 +111,9 @@ The example project comprises of three (groups of) files:
 - `V_SFLPF` is the shared database file. Shared, because both Load-All and Load- Paged reference this file.
 - `V_LODALLDF`, `V_LODALLPG`, and `V_LODALLHP` are the template files for a Load-All project.
 - `V_LODPAGDF`, `V_LODPAGPG`, `V_POSLF`, and `V_LODPAGHP` are template files for a Load-Paged project with a position-to field.
-- `V_DTLDHP` is a shared help panel group for the details screen.
 - `V_SFLDLTHP` is a shared help panel group for the delete confirmation screen.
+
+**Note:** The contained text in `V_LODPAGHP` is generic enough to just compile it to `QGPL/SFLDLTHP`, and modify the references in the DSPF(s) accordingly. So you can enjoy an automatic online help text for the delete-confirmation screen for each derived project, without further effort.
 
 Additionally, there are:
 - `V_SFLMAXID` for fast creation of primary key values.
@@ -248,10 +249,12 @@ This enables us to do reads more efficiently. Since both record formats are in t
 
 See *Further Reading* below for a reference to the ILE RPG language. This should help understanding the code.
 
-##### The Help Panels
-Online Help is an often neglected topic. The AS/400 facilities make it comparatively easy to create helpful online help, because the help text can be made different for different cursor positions on screen.
+##### The help panels
+Online Help is an often neglected topic. The AS/400 facilities make it comparatively easy to create helpful online help, because the help text can be made different for different cursor positions on screen. This is achieved by help panels having multiple *sections*.
 
-Help Panels are created with something that resembles HTML in a crude way (called GML). Not all Features of basic HTML are provided, also. See the examples and try out the help on different cursor positions in the SFL itself.
+In addition, a display file might reference a "global" section of a help panel group as part of the global DSPF definitions.
+
+Help Panels are written in something that resembles HTML in a crude way, called [GML](https://en.wikipedia.org/wiki/IBM_Generalized_Markup_Language). Not all Features of basic HTML are provided, though: Resulting output is meant to be viewed on screen, and in simple printouts. See the provided examples and try out the help on different cursor positions in the SFL itself.
 
 You can add references to help entries by
 - absolute screen positions (rectangle), as used in the details record format
@@ -259,9 +262,20 @@ You can add references to help entries by
 - whole record, as used in the "no data", and "bottom" (function key display) record formats,
 - other means.
 
-The mentioned only part of all possibilities because these are which I used in
-the example display files.
+The mentioned references are only part of all possibilities because these are used in the example display files.
 
+###### Sections
+An individual *section* of a help panel group object is shown on screen in a window when the user moves the cursor to a screen location, and presses the help key, or F1. It is confined with the `:HELP.` … `:EHELP.` delimiters.
+
+There is also the notion of an *expanded help*, being displayed when
+- pressing F2 in an already displaying help window,
+- pressing the help key, or F1 in an otherwise unspecified cursor position.
+
+The aforementioned global help is always prefixed to the expanded help text. The expanded help text contains each individual help element for a given screen's referenced help. **Note:** Screens can be composed of several record formats.
+
+When utilized properly, the expanded help thus resembles an automatic manual how to actually use an application and/or screen.
+
+###### Links
 You can also add cross references to other help panels thru hyperlinks.
 Example:
 ```
@@ -429,5 +443,5 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.21 2023/10/14 14:10:23 poc Exp $
+$Id: readme.md,v 1.22 2023/10/14 15:31:07 poc Exp $
 ```

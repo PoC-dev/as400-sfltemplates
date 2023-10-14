@@ -3,7 +3,6 @@ get SRCLIB/SFLVORLAGE.CHANGELOG   changelog.txt
 get SRCLIB/SFLVORLAGE.CRTMSGD     crtmsgd.rexx
 get SRCLIB/SFLVORLAGE.README      readme.txt
 get SRCLIB/SFLVORLAGE.TODOS       todos.txt
-get SRCLIB/SFLVORLAGE.V_DTLDHP    v_dtldhp.pnlgrp
 get SRCLIB/SFLVORLAGE.V_LODALLDF  v_lodalldf.dds
 get SRCLIB/SFLVORLAGE.V_LODALLHP  v_lodallhp.pnlgrp
 get SRCLIB/SFLVORLAGE.V_LODALLPG  v_lodallpg.rpgle

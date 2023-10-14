@@ -22,7 +22,7 @@
      A*  for proper handling of most SFL based tasks. It is tailored for scroll-
      A*  handling by the OS, aka load-all.
      A*
-     A* $Id: v_lodalldf.dds,v 1.24 2023/03/19 21:44:44 poc Exp $
+     A* $Id: v_lodalldf.dds,v 1.25 2023/10/14 15:31:07 poc Exp $
      A*
      A* Globals ----------------------------------------------------------------
      A                                      REF(V_SFLPF)
@@ -186,15 +186,20 @@
      A*         ##Help Area definition for this screen.
      A                                      HLPTITLE('Vorlage - Details')
      A          H                           HLPARA(1 1 1 80)
-     A                                      HLPPNLGRP('DETAIL/MODE' V_DTLDHP)
+     A                                      HLPPNLGRP('DETAIL/MODE'
+     A                                      V_LODALLHP)
      A          H                           HLPARA(3 1 3 80)
-     A                                      HLPPNLGRP('DETAIL/OPTIONS' V_DTLDHP)
+     A                                      HLPPNLGRP('DETAIL/OPTIONS'
+     A                                      V_LODALLHP)
      A          H                           HLPARA(5 1 5 80)
-     A                                      HLPPNLGRP('DFIELD/KEYVAL' V_DTLDHP)
+     A                                      HLPPNLGRP('DFIELD/KEYVAL'
+     A                                      V_LODALLHP)
      A          H                           HLPARA(7 1 7 80)
-     A                                      HLPPNLGRP('DFIELD/VALFLD' V_DTLDHP)
+     A                                      HLPPNLGRP('DFIELD/VALFLD'
+     A                                      V_LODALLHP)
      A          H                           HLPARA(23 1 23 80)
-     A                                      HLPPNLGRP('DETAIL/FKEYS' V_DTLDHP)
+     A                                      HLPPNLGRP('DETAIL/FKEYS'
+     A                                      V_LODALLHP)
      A*         ##End of definitions. Here be real screen elements.
      A  42N43                           1 30'Neuen Eintrag erfassen'
      A                                      DSPATR(HI)

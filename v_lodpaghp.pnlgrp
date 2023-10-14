@@ -1,4 +1,4 @@
-.* $Id: v_lodpaghp.pnlgrp,v 1.10 2023/09/29 12:11:31 poc Exp $
+.* $Id: v_lodpaghp.pnlgrp,v 1.11 2023/10/14 15:31:07 poc Exp $
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Vorlage
@@ -100,6 +100,55 @@ zurück.
 :P.Diese Anzeige wird dann eingeblendet, wenn keine Datensätze für die
 Listendarstellung gefunden werden konnten.
 :P.Dies kann in einer leeren Datenbankdatei begründet sein.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/MODE'.Modus
+:XH3.Modus
+:P.In diesem Bereich wird ausgegeben, in welchem Modus die Datenfelder derzeit
+dargestellt werden:
+:PARML.
+:PT.Neuen Eintrag erfassen
+:PD.Falls F6=Neu gewählt wurde, sind alle Datenfelder leer und zum Ausfüllen
+bereit. Falls Opt :HP1.3=Duplizieren:EHP1. gewählt wurde, werden die Werte vom
+markierten Datensatz übernommen, damit nur Änderungen eingetragen werden müssen.
+Das Betätigen der Eingabetaste legt einen neuen Datensatz an.
+:PT.Eintrag ändern
+:PD.Die vorhandenen Werte des Datensatzes werden angezeigt, damit diese
+korrigiert werden können.
+:PT.Eintrag anzeigen
+:PD.Die vorhandenen Werte des Datensatzes werden ohne Änderungsmöglichkeiten
+angezeigt.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/OPTIONS'.Tätigkeiten
+:XH3.Tätigkeiten
+:P.Hier kann der Anwender sehen, welche Tätigkeit er im derzeitigen Modus
+durchführen kann.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DFIELD/KEYVAL'.Wert
+:XH3.Wert
+:P.In diesem Feld wird ein numerischer Wert hinterlegt.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DFIELD/VALFLD'.Eintrag
+:XH3.Eintrag
+:P.In diesem Feld wird ein Text hinterlegt.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/FKEYS'.Funktionstasten
+:XH3.Funktionstasten
+:PARML.
+:PT.F1=Hilfe
+:PD.Ruft die cursorpositionsabhängige Hilfefunktion auf.
+:PT.F3=Verlassen
+:PD.Beendet die Detailansicht und gibt die Kontrolle an das vorherige Menü
+zurück.
+:PT.F12=Abbrechen
+:PD.Beendet die momentan aufgerufene Funktion und kehrt zur vorherigen Anzeige
+zurück.
+:EPARML.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :EPNLGRP.

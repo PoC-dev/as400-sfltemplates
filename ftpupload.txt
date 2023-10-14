@@ -3,7 +3,6 @@ put changelog.txt        SRCLIB/SFLVORLAGE.CHANGELOG
 put crtmsgd.rexx         SRCLIB/SFLVORLAGE.CRTMSGD
 put readme.txt           SRCLIB/SFLVORLAGE.README
 put todos.txt            SRCLIB/SFLVORLAGE.TODOS
-put v_dtldhp.pnlgrp      SRCLIB/SFLVORLAGE.V_DTLDHP
 put v_lodalldf.dds       SRCLIB/SFLVORLAGE.V_LODALLDF
 put v_lodallhp.pnlgrp    SRCLIB/SFLVORLAGE.V_LODALLHP
 put v_lodallpg.rpgle     SRCLIB/SFLVORLAGE.V_LODALLPG
