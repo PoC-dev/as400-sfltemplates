@@ -37,12 +37,12 @@ Some of these topics are covered in the Wiki on [try-as400.pocnet.net](https://t
 Often, AS/400 programs are build with just these components:
 - Physical File (*PF*); a Database Table holding the actual records.
 - Logical File (*LF*, optional); allowing to access a subset of fields from the PF, or to apply different Indexes (Access Paths) to the data.
-- Display File; the Definition of the Form(s) appearing on Screen. A subset of possibilities a *DSPF* offers are subfiles. That's what all this fuzz is about.
-- The "Driver" Program (RPGLE) is the entity that glues all components together. By referencing files in the program code, global variables will be created from the field names in the files. This has consequences:
+- Display File (*DSPF*); the Definition of the Form(s) appearing on Screen. A subset of possibilities a DSPF offers are subfiles. That's what all this fuzz is about.
+- The "Driver" Program (*RPGLE*) is the entity that glues all components together. By referencing files in the program code, global variables will be created from the field names in the files. This has consequences:
    - Field definition attributes must be consistent over all files used. This is easily most easily achieved by defining the field once in the PF and reference the field from the DSPF. Notable exceptions are date/time fields.
    - If the names of the fields are kept equal between PF and DSPF, the whole magic boils down to just `READ` from the PF and `WRITE` to the DSPF to make the data appear on screen, for example.
-- A Help Panel Group (optional); an external object referenced in display files for providing cursor-position aware online-help facilities.
-- A Message File, an external object referenced in display files for providing descriptive messages, most often for error conditions.
+- A Help Panel Group (*PNLGRP*, optional), an external object referenced in display files for providing cursor-position aware online-help facilities.
+- A Message File (*MSGF), an external object referenced in display files for providing descriptive messages, most often for error conditions.
 
 There are more file types available, but not part of this template.
 
@@ -132,7 +132,7 @@ Additionally, there are:
   - Logical Files may contain more than one record format. Using different index fields in one file is somewhat restricted.
 - `DF` = Display File, a screen form description. Designated in PDM as type DSPF.
 - `PG` = Program Object, the "driver" with accompanying logic for data movement. Designated in PDM as type RPGLE, in our case.
-- `HP` = (Help) Panel Group, the Online Help Facility. Designated in PDM as type *PNLGRP*.
+- `HP` = Help Panel Group, the Online Help Facility. Designated in PDM as type *PNLGRP*.
 
 ##### Database files
 The AS/400 platform is SQL capable since a long time. Deliberately gnoring this capability, this example focuses on classical API calls to read/write/update/delete database file contents. On very old and thus slow machines, SQL ain't no fun regarding speed. Also, integration of SQL is somewhat clumsy and this project aims to provide a reasonably feature-complete template with as little complexity as possible.
@@ -185,12 +185,14 @@ Element attributes are contained in the character cell immediately preceding the
 
 Most elements can be modified by conditioning numbers. This includes attribute changes.
 
+###### Commonalities between 5250 and HTML forms
 It is important to realise that Display Files resemble what we once knew as simple HTML forms in a web browser window.
 - A form is sent to the screen (or browser) to be filled out by the user.
 - After entering data, the user presses enter (or the Submit button in HTML) to send back the entire form for processing at once.
 
 There is no communication between host and terminal (emulation) while entering data into fields. This explains certain restrictions regarding interactivity in these screens. Browsers provide a JavaScript Engine to do local processing. There's no JS equivalent for 5250 screens.
 
+###### Using record formats to group screen elements
 Screen elements to be shown on a screen are grouped into a so called *record format*s. Display files can contain multiple record formats. There are different types of record formats, the most important ones being regular ones and subfile record formats, with the accompanying subfile control record format.
 
 A simple record format usually controls the entire display, but it's also possible to create record formats occupying only certain areas of a screen. This possibility is exploited with Subfiles, so one screen can show headings for the subfile along with the subfile itself. Finally, it's possible to draw windows on a screen. Each window can contain at least one or more record formats itself.
@@ -200,6 +202,17 @@ With some effort of creativity, it's possible to create sort of pseudo graphics 
 The DSPF provided has record formats for a list- and a details screen, both in 24x80 only.
 
 Some restrictions apply when dynamically switching display modes, so this capability is out of scope for this project.
+
+###### Providing online help
+Help facilities should enable an untrained user to make use of an application, or help him with reminding about details within an application's screens. OS/400 offers *help panel groups* to make it easy for the application developer to provide formatted help texts to end users.
+
+The help facility basically shows fragments of help panel group objects associated with either a rectangular screen position, or with "objects" on a given screen. See below for details.
+
+A very negative example of not helpful online help is Microsoft Windows NT 4. Often, help for a dialog with several fields to fill out provides a mere description about the function a dialog serves with no further explanation about the fields and which kind of data is expected there.
+
+In general, IBM online help on the AS/400 often shines by
+- providing extensive details about the meaning of each field and what type of data is expected,
+- some safe default to assume if it's unclear what data to provide.
 
 ##### The Driver Program
 The driver program references the PF, possibly the LF (in case of Load-Paged), and basically handles moving of data between the database and the screen.
@@ -228,8 +241,8 @@ A drawback of this approach is additional necessary code to check for `BOF` cond
 So far, reading backwards twice the amount and then loading the SFL forward may seem like a waste of CPU resources. Here I trade efficiency for easiness of code.
 
 The logical file (positioning-aid) contains two record formats:
-- BCKPOS contains the PRIMARY KEY field, so reading backwards is very fast, because the database engine just needs to read from the index.
-- FWDPOS is thought to contain only the fields of a database file that are actually shown in the Subfile. It's not clever to load all fields of a very broad table to just discard much of that data because it's not needed in the Subfile.
+- `BCKPOS` contains the PRIMARY KEY field, so reading backwards is very fast, because the database engine just needs to read from the index.
+- `FWDPOS` is thought to contain only the fields of a database file that are actually shown in the Subfile. It's not clever to load all fields of a very broad table to just discard much of that data because it's not needed in the Subfile.
 
 This enables us to do reads more efficiently. Since both record formats are in the same file and thus share the same file pointer, they can be used as desired but always point to the same record in the database file.
 
@@ -241,15 +254,15 @@ Online Help is an often neglected topic. The AS/400 facilities make it comparati
 Help Panels are created with something that resembles HTML in a crude way (called GML). Not all Features of basic HTML are provided, also. See the examples and try out the help on different cursor positions in the SFL itself.
 
 You can add references to help entries by
-- absolute screen positions (rectangle),
-- numbered static screen elements,
-- whole record,
+- absolute screen positions (rectangle), as used in the details record format
+- numbered static screen elements, as used for the subfile headings in the subfile control format,
+- whole record, as used in the "no data", and "bottom" (function key display) record formats,
 - other means.
 
 The mentioned only part of all possibilities because these are which I used in
 the example display files.
 
-You can also add cross references to other help files thru hyperlinks.
+You can also add cross references to other help panels thru hyperlinks.
 Example:
 ```
 :LINK PERFORM='DSPHELP HELPSECTION HELPPNLGRPOBJ'.
@@ -416,5 +429,5 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.20 2023/10/14 13:44:07 poc Exp $
+$Id: readme.md,v 1.21 2023/10/14 14:10:23 poc Exp $
 ```
