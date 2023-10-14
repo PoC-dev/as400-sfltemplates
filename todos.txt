@@ -1,4 +1,3 @@
-- Rework help panels
 - Add menu example
   => Remove "general help" in panel group
   => add common files for menu inclusion
