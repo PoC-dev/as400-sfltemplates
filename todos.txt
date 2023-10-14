@@ -1,12 +1,14 @@
-Show a message in the message line of the details recfmt when there's some
-message to show (like INF0001 = Not updated) on the record before.
+- Rework help panels
+- Add menu example
+  => Remove "general help" in panel group
+  => add common files for menu inclusion
+  => Update makefile
+- Translate to English
+- Probably use RNQxxxx for IBM provided translations of file status error codes!
+- Rework error handling - this will be really hard!
+  => Current handler doesn't compile on V3
+  => Current handler is very cumbersome to use (base indicator - 10)
+  => Can changes be put into a diff, and applied to existing applications?
+     https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html
+- Lodpag: Save and restore selections when scolling.
 
-At the moment, deletions will happen after changes or duplications. Learn how
-PDM handles multiple selections and try to behave the same.
-
-Lodpag: Save and restore selections when scolling.
-
-Rework message display code!
-- Get rid of ERRMSG. This is way to complicated to handle in complex scenarios.
-- Instead use Generic Messages to *EXT, translated via *LIBL/QRNXMSG. RNQxxxx
-  are correct translations of file status error codes!
