@@ -1,4 +1,4 @@
-.* $Id: v_lodpaghp.pnlgrp,v 1.12 2023/10/16 00:02:57 poc Exp $
+.* $Id: v_lodpaghp.pnlgrp,v 1.13 2023/10/16 14:00:27 poc Exp $
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Vorlage
@@ -20,7 +20,7 @@ textuellen Übereinstimmung, bzw. zum nächstkleineren numerischen Wert.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLOPTS'.Auswahloptionen
 :XH3.Auswahloptionen
-:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte :HP3.Opt:EHP3.
+:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte :HP1.Opt:EHP1.
 eingegeben werden können:
 :PARML.
 :PT.2=Ändern

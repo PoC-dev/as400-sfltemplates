@@ -1,11 +1,11 @@
-.* $Id: v_sfldlthp.pnlgrp,v 1.5 2023/10/14 15:31:07 poc Exp $
+.* $Id: v_sfldlthp.pnlgrp,v 1.6 2023/10/16 14:00:27 poc Exp $
 .* For global use, compile this object into QGPL/SFLDLTHP. Use F4 after typing
 .*  for compile in PDM.
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/SFLOPTS'.Auswahloptionen
 :XH3.Auswahloptionen
-:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte :HP3.Opt:EHP3.
+:P.Für die Liste gültige Auswahl-Werte, welche in der Spalte :HP1.Opt:EHP1.
 eingegeben werden können.
 :PARML.
 :PT.4=Löschen
