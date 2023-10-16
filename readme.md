@@ -9,7 +9,7 @@ It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
 
 You should have received a copy of the GNU General Public License along with it; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at http://www.gnu.org/licenses/gpl.html
 
-A huge thank you goes to "Mathias Peter IT-Beratung und Dienstleistungen", my current employer who allowed me to spend part of my work time on this project. See https://www.mathpeter.com for details.
+A huge thank you goes to "Mathias Peter IT-Systemhaus", my current employer who allowed me to spend part of my work time on this project. See https://www.mathpeter.com for details.
 
 ### WTF?
 A subfile is most often used to present multiple records of data in a list, on a single screen for easy viewing and maybe picking records to process further. A bit like a spreadsheet presents some data, that is.
@@ -501,5 +501,5 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.23 2023/10/16 00:02:57 poc Exp $
+$Id: readme.md,v 1.24 2023/10/16 00:05:35 poc Exp $
 ```
