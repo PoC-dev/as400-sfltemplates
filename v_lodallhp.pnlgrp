@@ -1,4 +1,4 @@
-.* $Id: v_lodallhp.pnlgrp,v 1.8 2023/10/14 15:31:07 poc Exp $
+.* $Id: v_lodallhp.pnlgrp,v 1.9 2023/10/16 00:02:57 poc Exp $
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Vorlage
@@ -61,10 +61,6 @@ sichtbar. Änderungen können nicht direkt vorgenommen werden. Dazu sind die
 bereits erwähnten Selektionen in der Opt-Spalte da.
 :NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.
 :ENOTE.
-:P.Hier ist ein guter Platz um eine kurze Bedienungsanleitung der Applikation
-über alles einzufügen. Die Hilfetexte sollen hilfreich sein, daher bringt es dem
-Anwender nichts, wenn er detailliert gesagt bekommt, wo er was zu machen hat,
-wenn er keine Klarheit über die Zusammenhänge erlangen kann.
 :P.Eine Anzeige am rechten unteren Ende des scrollbaren Bereichs macht darauf
 aufmerksam, wenn die Liste der dargestellten Datensätze am Ende angekommen ist
 und keine weiteren Datensätze mehr vorhanden sind.

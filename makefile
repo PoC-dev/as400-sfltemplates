@@ -1,4 +1,4 @@
-# $Id: makefile,v 1.3 2023/10/14 15:31:06 poc Exp $
+# $Id: makefile,v 1.4 2023/10/16 00:02:57 poc Exp $
 
 # Note: To understand this file, accustom yourself with
 # - make: https://en.wikipedia.org/wiki/Make_(software)
@@ -12,7 +12,7 @@ STAMPFILE=BLDTMSTMPS
 # Global rules for recreating everything, if required --------------------------
 # Add your targets below to have them recreated as necessary with just a simple
 # call to tmkmake.
-all: curlib commonfiles loadall loadpag
+all: curlib commonfiles loadall loadpag MENU<MENU>
 
 # This is to make sure that even if we run in batch, we can use unqualified
 # names in rules. Because there are no dependents, the rule is executed always.
@@ -20,12 +20,12 @@ curlib:
     CHGCURLIB CURLIB($(DSTLIB))
 
 # Menu -------------------------------------------------------------------------
-# This file is not existing, so we don't list it in the "all" target.  It is
-# kept as an example, though.
-CMDCTI<MENU>: MYMENU.$(SRCFILE)<FILE>
-    CRTMNU MENU($(@F)) TYPE(*UIM) SRCFILE($(SRCFILE)) INCFILE(QGPL/MENUUIM)
+MENU<MENU>: MENU.$(SRCFILE)<FILE> QGPL/MENUUIM.#MENUUSGH +
+        QGPL/MENUUIM.#FUNCKEYS<FILE> QGPL/MENUUIM.#FUNCKEYSH<FILE>
+    CRTMNU MENU($(@F)) TYPE(*UIM) SRCFILE($(SRCFILE)) INCFILE(QGPL/MENUUIM) +
+        CURLIB(*MNULIB)
 
-# Load-All template -------------------------------------------------------------
+# Load-All template ------------------------------------------------------------
 loadall: V_LODALLHP<PNLGRP> V_LODALLPG<PGM>
 
 V_LODALLHP<PNLGRP>: V_LODALLHP.$(SRCFILE)<FILE>
@@ -38,7 +38,7 @@ V_LODALLPG<PGM>: V_LODALLPG.$(SRCFILE)<FILE> V_LODALLDF<FILE> +
         V_SFLPF.$(STAMPFILE)<FILE>
     CRTBNDRPG PGM($(@F)) SRCFILE($(SRCFILE))
 
-# Load-All template -------------------------------------------------------------
+# Load-All template ------------------------------------------------------------
 loadpag: V_LODPAGHP<PNLGRP> V_LODPAGPG<PGM>
 
 V_LODPAGHP<PNLGRP>: V_LODPAGHP.$(SRCFILE)<FILE>
@@ -60,7 +60,7 @@ V_LODPAGPG<PGM>: V_LODPAGPG.$(SRCFILE)<FILE> V_LODPAGDF<FILE> +
         V_SFLPF.$(STAMPFILE)<FILE>
     CRTBNDRPG PGM($(@F)) SRCFILE($(SRCFILE))
 
-# Common files ------------------------------------------------------------------
+# Common files -----------------------------------------------------------------
 # Note: V_SFLMAXID is not listed because generation will fail without
 # customization.
 commonfiles: V_SFLDLTHP<PNLGRP> V_SFLPFLOD<PGM>

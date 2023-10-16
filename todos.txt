@@ -1,13 +1,8 @@
-- Add menu example
-  => Remove "general help" in panel group
-  => add common files for menu inclusion
-  => Update makefile
-- Translate to English
-- Probably use RNQxxxx for IBM provided translations of file status error codes!
 - Rework error handling - this will be really hard!
   => Current handler doesn't compile on V3
   => Current handler is very cumbersome to use (base indicator - 10)
   => Can changes be put into a diff, and applied to existing applications?
-     https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html
+=> https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html
 - Lodpag: Save and restore selections when scolling.
-
+- Translate to English
+- Probably use RNQxxxx for IBM provided translations of file status error codes

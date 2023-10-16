@@ -1,5 +1,7 @@
 This file is part of a collection of templates for easy creation of subfile based 5250 (terminal) applications on AS/400, i5/OS and IBM i.
 
+If you are already accustomed to subfiles and quickly start going, you may skip the introductory blah blah to the *Upload instructions* at your own risk of failure.
+
 ### License
 It is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
@@ -23,15 +25,6 @@ Since I developed these files for my own usage, and my primary language is Germa
 Programming Style is outdated in many ways. The templates were developed on V4R5 of OS/400, and are expected to work on all V4 versions.
 
 Actual tests with available machines show, they trigger strange compilation errors on i5/OS V5R4, and compile just fine for IBM i 7.2 (V7R2). In addition, some BIFs and exception handling functions are not available in V3R2 and earlier. Porting the code to V3R2 might not happen, though. The same is even more true for V2R3: It completely lacks ILE RPG. For both of these unsupported releases, I've planned to reimplement the code itself in ILE C, and translate the German texts to english - because both of my CISC machines feature English OS versions.
-
-Using these examples assumes you are able to:
-- Create a source physical file with a record length of at least 112 char (hint: `CRTSRCPF`),
-- How to use PDM to work with file members (hint: `WRKMBRPDM`),
-- Upload the files of this project into the SRC PF (hint: use FTP with ASCII translation),
-- Set the correct file types for automatic invocation of the matching compiler and enable syntax checking in the 5250-Editor called SEU (hint: `WRKMBRPDM`),
-- Optionally know how to use SEU for making changes. People knowing vi basi commands will discover certain similarities that makes it easy to learn.
-
-Some of these topics are covered in the Wiki on [try-as400.pocnet.net](https://try-as400.pocnet.net).
 
 ### Basics
 Often, AS/400 programs are build with just these components:
@@ -305,17 +298,72 @@ INF0999  *IN96  Subfile is full. (Load-All, Delete SFL)
 
 The Rexx-Script purposely creates the message file in the `QGPL` library. It can be reused by all projects derived from these templates, so it's not necessary to have a special (project specific) message files with all the same definitions over and over.
 
-### Usage Hints
-To actually make use of the template files, you need to decide if a Load-All SFL is sufficient or a Load-Paged is more appropriate. Also, Load-Paged includes the classical *Position-To* feature. For Details about Pros and Cons, see *A Word on Subfiles* above.
+#### The menu system
+Because running your application with `CALL MYPGM` after changing the current library accordingly is cumbersome, a template menu has been added to the project.
 
-Then, make the appropriate changes, which have to be consistent across the involved files.
+Some components of menus are always the same. For that reason, the file *QGPL/MENUUIM* has been introduced. At first, it contains just three members with static text:
+- `#FUNCKEYS` — definition of function keys and assigning functions
+- `#FUNCKEYSH` — function keys help
+- `#MENUUSGH` — generic usage instructions
+
+In your project library, there is one `MENU` which you can customize accordingly. The members above are included at convenient spots within the member to make a consistent whole.
+
+**Note:** A menu can't be compiled from PDM, it has to be compiled by hand with a customized command depending on your desired menu name and target library.
+
+##### Menu hierarchy
+With the given menu example, it's possible to create a custom menu for displaying at signon time, and branch to the respective menus of your projects from there.
+
+Some thoughts:
+- Collect "generic" menus higher in the hierarchy in *QGPL/MENUUIM*,
+- use `ACTION='MENU MYLIB/MYMENU` in the member text to display another menu,
+- leave out the `MNULIB` parameter; a change of the current library isn't needed for generic menus.
+
+See also the *MENU* instructions below.
+
+### Upload instructions
+Follow these instructions to upload this projects data to your AS/400. Prerequisites:
+- Working TCP/IP configuration,
+- FTP client.
+
+First, Create the data files for holding the sources and include files from a 5250 session:
+```
+CRTSRCPF FILE(QGPL/SFLVORLAGE) TEXT('Subfile-Vorlage')
+CRTSRCPF FILE(QGPL/MENUUIM) TEXT('Shared Menu Panels')
+```
+
+Next, run the upload commands file with your command line FTP client:
+```
+ftp as400 < ftpupload.txt
+```
+This uploads all files to the respective files as members, and sets the file type accordingly.
+
+**Note:** It would have been easy to also add the `CRTSRCPF` commands to *ftpupload.txt*. But since this needs to be done just once, while uploads might be necessary more often (because of updates to this repository), I refrained from doing so.
+
+After finishing, you now have a repository of files for usage.
+
+What remains to be done is to run **once** the REXX script for creating the *message file* with common error messages.
+
+### Usage Hints
+To actually make use of the template files, I advise to create a new library for your shiny new project, and create a source PF there.
+```
+CRTLIB MYNEWPROJ
+CRTSRCPF FILE(MYNEWPROJ/SOURCES)
+```
+
+Next, decide if a Load-All SFL is sufficient or a Load-Paged is more appropriate. Also, Load-Paged includes the classical *Position-To* feature. For Details about Pros and Cons, see *A Word on Subfiles* above.
+
+Then, run `WRKMBRPDM QGPL/SFLVORLAGE` to show the list of source members. Type a *3* next to all files you need for your new project. Which files those might be is explained at length in the sections above. Fill the fields, press Enter.
+
+Finally, make the appropriate changes by exiting PDM with `F3` and running it again against your new source PF with `WRKMBRPDM MYNEWPROJ/SOURCES`.
+
+**Note:** Changes have to be consistent across the involved files.
 
 Compilation of objects might fail for various reasons. If there was an error, have a close look at the compiler output in the default output queue. Most often this is `QPRINT`. Type `WRKOUTQ` on a command line to review output queues and their content. Maybe first clear them of old stuff and recompile to not search too long for the most recent output. Compiler logs are extremely verbose and finding errors can be tricky. Especially when searching for syntax errors in RPG programs, errors might create a chain of further errors. This happens most often when the compiler has been ignoring a statement, that is needed in the subsequent code. I recommend you to take time, patience and develop a strong spirit against rushing.
 
 #### PF
-The PF procedure is the same for Load-All and Load-Paged variants of SFLs.
+The PF customization procedure is the same for Load-All and Load-Paged variants of SFLs.
 
-Copy `V_SFLPF` into a new library with a new name. I recommend to name the file XXXPF, where XXX is a a string up to seven characters. OS-Restrictions about valid special characters and may-not-begin-with-a-digit apply.
+Copy `V_SFLPF` into a new library with a new name as outlined above. I recommend to name the file XXXPF, where XXX is a a string up to seven characters. OS-Restrictions about valid special characters and may-not-begin-with-a-digit apply.
 
 Edit the PF and rename the record format to be XXXTBL, or just XXX if XXXTBL exceeds the 10 character length limit of a record format. Modify and add fields to match your requirements. See *Further Reading* below for valid data types in *DDS for Physical and Logical Files*
 .
@@ -432,6 +480,16 @@ the DSPF itself!
 
 If done, save and exit. Type 14 into the `OPT` field in PDM to create your panel group.
 
+#### MENU
+Change entries as shown in the example member. Then compile the menu.
+
+A menu can't be compiled from PDM, it has to be compiled by hand with a customized command depending on your menu name and target library:
+```
+CRTMNU MENU(MYLIB/CMDFOOBAR) TYPE(*UIM) SRCFILE(MYLIB/SOURCES) INCFILE(QGPL/MENUUIM) CURLIB(*MNULIB)
+```
+
+**Note:** The parameter `CURLIB(*MNULIB)` automatically changes the current library to the library where the menu object resides. This is most often what you want for project menus.
+
 ### Further Reading
 To successfully understand these templates, I strongly recommend to get hold and make use of the following documentation from IBM:
 - [DDS for Physical and Logical Files](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzakb/rzakbprint.htm)
@@ -443,5 +501,5 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.22 2023/10/14 15:31:07 poc Exp $
+$Id: readme.md,v 1.23 2023/10/16 00:02:57 poc Exp $
 ```

@@ -1,0 +1,17 @@
+.* $Id: menuusgh.pnlincl,v 1.1 2023/10/16 00:02:57 poc Exp $
+:H3.Verwendung von Menüs
+:P.Um eine Menüauswahl zu treffen, die Auswahlnummer eingeben und die
+Eingabetaste drücken.
+:P.Um einen Befehl auszuführen, den Befehl eingeben und die Eingabetaste
+drücken. Um Unterstützung bei der Eingabe eines Befehls aufzurufen, den Befehl
+eingeben und F4 (Bedienerführung) drücken. Um einen zuvor eingegebenen Befehl
+anzuzeigen, F9 (Auffinden) drücken.
+:P.Den Befehl GO zum Aufrufen eines anderen Menüs verwenden. GO und die Menü-ID
+eingeben und anschließend die Eingabetaste drücken. Um z. B. das Menü
+"Benutzeraufgaben" (USER) aufzurufen, GO USER eingeben und die Eingabetaste
+drücken. Die Menü-ID wird in der linken oberen Ecke des Menüs angezeigt. Um
+Unterstützung bei der Eingabe des Befehls GO zu erhalten, GO eingeben und die
+Taste F4 (Bedienerführung) drücken. Falls der vollständige Menüname nicht
+bekannt ist, den generischen Namen verwenden. GO US* beispielsweise zeigt eine
+Liste aller Menüs an, die mit US beginnen.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

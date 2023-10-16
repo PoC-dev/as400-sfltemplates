@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_sflpflod.rpgle,v 1.5 2023/03/19 21:44:45 poc Exp $
+     H* $Id: v_sflpflod.rpgle,v 1.6 2023/10/16 00:02:57 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -34,7 +34,8 @@
      H*
      H*************************************************************************
      H* List of INxx, we use:
-     H*     71: WRITE into PF error. We only set it, so any error will be ignored.
+     H*     71: WRITE into PF error. We only set it,
+     H*         so any error will be ignored.
      H*
      H*************************************************************************
      F* File descriptors. Unfortunately, we're bound to handle files by file

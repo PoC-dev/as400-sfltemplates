@@ -1,0 +1,68 @@
+.* $Id: menu.pnlgrp,v 1.1 2023/10/16 00:02:57 poc Exp $
+.* CRTMNU MENU(CMDFOOBAR) TYPE(*UIM) SRCFILE(SOURCES) INCFILE(QGPL/MENUUIM)
+:PNLGRP.
+.*
+:VAR           NAME=zmenu.
+.* Keylist definition ----------------------------------------------------------
+:KEYL          NAME=menufkeys
+               HELP=fkeyhlp.
+.IM            #FUNCKEYS
+:EKEYL.
+.* Menu Panel definition -------------------------------------------------------
+:PANEL         NAME=menu
+               HELP=help00
+               KEYL=menufkeys
+               PANELID=zmenu
+               .Subfile Vorlagenprogramme
+:MENU          depth='*'
+               scroll=yes.
+:TOPINST       .Auswahlmöglichkeiten:
+:MENUI         OPTION=1
+               HELP=help01
+               ACTION='CMD CALL PGM(*CURLIB/V_SFLPFLOD)'
+               .Laden von Beispieldatensätzen in die Datendatei
+:MENUI         OPTION=2
+               HELP=help02
+               ACTION='CMD CALL PGM(*CURLIB/V_LODALLPG)'
+               .Load-All Beispiel
+:MENUI         OPTION=3
+               HELP=help03
+               ACTION='CMD CALL PGM(*CURLIB/V_LODPAGPG)'
+               .Load-Paged Beispiel
+:EMENU.
+:CMDLINE       SIZE=long.Auswahl oder Befehl
+:EPANEL.
+.* Help Texts ------------------------------------------------------------------
+:HELP NAME=help00.Subfile Vorlagenprogramme - Allgemeiner Hilfetext
+:XH3.Subfile Vorlagenprogramme
+:P.Dieses Menü dient als Vorlage für eigene Menüs, und als Testbett für die
+Vorlagenprogramme.
+:NOTE.Die Objekte müssen zuvor angelegt worden sein! Siehe hierzu das
+:HP1.README.MD:EHP1. entweder im Projektordner, oder online auf Github.:ENOTE.
+:P.Hier ist ein guter Platz um eine kurze Bedienungsanleitung der Applikation
+über alles einzufügen. Die Hilfetexte sollen hilfreich sein, daher bringt es dem
+Anwender nichts, wenn er detailliert gesagt bekommt, wo er was zu machen hat,
+wenn er keine Klarheit über die Zusammenhänge erlangen kann.
+.IM #MENUUSGH
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME=help01.Auswahl 1 - Hilfetext
+:XH3.Auswahl 1. Laden von Beispieldatensätzen in die Datendatei
+:P.Diese Auswahl treffen, um die Beispieldatei mit Beispieldaten zu laden.
+:EHELP.
+.*
+:HELP NAME=help02.Auswahl 2 - Hilfetext
+:XH3.Auswahl 2. Load-All Beispiel
+:P.Diese Auswahl treffen, um das Beispielprogramm mit Load-All Subfile zu
+starten.
+:EHELP.
+.*
+:HELP NAME=help03.Auswahl 3 - Hilfetext
+:XH3.Auswahl 3. Load-Paged Beispiel
+:P.Diese Auswahl treffen, um das Beispielprogramm mit Load-Paged Subfile zu
+starten.
+:EHELP.
+.IM #FUNCKEYSH
+.* -----------------------------------------------------------------------------
+:EPNLGRP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

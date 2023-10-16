@@ -1,0 +1,91 @@
+.* $Id: funckeysh.pnlincl,v 1.1 2023/10/16 00:02:57 poc Exp $
+:HELP NAME=fkeyhlp.Spezialtasten - Hilfetext
+:XH3.Spezialtasten
+:P.Spezialtasten dienen nicht der Eingabe von Text oder Ziffern in einem
+Eingabefeld oder -bereich, sondern lösen direkt eine festgelegte Aktion aus.
+:EHELP.
+.*
+:HELP NAME=f1keyhlp.Taste F1 - Hilfetext
+:XH3.Taste F1=Hilfetext
+:P.Bietet zusätzliche Informationen zur Verwendung der Anzeige oder eines
+bestimmten Feldes der Anzeige.
+:EHELP.
+.*
+:HELP NAME=f3keyhlp.Taste F3 - Hilfetext
+:XH3.Taste F3=Verlassen
+:P.Beendet die aktuelle Aufgabe und kehrt zu der Anzeige zurück, in der die
+Aufgabe gestartet wurde.
+:EHELP.
+.*
+:HELP NAME=f4keyhlp.Taste F4 - Hilfetext
+:XH3.Taste F4=Bedienerführung
+:P.Diese Taste bietet Unterstützung bei der Eingabe oder Auswahl eines Befehls.
+:EHELP.
+.*
+:HELP NAME=f9keyhlp.Taste F9 - Hilfetext
+:XH3.Taste F9=Auffinden
+:P.Zeigt den zuletzt in der Befehlszeile eingegebenen Befehl und alle
+angegebenen Parameter an. Durch einmaliges Drücken dieser Taste wirdder zuletzt
+ausgeführte Befehl angezeigt. Durch zweimaliges Drücken dieser Taste wird der
+vorletzte Befehl angezeigt usw.
+:EHELP.
+.*
+:HELP NAME=f12keyhlp.Taste F12 - Hilfetext
+:XH3.Taste F12=Abbrechen
+:P.Kehrt zum vorherigen Menü oder zur vorherigen Anzeige zurück.
+:EHELP.
+.*
+:HELP NAME=f13keyhlp.Taste F13 - Hilfetext
+:XH3.Taste F13=Unterstützende Informationen
+:P.Das Menü "Unterstützende Informationen - Auswahlmöglichkeiten" mit den
+verschiedenen verfügbaren Unterstützungsarten wird angezeigt. Diese Taste
+drücken, um weitere Informationen zum System IBM AS/400 zu erhalten, wie
+beispielsweise Informationen über die Neuerungen in diesem Release, die Eingabe
+von Kommentaren, das Suchen von Informationen in der AS/400-Literatur und den
+Online-Informationen.
+:EHELP.
+.*
+:HELP NAME=fenkeyhlp.Taste Enter - Hilfetext
+:XH3.Taste Eingabe
+:P.Die angezeigten Informationen werden zur Verarbeitung übergeben.
+:EHELP.
+.*
+:HELP NAME=fhekeyhlp.Taste Hilfe - Hilfetext
+:XH3.Taste Hilfe
+:P.Stellt zusätzliche Informationen zur Verwendung der Anzeige zur Verfügung.
+:EHELP.
+.*
+:HELP NAME=fpukeyhlp.Taste Bild auf (Vorblättern) - Hilfetext
+:XH3.Taste Bild auf (Vorblättern)
+:P.Blättert vor, um zusätzliche Informationen zu dieser Anzeige aufzurufen.
+:EHELP.
+.*
+:HELP NAME=fpdkeyhlp.Taste Bild ab (Zurückblättern) - Hilfetext
+:XH3.Taste Bild ab (Zurückblättern)
+:P.Blättert zurück, um zusätzliche Informationen zu dieser Anzeige aufzurufen.
+:EHELP.
+.*
+:HELP NAME=fhokeyhlp.Taste Pos1 (Home) - Hilfetext
+:XH3.Taste Pos1 (Home)
+:P.Das erste nach der Anmeldung angezeigte Menü wird aufgerufen. Dies ist
+entweder das im Benutzerprofil definierte Anfangsmenü oder das in der
+Anmeldeanzeige vom Benutzer angeforderte Menü.
+:EHELP.
+.*
+:HELP NAME=fprkeyhlp.Taste Druck - Hilfetext
+:XH3.Taste Druck
+:P.Die gegenwärtig angezeigten Informationen werden gedruckt.
+:EHELP.
+.*
+:HELP NAME=fatkeyhlp.Taste Abruf - Hilfetext
+:XH3.Taste Abruf
+:P.Das Assistenzmenü wird aufgerufen. Hier sind schnell allgemeine Funktionen
+abrufbar, u. A. um mit Druckausgaben, Jobs und Nachrichten zu arbeiten.
+:EHELP.
+.*
+:HELP NAME=fsykeyhlp.Taste Systemabfrage - Hilfetext
+:XH3.Taste Systemabfrage
+:P.Das Systemabfragemenü wird aufgerufen. Hier sind schnell Hilfsfunktionen
+abrufbar, u. A. zum sekundären Job, Beenden des aktiven Programms, usw.
+:EHELP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81
