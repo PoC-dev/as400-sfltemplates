@@ -1,4 +1,4 @@
-.* $Id: menu.pnlgrp,v 1.1 2023/10/16 00:02:57 poc Exp $
+.* $Id: menu.pnlgrp,v 1.2 2023/10/27 13:01:51 poc Exp $
 .* CRTMNU MENU(CMDFOOBAR) TYPE(*UIM) SRCFILE(SOURCES) INCFILE(QGPL/MENUUIM)
 :PNLGRP.
 .*
@@ -62,7 +62,7 @@ starten.
 :P.Diese Auswahl treffen, um das Beispielprogramm mit Load-Paged Subfile zu
 starten.
 :EHELP.
-.IM #FUNCKEYSH
 .* -----------------------------------------------------------------------------
+.IM #FUNCKEYSH
 :EPNLGRP.
 .* vim: ft=pnlgrp textwidth=80 colorcolumn=81
