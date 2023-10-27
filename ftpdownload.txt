@@ -16,7 +16,7 @@ get QGPL/SFLVORLAGE.V_SFLPF     v_sflpf.dds
 get QGPL/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
 get QGPL/SFLVORLAGE.MAKEFILE    makefile
 get QGPL/SFLVORLAGE.MENU        menu.pnlgrp
-get "QGPL/MENUUIM.#FUNCKEYS"    funckeysh.pnlincl
-get "QGPL/MENUUIM.#FUNCKEYSH"   funckeys.pnlincl
+get "QGPL/MENUUIM.#FUNCKEYS"    funckeys.pnlincl
+get "QGPL/MENUUIM.#FUNCKEYSH"   funckeysh.pnlincl
 get "QGPL/MENUUIM.#MENUUSGH"    menuusgh.pnlincl
 quit
