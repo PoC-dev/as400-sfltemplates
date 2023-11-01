@@ -118,7 +118,7 @@ Additionally, there are:
 
 ##### File suffix descriptions, PDM types
 - `PF` = Physical File, a database table where records will be allocated within. Designated in PDM as type PF.
-- `LF` = Logical File, a read-only file referencing a PF, but possibly providing
+- `LF` = Logical File, a file referencing a PF, but possibly providing
   - a different search index (aka: sorting order) than the PF, or
   - a subset of fields contained in the PF, or
   - a (More or less) static preselection of records (select/omit), or
@@ -501,5 +501,5 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.24 2023/10/16 00:05:35 poc Exp $
+$Id: readme.md,v 1.25 2023/11/01 13:56:50 poc Exp $
 ```
