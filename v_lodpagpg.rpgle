@@ -21,7 +21,7 @@
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
      H*
-     H* $Id: v_lodpagpg.rpgle,v 1.44 2023/07/21 15:42:19 poc Exp $
+     H* $Id: v_lodpagpg.rpgle,v 1.45 2023/11/22 21:44:04 poc Exp $
      H*
      H* Compiler flags.
      HDFTACTGRP(*NO) ACTGRP(*NEW)
@@ -146,31 +146,6 @@
      D* This is used for proper READP iterations and gets calculated on the fly
      D*  within RELOADSFL and PAGEUP routines.
      DREADPVAL         S              2S 0
-     D*
-     D* Struct for QMHSNDPM Data.
-     DQMHSNDPMDS       DS                  INZ
-     D MsgID                          7A
-     D MsgFile                       20A
-     D MsgData                      256A
-     D MsgDataLen                    10I 0
-     D MsgType                       10A
-     D CallStkEntry                  10A
-     D CallStkCntr                   10I 0
-     D RtnMsgKey                      4A
-     D ErrCode                       16A
-     D*
-     D* -----------------------------------------------------------------------
-     D* Send Program Message API.
-     DQMHSNDPM         PR                  ExtPgm('QMHSNDPM')
-     D MsgID                          7A   CONST
-     D MsgFile                       20A   CONST
-     D MsgData                      256A   CONST
-     D MsgDataLen                    10I 0 CONST
-     D MsgType                       10A   CONST
-     D CallStkEntry                  10A   CONST
-     D CallStkCntr                   10I 0 CONST
-     D RtnMsgKey                      4A   CONST
-     D ErrCode                       16A   CONST
      D*
      D*************************************************************************
      C* Start the main loop: Write SFLCTL and wait for keypress to read.
@@ -667,6 +642,7 @@
      C     SETERRIND     BEGSR
      C* Set *INxx to show errors in the message line. These have been defined
      C*  in the appropriate display file.
+     C* Other errors shall be catched by the OS handler.
      C*
      C                   SELECT
      C     FSTAT         WHENEQ    12
@@ -678,14 +654,6 @@
      C     FSTAT         WHENEQ    1218
      C* Error 1218 = Desired record is locked.
      C                   MOVE      *ON           *IN93
-     C                   OTHER
-     C* Other error happened. Output error number for diagnosis.
-     C                   MOVE      'ERR0000'     MsgID
-     C                   EVAL      MsgData = %CHAR(FSTAT)
-     C                   EVAL      MsgDataLen = %LEN(%TRIM(MsgData))
-     C                   CALLP     QMHSNDPM( MsgID : MsgFile : MsgData :
-     C                             MsgDataLen : MsgType : CallStkEntry :
-     C                             CallStkCntr : RtnMsgKey : ErrCode )
      C                   ENDSL
      C*
      C                   ENDSR
