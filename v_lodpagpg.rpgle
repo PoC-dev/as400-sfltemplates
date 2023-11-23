@@ -624,13 +624,6 @@
      C                   EVAL      STRLEN_MAX=%LEN(VALFLD$)
      C     STRLEN_MAX    SUB       3             STRLEN_MIN
      C*
-     C* Provide message handling defaults.
-     C                   MOVE      'GENERICMSG'  MsgFile
-     C                   CAT       '*LIBL     '  MsgFile
-     C                   MOVE      '*STATUS   '  MsgType
-     C                   MOVE      '*EXT      '  CallStkEntry
-     C                   MOVE      *ZERO         CallStkCntr
-     C*
      C* Force Cursor into search field.
      C                   MOVE      *ON           *IN41
      C*
