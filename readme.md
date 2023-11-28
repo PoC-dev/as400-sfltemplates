@@ -501,5 +501,4 @@ To successfully understand these templates, I strongly recommend to get hold and
 ----
 ```
 vim: textwidth=78 autoindent
-$Id: readme.md,v 1.25 2023/11/01 13:56:50 poc Exp $
 ```

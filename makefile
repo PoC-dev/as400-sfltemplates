@@ -1,4 +1,3 @@
-# $Id: makefile,v 1.4 2023/10/16 00:02:57 poc Exp $
 
 # Note: To understand this file, accustom yourself with
 # - make: https://en.wikipedia.org/wiki/Make_(software)

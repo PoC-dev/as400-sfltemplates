@@ -1,5 +1,4 @@
 /* Create global message file */
-/* $Id: crtmsgd.rexx,v 1.8 2022/07/29 16:30:47 poc Exp $ */
 
 SAY "Creating Message File and messages...";
 

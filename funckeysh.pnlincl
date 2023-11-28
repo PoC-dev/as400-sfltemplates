@@ -1,4 +1,3 @@
-.* $Id: funckeysh.pnlincl,v 1.1 2023/10/16 00:02:57 poc Exp $
 :HELP NAME=fkeyhlp.Spezialtasten - Hilfetext
 :XH3.Spezialtasten
 :P.Spezialtasten dienen nicht der Eingabe von Text oder Ziffern in einem
