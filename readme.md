@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License along with it;
 A huge thank you goes to "Mathias Peter IT-Systemhaus", my current employer who allowed me to spend part of my work time on this project. See https://www.mathpeter.com for details.
 
 ### WTF?
-A subfile is most often used to present multiple records of data in a list, on a single screen for easy viewing and maybe picking records to process further. A bit like a spreadsheet presents some data, that is.
+A subfile is most often used to present multiple records of data in a scrollable list, on a single screen for easy viewing and maybe picking records to process further. A bit like a spreadsheet presents some data, that is.
 
 Subfiles thus are useful but very tedious to be handled properly. To master just their basic functionality needs fundamental expertise. Beginners don't have expertise but maybe also want to exploit the usefulness of Subfiles.
 
