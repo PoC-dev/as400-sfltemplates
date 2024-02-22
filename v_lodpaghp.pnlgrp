@@ -49,7 +49,7 @@ unnötigerweise zum Bearbeiten gesperrt hat.
 :HELP NAME='SFLHDR/OPT'.Spalte Opt
 :XH3.Spalte Opt
 :P.In diese Spalte eine Auswahlziffer eingegeben, um den Datensatz zum einen zu
-Selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
+selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='SFLHDR/KEYVAL'.Spalte Wert
