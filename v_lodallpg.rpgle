@@ -90,6 +90,7 @@
      F*
      F*************************************************************************
      D* Global Variables (additional to autocreated ones by referenced files).
+     D* Sorted by size, descending, to minimise memory padding.
      D*
      D* (Fake) field, much shorter for demonstration of the function shown in
      D*  PREPSFLDTA. Uses dynamic calculation for adding an ellipse if a string
@@ -457,7 +458,7 @@
      C     SETERRIND     BEGSR
      C* Set *INxx to show errors in the message line. These have been defined
      C*  in the appropriate display file.
-     C* Error 1218 = Desired record is locked.
+     C* Other errors shall be catched by the OS handler.
      C*
      C                   SELECT
      C     FSTAT         WHENEQ    12
@@ -467,8 +468,8 @@
      C* Error 1021 = Duplicate key.
      C                   MOVE      *ON           *IN92
      C     FSTAT         WHENEQ    1218
+     C* Error 1218 = Desired record is locked.
      C                   MOVE      *ON           *IN93
-     C* Other errors shall be catched by the OS handler.
      C                   ENDSL
      C*
      C                   ENDSR
