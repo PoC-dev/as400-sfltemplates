@@ -6,3 +6,9 @@
 - Lodpag: Save and restore selections when scolling.
 - Translate to English
 - Probably use RNQxxxx for IBM provided translations of file status error codes
+
+Probable bug:
+* Load-Paged, more records than one page
+* Use pos-to for placing list start on a record which exactly is on the first
+  line of the last page of data)
+=> No scrolling back!
