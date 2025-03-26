@@ -31,12 +31,12 @@
      H* When going prod, enable this for more speed/less CPU load.
      HOPTIMIZE(*FULL)
      H*
-     H*************************************************************************
+     H**************************************************************************
      H* List of INxx, we use:
      H*     71: WRITE into PF error. We only set it,
      H*         so any error will be ignored.
      H*
-     H*************************************************************************
+     H**************************************************************************
      F* File descriptors. Unfortunately, we're bound to handle files by file
      F*  name or record name. We can't use variables to make this more dynamic.
      F* Restriction of RPG.
@@ -44,10 +44,10 @@
      F* Main/primary file, used mainly for writing into.
      FV_SFLPF   UF A E           K DISK
      F*
-     F*************************************************************************
+     F**************************************************************************
      D* Global Variables (additional to autocreated ones by referenced files).
      D*
-     D*************************************************************************
+     D**************************************************************************
      C* Just write some values into the PF for testing purposes.
      C*
      C                   Z-ADD     1             KEYVAL
@@ -151,5 +151,5 @@
      C                   WRITE     SFLTBL                               71
      C*
      C                   RETURN
-     C*************************************************************************
+     C**************************************************************************
      C* vim: syntax=rpgle colorcolumn=81 autoindent noignorecase
