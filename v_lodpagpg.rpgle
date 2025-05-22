@@ -1,4 +1,4 @@
-     HCOPYRIGHT('2007-2023 Patrik Schindler <poc@pocnet.net>')
+     HCOPYRIGHT('2007-2025 Patrik Schindler <poc@pocnet.net>')
      H*
      H* This file is part of a collection of templates for easy creation of
      H*  subfile-based applications on AS/400, i5/OS and IBM i.
@@ -90,9 +90,6 @@
      F* Important! We're dealing with a *file* pointer, which is implicitly
      F*  shared by all record formats in that logical file!
      FV_POSLF   IF   E           K DISK
-     F*
-     F* For quick find of maximum ID.
-     F*V_SFLMAXIDIF   E           K DISK
      F*
      F* Display file with multiple subfiles among other record formats.
      FV_LODPAGDFCF   E             WORKSTN
@@ -623,6 +620,9 @@
      C                   EVAL      STRLEN_MAX=%LEN(VALFLD$)
      C     STRLEN_MAX    SUB       3             STRLEN_MIN
      C*
+     C* Derive maximum ID from data area.
+     C     *DTAARA       DEFINE    MAXIDAREA     NEWID             4 0
+     C*
      C* Force Cursor into search field.
      C                   MOVE      *ON           *IN41
      C*
@@ -694,9 +694,16 @@
      C*************************************************************************
      C*    INCLASTID     BEGSR
      C* Last-ID-Handler.
-     C*    *HIVAL        SETGT     MAXID
-     C*                  READP     MAXID
-     C*                  ADD       1             ID
+     C*    *LOCK         IN        NEWID
+     C*                  ADD       1             NEWID
+     C*                  Z-ADD     NEWID         ID
+     C*                  WRITE(E)  MYTBL
+     C*                  EVAL      FSTAT=%STATUS(MYTABLE)
+     C*    FSTAT         IFGT      *ZERO
+     C*                  UNLOCK    NEWID
+     C*                  ELSE
+     C*                  OUT       NEWID
+     C*                  ENDIF
      C*
      C*                  ENDSR
      C*========================================================================

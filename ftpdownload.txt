@@ -10,7 +10,6 @@ get QGPL/SFLVORLAGE.V_LODPAGHP  v_lodpaghp.pnlgrp
 get QGPL/SFLVORLAGE.V_LODPAGPG  v_lodpagpg.rpgle
 get QGPL/SFLVORLAGE.V_POSLF     v_poslf.dds
 get QGPL/SFLVORLAGE.V_SFLDLTHP  v_sfldlthp.pnlgrp
-get QGPL/SFLVORLAGE.V_SFLMAXID  v_sflmaxid.dds
 get QGPL/SFLVORLAGE.V_SFLPF     v_sflpf.dds
 get QGPL/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
 get QGPL/SFLVORLAGE.MENU        menu.pnlgrp
