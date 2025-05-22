@@ -1,5 +1,4 @@
 ascii
-get QGPL/SFLVORLAGE.CHANGELOG   changelog.txt
 get QGPL/SFLVORLAGE.CRTMSGD     crtmsgd.rexx
 get QGPL/SFLVORLAGE.README      readme.txt
 get QGPL/SFLVORLAGE.TODOS       todos.txt
@@ -14,7 +13,6 @@ get QGPL/SFLVORLAGE.V_SFLDLTHP  v_sfldlthp.pnlgrp
 get QGPL/SFLVORLAGE.V_SFLMAXID  v_sflmaxid.dds
 get QGPL/SFLVORLAGE.V_SFLPF     v_sflpf.dds
 get QGPL/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
-get QGPL/SFLVORLAGE.MAKEFILE    makefile
 get QGPL/SFLVORLAGE.MENU        menu.pnlgrp
 get "QGPL/MENUUIM.#FUNCKEYS"    funckeys.pnlincl
 get "QGPL/MENUUIM.#FUNCKEYSH"   funckeysh.pnlincl
