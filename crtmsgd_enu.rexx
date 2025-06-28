@@ -1,0 +1,46 @@
+/* Create global message file */
+
+SAY "Creating Message File and messages...";
+
+"CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)";
+"TEXT('Messages SFLTMPLTES')";
+
+"ADDMSGD MSGID(ERR0000) MSGF(QGPL/GENERICMSG) MSG('File access error &1.')";
+"SEV(30) FMT((*DEC 4 0)) TYPE(*NONE) LEN(*NONE) SECLVL('An error &1 was";
+"encountered during the access attempt just made. Please inform the";
+"programmer. The user should temporarily exit the application using F3.')";
+
+"ADDMSGD MSGID(ERR0012) MSGF(QGPL/GENERICMSG) MSG('Requested record not";
+"found.') "SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record could";
+"not be found. The request will be ignored. Deselect the record and press";
+"Enter.')";
+
+"ADDMSGD MSGID(ERR1021) MSGF(QGPL/GENERICMSG) MSG('Record already existing.')";
+"SEV(30) TYPE(*NONE) LEN(*NONE) SECLVL('The entered data corresponds to a";
+"record that already exists and cannot be added. Either adjust the data";
+"record and press Enter, or cancel the addition by pressing F12=Cancel.')";
+
+"ADDMSGD MSGID(ERR1218) MSGF(QGPL/GENERICMSG) MSG('Requested record already in";
+"use.') SEV(20) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record is";
+"currently being edited by another user. Duplicate editing is not permitted.";
+"Wait and resubmit the request, or deselect the record and press Enter to";
+"continue with other work.')";
+
+"ADDMSGD MSGID(INF0001) MSGF(QGPL/GENERICMSG) MSG('Record not written.')";
+"SEV(0) TYPE(*NONE) LEN(*NONE) SECLVL('The record was not written because no";
+"change in screen form data was detected.')";
+
+"ADDMSGD MSGID(INF0999) MSGF(QGPL/GENERICMSG) MSG('Subfile full.') SEV(10)";
+"TYPE(*NONE) LEN(*NONE) SECLVL('The subfile can hold a maximum of 999 entries.";
+"The program attempted to display another entry. This problem must be reported";
+to the system programmer. Some entries are not visible.')";
+
+"ADDMSGD MSGID(RDO1218) MSGF(QGPL/GENERICMSG) MSG('Requested record opened";
+"read-only.') SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record is";
+"currently being edited by another user. Duplicate editing is not permitted.";
+"Therefore, the record is displayed without editing options.')";
+
+"ADDMSGD MSGID(SLT00001) MSGF(QGPL/GENERICMSG) MSG('Choose only one entry.')";
+"SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('Select only one entry with '1'";
+"markieren. Multiple choices are not allowed. To quickly discard all";
+"selections, press F5=Refresh.')";

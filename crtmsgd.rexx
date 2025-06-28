@@ -2,7 +2,8 @@
 
 SAY "Creating Message File and messages...";
 
-"CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)";
+"CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)",
+"TEXT('Messages SFLVORLAGE')";
 
 "ADDMSGD MSGID(ERR0000) MSGF(QGPL/GENERICMSG) MSG('Dateizugriffsfehler",
 "&1.') SECLVL('Beim Zugriffsversuch von eben wurde ein Fehler &1",
@@ -45,6 +46,12 @@ SAY "Creating Message File and messages...";
 "versucht, einen weiteren Eintrag anzuzeigen. Dieses Problem muss dem",
 "Systemprogrammierer gemeldet werden. Einige Einträge sind nicht",
 "sichtbar.') SEV(10) TYPE(*NONE) LEN(*NONE)";
+
+"ADDMSGD MSGID(SLT00001) MSGF(QGPL/GENERICMSG) MSG('Nur einen Datensatz",
+"wählen.') SECLVL('Exakt einen Datensatz mit '1' markieren. Mehrfache",
+"Auswahlen sind nicht zulässig. Als Abkürzung zum Löschen von mehrfachen",
+"auswahlen F5=Aktualisieren drücken, um alle Datensätze neu zu laden und",
+"Selektionen zu verwerfen.') SEV(10) TYPE(*NONE) LEN(*NONE)";
 
 /* vim: ft=rexx textwidth=72 colorcolumn=81 autoindent
  */
