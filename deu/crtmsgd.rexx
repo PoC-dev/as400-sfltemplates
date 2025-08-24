@@ -1,15 +1,10 @@
 /* Create global message file */
+/* Run me with strrexprc srcmbr(crtmsgd) srcfile(qgpl/sflvorlage) */
 
 SAY "Creating Message File and messages...";
 
 "CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)",
 "TEXT('Messages SFLVORLAGE')";
-
-"ADDMSGD MSGID(ERR0000) MSGF(QGPL/GENERICMSG) MSG('Dateizugriffsfehler",
-"&1.') SECLVL('Beim Zugriffsversuch von eben wurde ein Fehler &1",
-"gefunden. Bitte den Programmierer informieren. Der Benutzer sollte",
-"einstweilen die Applikation mit F3 beenden.') SEV(30)",
-"FMT((*DEC 4 0)) TYPE(*NONE) LEN(*NONE)";
 
 "ADDMSGD MSGID(ERR0012) MSGF(QGPL/GENERICMSG) MSG('Angeforderter",
 "Datensatz nicht gefunden.') SECLVL('Der angeforderte Datensatz konnte",

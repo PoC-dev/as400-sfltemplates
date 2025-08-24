@@ -1,14 +1,10 @@
 /* Create global message file */
+/* Run me with strrexprc srcmbr(crtmsgd) srcfile(qgpl/sflvorlage) */
 
 SAY "Creating Message File and messages...";
 
 "CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)";
 "TEXT('Messages SFLTMPLTES')";
-
-"ADDMSGD MSGID(ERR0000) MSGF(QGPL/GENERICMSG) MSG('File access error &1.')";
-"SEV(30) FMT((*DEC 4 0)) TYPE(*NONE) LEN(*NONE) SECLVL('An error &1 was";
-"encountered during the access attempt just made. Please inform the";
-"programmer. The user should temporarily exit the application using F3.')";
 
 "ADDMSGD MSGID(ERR0012) MSGF(QGPL/GENERICMSG) MSG('Requested record not";
 "found.') SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record could";
@@ -44,3 +40,6 @@ SAY "Creating Message File and messages...";
 "SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('Select only one entry with ''1''.";
 "Multiple choices are not allowed. To quickly discard all selections, press";
 "F5=Refresh.')";
+
+/* vim: ft=rexx textwidth=72 colorcolumn=81 autoindent
+ */
