@@ -22,9 +22,6 @@
      H*  tasks, for a load-paged SFL.
      H*
      H*
-     H* Compiler flags.
-     HDFTACTGRP(*NO) ACTGRP(*NEW)
-     H*
      H* Tweak default compiler output: Don't be too verbose.
      HOPTION(*NOXREF : *NOSECLVL : *NOSHOWCPY : *NOEXT : *NOSHOWSKP)
      H*
@@ -150,6 +147,7 @@
      C                   MOVEL     'Zwanzig'     VALFLD
      C                   WRITE     SFLTBL                               71
      C*
+     C                   MOVE      *ON           *INLR
      C                   RETURN
      C**************************************************************************
      C* vim: syntax=rpgle colorcolumn=81 autoindent noignorecase

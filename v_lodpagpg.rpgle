@@ -23,7 +23,6 @@
      H*
      H*
      H* Compiler flags.
-     HDFTACTGRP(*NO) ACTGRP(*NEW)
      H* You may add CVTOPT(*DATETIME) and ALWNULL(*USRCTL) if you need to deal
      H*  with Date/Time-Fields and/or NULL-capable fields respectively.
      H*
@@ -199,6 +198,7 @@
      C*  to the DOUEQ-Loop to prevent another loop-cycle and thus late exit.
      C     *IN03         IFEQ      *ON
      C                   MOVE      *OFF          *IN03
+     C                   MOVE      *ON           *INLR
      C                   RETURN
      C                   ENDIF
      C*
@@ -349,6 +349,7 @@
      C* User may quit from current READC-loop.
      C     *IN03         IFEQ      *ON
      C                   MOVE      *OFF          *IN03
+     C                   MOVE      *ON           *INLR
      C                   RETURN
      C                   ENDIF
      C*
@@ -420,6 +421,7 @@
      C* End of main loop.
      C                   ENDDO
      C* Properly end *PGM.
+     C                   MOVE      *ON           *INLR
      C                   RETURN
      C*========================================================================
      C* SFL subroutines
