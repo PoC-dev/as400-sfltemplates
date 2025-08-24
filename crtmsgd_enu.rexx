@@ -11,7 +11,7 @@ SAY "Creating Message File and messages...";
 "programmer. The user should temporarily exit the application using F3.')";
 
 "ADDMSGD MSGID(ERR0012) MSGF(QGPL/GENERICMSG) MSG('Requested record not";
-"found.') "SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record could";
+"found.') SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record could";
 "not be found. The request will be ignored. Deselect the record and press";
 "Enter.')";
 
@@ -33,14 +33,14 @@ SAY "Creating Message File and messages...";
 "ADDMSGD MSGID(INF0999) MSGF(QGPL/GENERICMSG) MSG('Subfile full.') SEV(10)";
 "TYPE(*NONE) LEN(*NONE) SECLVL('The subfile can hold a maximum of 999 entries.";
 "The program attempted to display another entry. This problem must be reported";
-to the system programmer. Some entries are not visible.')";
+"to the system programmer. Some entries are not visible.')";
 
 "ADDMSGD MSGID(RDO1218) MSGF(QGPL/GENERICMSG) MSG('Requested record opened";
 "read-only.') SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('The requested record is";
 "currently being edited by another user. Duplicate editing is not permitted.";
 "Therefore, the record is displayed without editing options.')";
 
-"ADDMSGD MSGID(SLT00001) MSGF(QGPL/GENERICMSG) MSG('Choose only one entry.')";
-"SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('Select only one entry with '1'";
-"markieren. Multiple choices are not allowed. To quickly discard all";
-"selections, press F5=Refresh.')";
+"ADDMSGD MSGID(SLT0001) MSGF(QGPL/GENERICMSG) MSG('Choose only one entry.')";
+"SEV(10) TYPE(*NONE) LEN(*NONE) SECLVL('Select only one entry with ''1''.";
+"Multiple choices are not allowed. To quickly discard all selections, press";
+"F5=Refresh.')";
