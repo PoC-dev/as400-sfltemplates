@@ -2,11 +2,13 @@
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Vorlage
 :P.Die Load-Paged Vorlage dient als Beispiel einer hinreichend kompletten
-Applikation mit Position-To Feature im Schlüsselfeld, als auch den üblichen
+Applikation zur Pflege einer simplen Datenbanktabelle mit den üblichen
 Funktionen Ändern, Duplizieren, Löschen (mit Abfrage!), Ansehen und neuen
 Eintrag erstellen.
 :P.Dieser Text ist Bestandteil der globalen Hilfe, die als erweiterter Hilfetext
-vor allen weiteren referenzierten Hilfeabschnitten angezeigt wird.
+vor allen weiteren referenzierten Hilfeabschnitten angezeigt wird. Daher ist
+dies ein guter Ort, um einen knappen Überblick über den Zweck der Applikation zu
+dokumentieren.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/POSTO'.Listenanfang bei
@@ -42,8 +44,7 @@ dieser auf der anfragenden Arbeitsstation nur zum Betrachten geöffnet.
 Datensätze nur zur Einsicht mit Opt :HP1.2=Ändern:EHP1. zu öffnen. Die Benutzung
 von Opt :HP1.5=Anzeigen:EHP1. ist vorteilhafter, da sie es anderen Bedienern
 ermöglicht, den Datensatz zu ändern, weil der Benutzer den Datensatz dann nicht
-unnötigerweise zum Bearbeiten gesperrt hat.
-:ENOTE.
+unnötigerweise zum Bearbeiten gesperrt hat.:ENOTE.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='SFLHDR/OPT'.Spalte Opt
@@ -67,8 +68,10 @@ selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
 :P.Hier sind einige Datensätze aus der Gesamtheit aller vorhandenen Datensätze
 sichtbar. Änderungen können nicht direkt vorgenommen werden. Dazu sind die
 bereits erwähnten Selektionen in der Opt-Spalte da.
-:NOTE.Die Opt-Selektionen gehen beim Scrollen verloren!
-:ENOTE.
+:NOTE.Die Opt-Selektionen gehen beim Scrollen verloren!:ENOTE.
+:P.Eine Anzeige am rechten unteren Ende des scrollbaren Bereichs macht darauf
+aufmerksam, wenn die Liste der dargestellten Datensätze am Ende angekommen ist
+und keine weiteren Datensätze mehr vorhanden sind.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLBTM'.Funktionstasten
@@ -103,10 +106,10 @@ Listendarstellung gefunden werden konnten.
 dargestellt werden:
 :PARML.
 :PT.Neuen Eintrag erfassen
-:PD.Falls F6=Neu gewählt wurde, sind alle Datenfelder leer und zum Ausfüllen
-bereit. Falls Opt :HP1.3=Duplizieren:EHP1. gewählt wurde, werden die Werte vom
-markierten Datensatz übernommen, damit nur Änderungen eingetragen werden müssen.
-Das Betätigen der Eingabetaste legt einen neuen Datensatz an.
+:PD.Falls :HP1.F6=Neu:EHP1. gewählt wurde, sind alle Datenfelder leer und zum
+Ausfüllen bereit. Falls Opt :HP1.3=Duplizieren:EHP1. gewählt wurde, werden die
+Werte vom markierten Datensatz übernommen, damit nur Änderungen eingetragen
+werden müssen. Das Betätigen der Eingabetaste legt einen neuen Datensatz an.
 :PT.Eintrag ändern
 :PD.Die vorhandenen Werte des Datensatzes werden angezeigt, damit diese
 korrigiert werden können.

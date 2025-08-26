@@ -1,0 +1,68 @@
+.* CRTMNU MENU(CMDFOOBAR) TYPE(*UIM) SRCFILE(SOURCES) INCFILE(QGPL/MENUUIM)
+:PNLGRP.
+.*
+:VAR           NAME=zmenu.
+.* Keylist definition ----------------------------------------------------------
+:KEYL          NAME=menufkeys
+               HELP=fkeyhlp.
+.IM            #FUNCKEYS
+:EKEYL.
+.* Menu Panel definition -------------------------------------------------------
+:PANEL         NAME=menu
+               HELP=help00
+               KEYL=menufkeys
+               PANELID=zmenu
+               .Subfile Templates
+:MENU          depth='*'
+               scroll=yes.
+:TOPINST       .Select one of the following:
+:MENUI         OPTION=1
+               HELP=help01
+               ACTION='CMD CALL PGM(*CURLIB/V_SFLPFLOD)'
+               .Load example records into database file
+:MENUI         OPTION=2
+               HELP=help02
+               ACTION='CMD CALL PGM(*CURLIB/V_LODALLPG)'
+               .Load-All subfile example
+:MENUI         OPTION=3
+               HELP=help03
+               ACTION='CMD CALL PGM(*CURLIB/V_LODPAGPG)'
+               .Load-Paged subfile example
+:EMENU.
+:CMDLINE       SIZE=long.Selection or command
+:EPANEL.
+.* Help Texts ------------------------------------------------------------------
+:HELP NAME=help00.Subfile Templates - Help
+:XH3.Subfile Templates
+:P.This menu is meant as template for your own menus, and as test bed for the
+subfile template applications.
+:NOTE.The objects must have been creaated prior! See :HP1.README.MD:EHP1. in the
+project folder, or online on Github.:ENOTE.
+:P.Also, this is a good place to provide a overall instruction summary about the
+applicaton(s). Help texts should be helpful. Hence, it's mostly useless to the
+user  when he find help texts instructing him precisely where he's supposed to
+do something, if he has no idea about the applications interrelation.
+.IM #MENUUSGH
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME=help01.Choice 1 - Help
+:XH3.Choice 1. Load example records into database file
+:P.Select this option to create and insert some example records into the
+database file :HP1.V_SFLPF:EHP1..
+:EHELP.
+.*
+:HELP NAME=help02.Choice 2 - Help
+:XH3.Choice 2. Load-All subfile example
+:P.Select this option to run the Load-All subfile example application.
+starten.
+:EHELP.
+.*
+:HELP NAME=help03.Choice 3 - Help
+:XH3.Choice 3. Load-Paged subfile example
+:P.Select this option to run the Load-Paged subfile example application.
+starten.
+:EHELP.
+.* -----------------------------------------------------------------------------
+.IM #FUNCKEYSH
+:EPNLGRP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

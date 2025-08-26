@@ -1,0 +1,149 @@
+:PNLGRP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='GLOBAL'.Subfile-Templates
+:P. The Load-Paged template serves as an example of a sufficiently complete
+application for simple database table maintenance, with the usual functions of
+modifying, duplicating, deleting (with query!), viewing, and creating a new
+entry.
+:P. This text is part of the global help, which is displayed as extended help
+text before all other referenced help sections. Hence it's a good place to
+provide a brief overview about the application's purpose.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='MAIN/POSTO'.Position To
+:XH3.Position To
+:P.Here, numbers or initial letters of the primary key can be entered, depending
+on the type of primary key. Pressing the Enter key positions the list start to
+the first (partial) textual match, or to the next lowest numeric value.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='MAIN/SFLOPTS'.Choices
+:XH3.Choices
+:P.Valid choices for the :HP1.Opt:EHP1. column are
+:PARML.
+:PT.2=Change
+:PD.Entry is selected for being modified in a separate screen.
+:PT.3=Copy
+:PD.Entry is selected for being modified in a separate screen. After pressing
+Enter, the record isn't changed in the database, but a new record is created.
+Restrictions regarding duplicate key values need to be respected.
+:PT.4=Delete
+:PD.Entry is selected for deletion. Upon pressing Enter, all entries selected
+for deletion will be displayed on a secondary subfile screen for further
+refining the selection, and possibly cancel all or part of the to-be-deleted
+entries.
+:PT.5=Display
+:PD.Entry is to be selected for being displayed in a separate screen. This also
+displays additional fields which aren't shown in the SFL list display.
+:EPARML.
+:NOTE.A record can only be edited by one workstation at a time. If a record is
+already locked by another workstation user, it will be opened for viewing only
+on the requesting workstation - yours. Making changes is not possible. For this
+reason, the user should avoid opening records for just viewing only with Opt
+:HP1.2=Change:EHP1. Using Opt :HP1.5=Display:EHP1. is more friendly to
+concurrent users, as it allows other operators to change the record, because the
+user (you) has then not unnecessarily locked the record for editing.:ENOTE.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='SFLHDR/OPT'.Opt Column
+:XH3.Opt Column
+:P.A selection number is entered in this column to both select the record and
+specify what the system should do with this record.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='SFLHDR/KEYVAL'.Value Column
+:XH3.Value Column
+:P.A numeric value is shown here.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='SFLHDR/VALFLD'.Text Column
+:XH3.Text Column
+:P.A short text string is shown here.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='MAIN/SFLDTA'.Data Display Area
+:XH3.Data Display Area
+:P. Here, some records from the entire set of existing records are displayed.
+Changes cannot be made directly. The previously mentioned selections in the Opt
+column are there for this purpose. Changes to the records can't be done
+directly. These can be employed by specifying the proper :HP1.Opt:EHP1. value.
+:NOTE.Opt-Selections are lost while paging through the list.:ENOTE.
+:P. An indicator at the bottom right of the scrollable area alerts you when the
+list of displayed records has reached its end and no more records are available.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='MAIN/SFLBTM'.Function Keys
+:XH3.Function Keys
+:PARML.
+:PT.F1=Help
+:PD.Provides additional information about using the display or a specific field
+on the display.
+:PT.F3=Exit
+:PD.Ends the current task and returns to the display from which the task was
+started.
+:PT.F5=Refresh
+:PD.Reloads the SFL with records from the database file.
+:PT.F6=Add entry
+:PD.Calls up the display for entering a new entry (record) into the database
+file.
+:PT.F12=Cancel
+:PD.Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='MAIN/SFLND'.No records to display
+:XH3.No records to display
+:P.This pseudo-record appears when no records could be found for the list
+display.
+:P.Possible causes include an empty database file.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/MODE'.Mode
+:XH3.Mode
+:P.In this area, the current display mode is shown.
+:PARML.
+:PT.Add New Entry
+:PD.If :HP1.F6=Neu:EHP1. was issued, all data bearing fields are emptied. If Opt
+:HP1.3=Duplizieren:EHP1. was issued, all data bearing fields contain the data
+from the selected base record. Pressing enter creates a new record in the
+database file.
+:PT.Change Entry
+:PD.The current values of the selected record are shown in editable fields for
+correction.
+:PT.Display Entry
+:PD.The current values of the selected record are shown in read only fields for
+viewing purposes.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/OPTIONS'.Operations
+:XH3.Operations
+:P.In this area, possible operations for the selected record and mode are shown.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DFIELD/KEYVAL'.Value
+:XH3.Value
+:P.A numeric value can be entered here.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DFIELD/VALFLD'.Text
+:XH3.Text
+:P.A short text string can be entered here.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DETAIL/FKEYS'.Function Keys
+:XH3.Function Keys
+:PARML.
+:PT.F1=Help
+:PD.Provides additional information about using the display or a specific field
+on the display.
+:PT.F3=Exit
+:PD.Ends the current task and returns to the display from which the task was
+started.
+:PT.F12=Cancel
+:PD.Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:EPNLGRP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

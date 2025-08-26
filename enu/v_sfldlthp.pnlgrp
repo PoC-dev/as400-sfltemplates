@@ -1,0 +1,60 @@
+.* For global use, compile this object into QGPL/SFLDLTHP. Use F4 after typing
+.*  14 instead of enter for compile in PDM.
+:PNLGRP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLOPTS'.Choices
+:XH3.Choices
+:P.Valid choices for the :HP1.Opt:EHP1. column are
+:PARML.
+:PT.4=Delete
+:PD.Entry will be deleted.
+:PT.Leer=Do not delete
+:PD.Entry will not be deleted.
+:EPARML.
+:NOTE.A record can only be used by one workstation at a time. If a record is
+already locked by another user, it cannot be deleted on the requesting
+workstation.:ENOTE.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/OPT'.Opt Column
+:XH3.Opt Column
+:P.A selection number is entered in this column to both select the record and
+specify what the system should do with this record.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/FIELDS'.Further Columns
+:XH3.Further Columns
+:P.To identify the record, some fields are displayed similar to the main list
+view.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLDTA'.Data Display Area
+:XH3.Data Display Area
+:P.Here, the records from the entire set of all records marked for deletion are
+displayed.
+:NOTE.Opt-Selections are retained while paging through the list.:ENOTE.
+:P.This screen allows you to either confirm or cancel a requested deletion, or
+to do so in part.
+:P.Only entries marked with :HP1.Opt=4:EHP1. will be deleted when you press
+Enter.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLBTM'.Function Keys
+:XH3.Function Keys
+:PARML.
+:PT.F1=Help
+:PD.Provides additional information about using the display or a specific field
+on the display.
+:PT.F12=Cancel
+:PD.Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:HELP NAME='DELETE/SFLND'.No records to display
+:XH3.No records to display
+:P.This pseudo-record appears when no records could be found for the list
+display.
+:EHELP.
+.* -----------------------------------------------------------------------------
+:EPNLGRP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

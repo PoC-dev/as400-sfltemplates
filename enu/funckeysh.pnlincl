@@ -1,0 +1,89 @@
+:HELP NAME=fkeyhlp.Special keys - Help
+:XH3.Special keys
+:P.Special keys cannot be used for data entry in input fields, but are meant to
+immediately trigger a certain action.
+:EHELP.
+.*
+:HELP NAME=f1keyhlp.F1 - Help
+:XH3.F1=Help
+:P.Provides additional information about using the display or a specific field
+on the display.
+:EHELP.
+.*
+:HELP NAME=f3keyhlp.F3 - Help
+:XH3.F3=Exit
+:P.Ends the current task and returns to the display from which the task was
+started.
+:EHELP.
+.*
+:HELP NAME=f4keyhlp.F4 - Help
+:XH3.F4=Prompt
+:P.Provides assistance in entering or selecting a command.
+:EHELP.
+.*
+:HELP NAME=f9keyhlp.F9 - Help
+:XH3.F9=Retrieve
+:P.Displays the last command you entered on the command line and any parameters
+you included. Pressing this key once, shows the last command you ran. Pressing
+this key twice, shows the command you ran before that and so on.
+:EHELP.
+.*
+:HELP NAME=f12keyhlp.F12 - Help
+:XH3.F12=Cancel
+:P.Returns to the previous menu or display.
+:EHELP.
+.*
+:HELP NAME=f13keyhlp.F13 - Help
+:XH3.F13=Information Assistant
+:P.Displays the Information Assistant menu with several types of assistance
+available. Press this key to access more information about the AS/400 system,
+such as, what's new for this release of the AS/400 system, what new enhancements
+and functions will be available for the next release, how to comment on
+information, where to look for AS/400 information in books and online.
+:EHELP.
+.*
+:HELP NAME=fenkeyhlp.Enter - Help
+:XH3.Enter
+:P.Submits information on the display for processing.
+:EHELP.
+.*
+:HELP NAME=fhekeyhlp.Help - Help
+:XH3.Help
+:P.Provides additional information about using the display.
+:EHELP.
+.*
+:HELP NAME=fhokeyhlp.Taste Home - Help
+:XH3.Home
+:P.Goes to the menu that was shown after you signed on the system. This menu is
+either the initial menu defined in your user profile or the menu you requested
+from the Sign-On display.
+:EHELP.
+.*
+:HELP NAME=fpukeyhlp.Page Down (Roll Up) - Help
+:XH3.Page Down (Roll Up)
+:P.Moves forward to show additional information for this display.
+:EHELP.
+.*
+:HELP NAME=fpdkeyhlp.Page Up (Roll Down) - Help
+:XH3.Page Up (Roll Down)
+:P.Moves backward to show additional information for this display.
+:EHELP.
+.*
+:HELP NAME=fprkeyhlp.Print - Help
+:XH3.Print
+:P.Prints information currently shown on the display.
+:EHELP.
+.*
+:HELP NAME=fatkeyhlp.Attention - Help
+:XH3.Attention
+:P.The Operational Assistant (ASSIST) menu is called up, to ease working with
+printer output, jobs, messages, and changing your password.
+:EHELP.
+.*
+:HELP NAME=fsykeyhlp.System Request - Help
+:XH3.System Request
+:P.The System Request menu is called up. You can then transfer to another job or
+do some tasks related to your interactive job, such as, sending and displaying
+messages.
+:EHELP.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

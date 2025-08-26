@@ -1,0 +1,14 @@
+:H3.How to Use a Menu
+:P.To select a menu option, type the option number and press Enter.
+:P.To run a command, type the command and press Enter. For assistance in
+selecting a command, press F4 (Prompt) without typing anything. For assistance
+in entering a command, type the command and press F4 (Prompt). To see a previous
+command you entered, press F9 (Retrieve).
+:P.To go to another menu, use the Go to Menu (GO) command. Type GO followed by
+the menu ID, then press the Enter key. For example, to go to the User Tasks
+(USER) menu, type GO USER and press the Enter key. The menu ID is shown in the
+upper left corner of the menu. For assistance in entering the GO command, type
+GO and press F4 (Prompt). If you do not know the entire menu name you can use a
+generic name. For example, GO US* will show a list of all menus that start with
+US.
+.* vim: ft=pnlgrp textwidth=80 colorcolumn=81

@@ -1,0 +1,19 @@
+ascii
+get QGPL/SFLVORLAGE.CRTMSGD     enu/crtmsgd.rexx
+get QGPL/SFLVORLAGE.README      readme.txt
+get QGPL/SFLVORLAGE.TODOS       todos.txt
+get QGPL/SFLVORLAGE.V_LODALLDF  enu/v_lodalldf.dds
+get QGPL/SFLVORLAGE.V_LODALLHP  enu/v_lodallhp.pnlgrp
+get QGPL/SFLVORLAGE.V_LODALLPG  v_lodallpg.rpgle
+get QGPL/SFLVORLAGE.V_LODPAGDF  enu/v_lodpagdf.dds
+get QGPL/SFLVORLAGE.V_LODPAGHP  enu/v_lodpaghp.pnlgrp
+get QGPL/SFLVORLAGE.V_LODPAGPG  v_lodpagpg.rpgle
+get QGPL/SFLVORLAGE.V_POSLF     v_poslf.dds
+get QGPL/SFLVORLAGE.V_SFLDLTHP  enu/v_sfldlthp.pnlgrp
+get QGPL/SFLVORLAGE.V_SFLPF     v_sflpf.dds
+get QGPL/SFLVORLAGE.V_SFLPFLOD  v_sflpflod.rpgle
+get QGPL/SFLVORLAGE.MENU        enu/menu.menu
+get "QGPL/MENUUIM.#FUNCKEYS"    enu/funckeys.pnlincl
+get "QGPL/MENUUIM.#FUNCKEYSH"   enu/funckeysh.pnlincl
+get "QGPL/MENUUIM.#MENUUSGH"    enu/menuusgh.pnlincl
+quit

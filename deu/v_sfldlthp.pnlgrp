@@ -1,5 +1,5 @@
 .* For global use, compile this object into QGPL/SFLDLTHP. Use F4 after typing
-.*  for compile in PDM.
+.*  14 instead of enter for compile in PDM.
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/SFLOPTS'.Auswahloptionen
@@ -14,8 +14,7 @@ eingegeben werden können.
 :EPARML.
 :NOTE.Ein Datensatz kann nur von einer Arbeitsstation gleichzeitig bearbeitet
 werden. Ist ein Datensatz bereits durch einen anderen Benutzer gesperrt, kann
-dieser auf der anfragenden Arbeitsstation nicht gelöscht werden.
-:ENOTE.
+dieser auf der anfragenden Arbeitsstation nicht gelöscht werden.:ENOTE.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/OPT'.Spalte Opt
@@ -34,8 +33,7 @@ Haupt-Listenansicht dargestellt.
 :XH3.Datenbereich
 :P.Hier sind die Datensätze aus der Gesamtheit aller zum Löschen markierten
 Datensätze sichtbar.
-:NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.
-:ENOTE.
+:NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.:ENOTE.
 :P.Diese Bildschirmmaske dient dazu, einen Löschvorgang entweder zu bestätigen
 oder abzubrechen, bzw. dies in Teilen zu tun.
 :P.Nur Einträge, die mit :HP1.Opt=4:EHP1. markiert sind, werden beim Drücken der

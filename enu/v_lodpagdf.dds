@@ -1,0 +1,260 @@
+     A* Copyright 2007-2023 Patrik Schindler <poc@pocnet.net>.
+     A*
+     A* This file is part of a collection of templates for easy creation of
+     A*  subfile-based applications on AS/400, iSeries and IBM i.
+     A*
+     A* This is free software; you can redistribute it and/or modify it
+     A*  under the terms of the GNU General Public License as published by the
+     A*  Free Software Foundation; either version 2 of the License, or (at your
+     A*  option) any later version.
+     A*
+     A* It is distributed in the hope that it will be useful, but WITHOUT
+     A*  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     A*  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+     A*  for more details.
+     A*
+     A* You should have received a copy of the GNU General Public License along
+     A*  with it; if not, write to the Free Software Foundation, Inc., 59
+     A*  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
+     A*  http://www.gnu.org/licenses/gpl.html
+     A*
+     A* This file is an example of a Display File with multiple record formats
+     A*  for proper handling of most SFL based tasks. It is tailored for scroll-
+     A*  handling by the programmer, aka load-paged. The deletion confirmation
+     A*  is load-all, though.
+     A*
+     A*
+     A* Globals ----------------------------------------------------------------
+     A                                      REF(V_SFLPF)
+     A                                      ERRSFL
+     A                                      HELP
+     A                                      ALTHELP(CA01)
+     A                                      HLPPNLGRP(GLOBAL V_LODPAGHP)
+     A* Subfile Screen ---------------------------------------------------------
+     A          R MAINSFL                   SFL
+     A  99                                  SFLNXTCHG
+     A*         ##What may we do with the selected record?
+     A            OPT            1A  B  9  3VALUES(' ' '2' '3' '4' '5')
+     A  99                                  DSPATR(RI)
+     A*         ##Pull values from the table definition itself...
+     A            KEYVAL    R     Y  O  9  7EDTCDE(3)
+     A            VALFLD    R        O  9 13
+     A* Subfile Control Screen -------------------------------------------------
+     A          R MAINCTL                   SFLCTL(MAINSFL)
+     A                                      CHGINPDFT(LC UL)
+     A*                                   ##Command Key definitions.
+     A                                      CA03(03 'Exit')
+     A                                      CA05(05 'Refresh')
+     A                                      CA06(06 'Add entry')
+     A                                      CA12(12 'Cancel')
+     A N34                                  PAGEDOWN(25)
+     A N35                                  PAGEUP(26)
+     A                                      HOME(27 'Position to')
+     A                                      VLDCMDKEY(29 'Any valid key')
+     A*                                   ##Basic Settings for subfile ctrl.
+     A                                      OVERLAY
+     A  91                                  SFLMSGID(ERR0012 GENERICMSG 91)
+     A  92                                  SFLMSGID(ERR1021 GENERICMSG 92)
+     A  93                                  SFLMSGID(ERR1218 GENERICMSG 93)
+     A  95                                  SFLMSGID(INF0001 GENERICMSG 95)
+     A                                      SFLSIZ(&SFLSIZ)
+     A                                      SFLPAG(13)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A  33                                  SFLCLR
+     A  34                                  SFLEND(*MORE)
+     A*         ##Help Area definition for this screen.
+     A                                      HLPTITLE('Template - List view')
+     A          H                           HLPARA(3 1 3 80)
+     A                                      HLPPNLGRP('MAIN/POSTO' V_LODPAGHP)
+     A          H                           HLPARA(5 2 6 63)
+     A                                      HLPPNLGRP('MAIN/SFLOPTS' V_LODPAGHP)
+     A          H                           HLPARA(*CNST 1)
+     A                                      HLPPNLGRP('SFLHDR/OPT' V_LODPAGHP)
+     A          H                           HLPARA(*CNST 2)
+     A                                      HLPPNLGRP('SFLHDR/KEYVAL'
+     A                                      V_LODPAGHP)
+     A          H                           HLPARA(*CNST 3)
+     A                                      HLPPNLGRP('SFLHDR/VALFLD'
+     A                                      V_LODPAGHP)
+     A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
+     A            SFLSIZ         5S 0P
+     A*         ##End of definitions. Here be real screen elements.
+     A                                  1 35'List view'
+     A                                      DSPATR(HI)
+     A*         ##Pitfall! Beware! If you refer to a zoned numeric field by
+     A*           referencing the PF, you are *required* to have a field
+     A*           exit occur before the enter key submits the screen back
+     A*           to the OS for processing. Some 5250 client implementations
+     A*           do that implicit (Mocha), some not (IBM InfoWindow II,
+     A*           IBM i Access for Windows).
+     A*         ##For having numeric values, do *not* refer to the PF
+     A*           definition but use your own numeric (Y) one. Problem does
+     A*           not exist for mixed (A) fields.
+     A                                  3  7'Position to . . .'
+     A*           POSTO     R        I  3 27REFFLD(KEYVAL V_SFLPF)
+     A            POSTO          4Y 0I  3 27
+     A  41                                  DSPATR(PC)
+     A                                  3 40'(Value)'
+     A                                  5  2'Type options, press Enter.'
+     A                                      COLOR(BLU)
+     A                                  6  3'2=Change  3=Copy  
+     A                                      4=Delete  5=Display'
+     A                                      COLOR(BLU)
+     A  35                              7 70'Start ...' DSPATR(HI)
+     A                                  8  2'Opt' DSPATR(HI) HLPID(1)
+     A                                  8  7'Value' DSPATR(HI) HLPID(2)
+     A                                  8 13'Text' DSPATR(HI) HLPID(3)
+     A* Footer of the form -----------------------------------------------------
+     A* A subfile control record may contain elements above or below the actual
+     A* subfile, but not both.
+     A          R MAINBTM
+     A                                      HLPTITLE('Template - List view')
+     A          H                           HLPARA(*RCD)
+     A                                      HLPPNLGRP('MAIN/SFLBTM' V_LODPAGHP)
+     A                                 23  2'F1=Help   -
+     A                                      F3=Exit   -
+     A                                      F5=Refresh   -
+     A                                      F6=Add entry   -
+     A                                      F12=Cancel'
+     A                                      COLOR(BLU)
+     A* No data instead of SFL -------------------------------------------------
+     A          R MAINND                    OVERLAY
+     A                                      HLPTITLE('Template - List view')
+     A          H                           HLPARA(*RCD)
+     A                                      HLPPNLGRP('MAIN/SFLND' V_LODPAGHP)
+     A                                 10  7'(No records to display.)'
+     A* ------------------------------------------------------------------------
+     A* Subfile Screen: Delete confirmation ------------------------------------
+     A          R DLTSFL                    SFL
+     A                                      SFLNXTCHG
+     A            DOPT           1A  B  7  3VALUES(' ' '4')
+     A  99                                  DSPATR(RI)
+     A*         ##Pull values from the table definition itself...
+     A*           You can also use REFFLD(MAINSFL/FLDNAME *SRC)
+     A            KEYVAL    R     Y  O  7  7EDTCDE(3)
+     A            VALFLD    R        O  7 13
+     A* Subfile Control Screen -------------------------------------------------
+     A          R DLTCTL                    SFLCTL(DLTSFL)
+     A*                                   ##Command Key definitions.
+     A                                      CA12(12 'Abbrechen')
+     A                                      VLDCMDKEY(29 'Any valid key')
+     A*                                   ##Basic Settings for subfile ctrl.
+     A                                      OVERLAY
+     A  91                                  SFLMSGID(ERR0012 GENERICMSG 91)
+     A  93                                  SFLMSGID(ERR1218 GENERICMSG 93)
+     A  96                                  SFLMSGID(INF0999 GENERICMSG 96)
+     A                                      SFLSIZ(30)
+     A                                      SFLPAG(15)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A  33                                  SFLCLR
+     A  34                                  SFLEND(*MORE)
+     A*         ##Help Area definition for this screen.
+     A                                      HLPTITLE('Template - Delete -
+     A                                      Confirmation')
+     A          H                           HLPARA(3 1 4 80)
+     A                                      HLPPNLGRP('DELETE/SFLOPTS'
+     A                                      V_SFLDLTHP)
+     A          H                           HLPARA(*CNST 1)
+     A                                      HLPPNLGRP('DELETE/OPT' V_SFLDLTHP)
+     A          H                           HLPARA(6 7 6 80)
+     A                                      HLPPNLGRP('DELETE/FIELDS'
+     A                                      V_SFLDLTHP)
+     A          H                           HLPARA(7 1 21 80)
+     A                                      HLPPNLGRP('DELETE/SFLDTA'
+     A                                      V_SFLDLTHP)
+     A            SFLDLTNBR      3S 0H      SFLRCDNBR(CURSOR)
+     A*         ##End of definitions. Here be real screen elements.
+     A                                  1 29'Confirm Delete Request'
+     A                                      DSPATR(HI)
+     A                                  3  2'Change options, press Enter.'
+     A                                      COLOR(BLU)
+     A                                  4  3'4=Delete  Blank=Do not delete'
+     A                                      COLOR(BLU)
+     A                                  6  2'Opt' DSPATR(HI) HLPID(1)
+     A                                  6  7'Value' DSPATR(HI)
+     A                                  6 13'Text' DSPATR(HI)
+     A* Footer of the form -----------------------------------------------------
+     A* A subfile control record may contain elements above or below the actual
+     A* subfile, but not both.
+     A          R DLTBTM
+     A                                      HLPTITLE('Template - Delete -
+     A                                      Confirmation')
+     A          H                           HLPARA(*RCD)
+     A                                      HLPPNLGRP('DELETE/SFLBTM'
+     A                                      V_SFLDLTHP)
+     A                                 23  2'F1=Help   F12=Cancel'
+     A                                      COLOR(BLU)
+     A* No data instead of SFL -------------------------------------------------
+     A          R DLTND                     OVERLAY
+     A                                      HLPTITLE('Template - Delete -
+     A                                      Confirmation')
+     A          H                           HLPARA(*RCD)
+     A                                      HLPPNLGRP('DELETE/SFLND' V_SFLDLTHP)
+     A                                  8  7'(No records to display.)'
+     A* ------------------------------------------------------------------------
+     A* ------------------------------------------------------------------------
+     A* One form for displaying further details, or editing existing, or adding
+     A* new records. We can switch this form to "looks like output only fields"
+     A* with IN44.
+     A          R DETAILFRM
+     A                                      CHGINPDFT(LC UL)
+     A                                      CHANGE(28 'Content has changed')
+     A                                      CA03(03 'Exit')
+     A                                      CA12(12 'Cancel')
+     A                                      RTNCSRLOC(*RECNAME &CSREC &CSFLD)
+     A*         ##Help Area definition for this screen.
+     A                                      HLPTITLE('Template - Details')
+     A          H                           HLPARA(1 1 1 80)
+     A                                      HLPPNLGRP('DETAIL/MODE'
+     A                                      V_LODPAGHP)
+     A          H                           HLPARA(3 1 3 80)
+     A                                      HLPPNLGRP('DETAIL/OPTIONS'
+     A                                      V_LODPAGHP)
+     A          H                           HLPARA(5 1 5 80)
+     A                                      HLPPNLGRP('DFIELD/KEYVAL'
+     A                                      V_LODPAGHP)
+     A          H                           HLPARA(7 1 7 80)
+     A                                      HLPPNLGRP('DFIELD/VALFLD'
+     A                                      V_LODPAGHP)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('DETAIL/FKEYS'
+     A                                      V_LODPAGHP)
+     A*         ##End of definitions. Here be real screen elements.
+     A  42N43                           1 33'Add New Entry'
+     A                                      DSPATR(HI)
+     A N42 43                           1 34'Change Entry'
+     A                                      DSPATR(HI)
+     A N42N43                           1 33'Display Entry'
+     A                                      DSPATR(HI)
+     A  42N43                           3  2'Type choices, press Enter.'
+     A                                      COLOR(BLU)
+     A N42 43                           3  2'Change choices, press Enter.'
+     A                                      COLOR(BLU)
+     A N42N43                           3  2'View details.'
+     A                                      COLOR(BLU)
+     A                                  5  3'Value . . . .'
+     A            KEYVAL    R     Y  B  5 18EDTCDE(3)
+     A  44                                  DSPATR(PR)
+     A N44                                  DSPATR(UL)
+     A N44 60                               DSPATR(PC)
+     A  92                                  ERRMSGID(ERR1021 GENERICMSG 92)
+     A                                  7  3'Text  . . . .'
+     A            VALFLD    R        B  7 18
+     A  44                                  DSPATR(PR)
+     A N44                                  DSPATR(UL)
+     A N44 61                               DSPATR(PC)
+     A                                 23  2'F1=Help   F3=Exit   F12=Cancel'
+     A                                      COLOR(BLU)
+     A* This is entirely to prevent DSPATR(RI) error indication with just a
+     A*  warning message. Place in least used screen position.
+     A            DUMMY$$        1A  O 23 80DSPATR(ND)
+     A  91                                  ERRMSGID(ERR0012 GENERICMSG 91)
+     A  93                                  ERRMSGID(ERR1218 GENERICMSG 93)
+     A  94                                  ERRMSGID(RDO1218 GENERICMSG 94)
+     A  95                                  ERRMSGID(INF0001 GENERICMSG 95)
+     A            CSREC         10A  H
+     A            CSFLD         10A  H
+     A* For vim ----------------------------------------------------------------
+     A* vim: syntax=dds colorcolumn=81 autoindent noignorecase
