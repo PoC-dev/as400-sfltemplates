@@ -347,23 +347,48 @@ Follow these instructions to upload this projects data to your AS/400. Prerequis
 - Working TCP/IP configuration,
 - FTP client.
 
-First, Create the data files for holding the sources and include files from a 5250 session:
+First, Create the data files for holding the sources and include files from a 5250 session.
+
+Traditionally, the templates were German only, so the source file also had a German name. For ease of understanding by English speakers, the source file name for the templates itself differs, while the menu source and includes holding file is the same. Hence:
+
+If English is desired, run:
+```
+CRTSRCPF FILE(QGPL/SFLTMPLS) TEXT('Subfile-Templates')
+CRTSRCPF FILE(QGPL/MENUUIM) TEXT('Shared Menu Panels')
+```
+
+If German is desired, run:
 ```
 CRTSRCPF FILE(QGPL/SFLVORLAGE) TEXT('Subfile-Vorlage')
 CRTSRCPF FILE(QGPL/MENUUIM) TEXT('Shared Menu Panels')
 ```
 
-Next, enter the run the upload commands file matching the desired language with your command line FTP client from the project base directory:
+Next, enter the run the upload commands file matching the desired language with your command line FTP client from the project base directory.
+
+If English is desired, run:
+```
+ftp as400 < enu/ftpupload.txt
+```
+
+If German is desired, run:
 ```
 ftp as400 < deu/ftpupload.txt
 ```
+
 This uploads all files to the respective files as members, and sets the file type accordingly.
 
 > **Note:** It would have been easy to also add the `CRTSRCPF` commands to *ftpupload.txt*. But since this needs to be done just once, while uploads might be necessary more often (because of updates to this repository), I refrained from doing so.
 
-After finishing, you now have a repository of members in *QGPL/SFLVORLAGE* for usage, as well as a "global" *QGPL/MENUUIM* file for inclusion of shared definitions, and your own higher level menus.
+After finishing, you now have a repository of members in the respective file for usage, as well as a "global" *QGPL/MENUUIM* file for inclusion of shared definitions, and your own higher level menus.
 
 What remains to be done is to run the REXX script for creating the *message file* with common error messages being used by all subfile template derived projects.
+
+If the English source file has been created, run:
+```
+strrexprc srcmbr(crtmsgd) srcfile(qgpl/sfltmpls)
+```
+
+If the German source file has been created, run:
 ```
 strrexprc srcmbr(crtmsgd) srcfile(qgpl/sflvorlage)
 ```
@@ -379,7 +404,7 @@ CRTSRCPF FILE(MYNEWPROJ/SOURCES)
 
 Next, decide if a Load-All SFL is a good fit, or a Load-Paged is more appropriate. Also, Load-Paged includes the classic *Position-To* feature, to have the list display scroll to the first record with the given search term. For Details about Pros and Cons, see *A Word on Subfiles* above.
 
-Then, run `WRKMBRPDM QGPL/SFLVORLAGE` to show the list of source members. Type a *3* next to all files you need for your new project. Which files exactly those might be is explained at length in the sections above. Type options, press Enter.
+Then, run `WRKMBRPDM` with the appropriate source file as parameter to show the list of source members. Type a *3* next to all files you need for your new project. Which files exactly those might be is explained at length in the sections above. Type options, press Enter.
 
 Finally, make the appropriate changes by exiting PDM with `F3` and running it again against your new source PF with `WRKMBRPDM MYNEWPROJ/SOURCES`. Changes include changing the member names, and deleting or editing of the member description text.
 

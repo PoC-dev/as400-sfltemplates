@@ -1,7 +1,5 @@
 ascii
 get QGPL/SFLVORLAGE.CRTMSGD     enu/crtmsgd.rexx
-get QGPL/SFLVORLAGE.README      readme.txt
-get QGPL/SFLVORLAGE.TODOS       todos.txt
 get QGPL/SFLVORLAGE.V_LODALLDF  enu/v_lodalldf.dds
 get QGPL/SFLVORLAGE.V_LODALLHP  enu/v_lodallhp.pnlgrp
 get QGPL/SFLVORLAGE.V_LODALLPG  v_lodallpg.rpgle

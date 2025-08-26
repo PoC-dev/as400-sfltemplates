@@ -4,8 +4,8 @@
   => Can changes be put into a diff, and applied to existing applications?
 => https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html
 - Lodpag: Save and restore selections when scolling.
-- Translate to English
 - Probably use RNQxxxx for IBM provided translations of file status error codes
+- Why is there a DLTND for load-paged but not for load-all?
 
 Probable bug:
 * Load-Paged, more records than one page
