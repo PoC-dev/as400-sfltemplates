@@ -1,7 +1,9 @@
 /* Create global message file */
-/* Run me with strrexprc srcmbr(crtmsgd) srcfile(qgpl/sflvorlage) */
+/* Run me with strrexprc srcfile(qgpl/sflvorlage) srcmbr(crtmsgd) */
 
-SAY "Creating Message File and messages...";
+SAY "(Re)creating Message File and messages...";
+
+"DLTMSGF MSGF(QGPL/GENERICMSG)"
 
 "CRTMSGF MSGF(QGPL/GENERICMSG) SIZE(2) CCSID(*MSGD)",
 "TEXT('Messages SFLVORLAGE')";
