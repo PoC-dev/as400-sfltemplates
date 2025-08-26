@@ -385,12 +385,12 @@ What remains to be done is to run the REXX script for creating the *message file
 
 If the English source file has been created, run:
 ```
-strrexprc srcmbr(crtmsgd) srcfile(qgpl/sfltmpls)
+strrexprc srcfile(qgpl/sfltmpls) srcmbr(crtmsgd)
 ```
 
 If the German source file has been created, run:
 ```
-strrexprc srcmbr(crtmsgd) srcfile(qgpl/sflvorlage)
+strrexprc srcfile(qgpl/sflvorlage) srcmbr(crtmsgd)
 ```
 
 > **Note:** The script **deletes an already present message file**, and recreates it from scratch. This is meant to ease maintaining consistency. Of course, if you added your own definitions before, they will be gone. **You have been warned.**
@@ -485,7 +485,7 @@ An RPG program has these sections, most often annotated with comments. Because o
 - D(efinitions) are for creating variables, and call prototypes.
 - C(ompute) statements are actual code.
 
-> **Note:** The V3 ILE RPG compiler doesn't support compiler flags in *H*-lines.
+> **Note:** The V3 ILE RPG compiler doesn't support compiler flags in *H*-lines. It barfs upon stumbling over those. Add the following parameters to ignore those, and at the same time, provide some compile log options: `GENLVL(20) OPTION(*NOXREF *NOSECLVL *NOSHOWCPY *NOEXT)`
 
 Code is divided into subroutines, to get a good balance between (unnecessary) code duplication and readability. The first and otherwise unnamed routine is implicit the `main()` routine, as known in C.
 
