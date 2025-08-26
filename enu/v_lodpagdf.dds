@@ -92,13 +92,13 @@
      A*           definition but use your own numeric (Y) one. Problem does
      A*           not exist for mixed (A) fields.
      A                                  3  7'Position to . . .'
-     A*           POSTO     R        I  3 27REFFLD(KEYVAL V_SFLPF)
-     A            POSTO          4Y 0I  3 27
+     A*           POSTO     R        I  3 26REFFLD(KEYVAL V_SFLPF)
+     A            POSTO          4Y 0I  3 26
      A  41                                  DSPATR(PC)
-     A                                  3 40'(Value)'
+     A                                  3 32'(Value)'
      A                                  5  2'Type options, press Enter.'
      A                                      COLOR(BLU)
-     A                                  6  3'2=Change  3=Copy  
+     A                                  6  3'2=Change  3=Copy
      A                                      4=Delete  5=Display'
      A                                      COLOR(BLU)
      A  35                              7 70'Start ...' DSPATR(HI)

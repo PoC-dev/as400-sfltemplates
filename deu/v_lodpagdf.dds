@@ -93,10 +93,10 @@
      A*           definition but use your own numeric (Y) one. Problem does
      A*           not exist for mixed (A) fields.
      A                                  3  7'Listenanfang bei . . .'
-     A*           POSTO     R        I  3 32REFFLD(KEYVAL V_SFLPF)
-     A            POSTO          4Y 0I  3 32
+     A*           POSTO     R        I  3 31REFFLD(KEYVAL V_SFLPF)
+     A            POSTO          4Y 0I  3 31
      A  41                                  DSPATR(PC)
-     A                                  3 40'(Wert)'
+     A                                  3 37'(Wert)'
      A                                  5  2'Auswahl eingeben und -
      A                                      Eingabetaste drücken.'
      A                                      COLOR(BLU)
