@@ -24,7 +24,9 @@ Since I developed these files for my own usage, and my primary language is Germa
 
 Programming style is outdated in many ways. The templates were developed on V4R5 of OS/400, and are currently expected to work on V4R4 and up. Actual tests with available machines show, they trigger strange compilation errors on i5/OS V5R4, and compile just fine for IBM i 7.2 (V7R2) and 7.3 (V7R3).
 
-In addition, some BIFs and exception handling functions are not available in V4R2 and earlier. A long term goal is to change the existing code so error handling is done the V3-way. Porting the code to V2R3 might not happen, though: It completely lacks RPG IV, and I currently lack a machine running this release.
+In addition, some BIFs and exception handling functions are not available in
+V4R2 and earlier. A long term goal is to change the existing code so error
+handling is done the V3-way. This is not yet entirely complete. Porting the code to V2R3 might not happen, though: It completely lacks RPG IV, and I currently lack a machine running this release.
 
 ### Basics
 Often, AS/400 programs are build with just these components:
