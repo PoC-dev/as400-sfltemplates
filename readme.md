@@ -20,8 +20,6 @@ This collection of files aims to provide tested and thus working templates for c
 
 This text is lengthy because I assume little or no reader's knowledge about the inner workings of OS/400. So I provide a rough overview (and sometimes oversimplified statements) about inner workings as long as it's necessary to understand this template's logic. IBM has tons of documentation online, covering any topic the AS/400 is capable of dealing with. Use it!
 
-Since I developed these files for my own usage, and my primary language is German, all static text in the display files, and error messages in the message file is in German Language. Feel free to translate as desired. But please first compile the project as is and tinker with the screens to get some idea which text belongs where. It would be bad if you first translate everything and then the outcome behaves erratic because strings are much longer and you don't know what went wrong and where. Google Translator is there to assist.
-
 Programming style is outdated in many ways. The templates were developed on V4R5 of OS/400, and are currently expected to work on V4R4 and up. Actual tests with available machines show, they trigger strange compilation errors on i5/OS V5R4, and compile just fine for IBM i 7.2 (V7R2) and 7.3 (V7R3).
 
 In addition, some BIFs and exception handling functions are not available in
