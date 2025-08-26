@@ -110,10 +110,9 @@ The example project comprises of three (groups of) files:
 - `V_LODPAGDF`, `V_LODPAGPG`, `V_POSLF`, and `V_LODPAGHP` are template files for a Load-Paged project with a position-to field.
 - `V_SFLDLTHP` is a shared help panel group for the delete confirmation screen.
 
-> **Note:** The contained text in `V_LODPAGHP` is generic enough to just compile it to `QGPL/SFLDLTHP`, and modify the references in the DSPF(s) accordingly. So you can enjoy an automatic online help text for the delete-confirmation screen for each derived project, without further effort.
+> **Note:** The contained text in `V_LODPAGHP` is generic enough to just compile it to `QGPL/SFLDLTHP`, and modify the references in the DSPF(s) accordingly. So you can enjoy an automatic online help text for the delete-confirmation screen for each derived project, without further effort than changing the panel group name in the DSPF definition.
 
 Additionally, there are:
-- `V_SFLMAXID` for fast creation of primary key values.
 - `V_SFLPFLOD` writes test data into `V_SFLPF`, so it must not be done by hand.
 - `CHANGELOG` contains old changes entries before I moved the source files to CVS.
 - `CRTMSGD` is an (yet untested) REXX script to batch create a message file with predefined text and second-level help.
@@ -519,9 +518,13 @@ If you don't need this facility, delete the mentioned parts and *EXSR* calls.
 Moreover, if you neither use NULL fields, nor shortened fields, nor other customization of SFL data, you may also completely get rid of the *PREPSFLDTA* SR. Don't forget to also delete the appropriate *EXSR* calls.
 
 ##### Primary key ID
-If you want to use the automatic ID generation,
-- Uncomment the code in the *INCLASTID* SR,
-- Uncomment the two EXSR calls to *INCLASTID*.
+Oder releases of OS/400 lack a truly database-integrated way of generating unique primary key values. One way of obtaining collision-free values is to use the [Data Area read-and-lock mechanism](https://try-as400.pocnet.net/wiki/Using_Data_Areas_in_RPG_to_derive_a_primary_key_value) of the operating system.
+
+If you want to use the described automatic ID generation,
+- Create the data area according to your primary key definition, e. g. `crtdtaara dtaara(maxidarea) type(*dec) len(11 0) value(0)`,
+- uncomment the data are definition in the **INZSR* subroutine definition,
+- uncomment the lock-and-calc code in the *INCLASTID* SR,
+- uncomment the two EXSR calls to *INCLASTID*.
 
 If you don't need this facility, delete the mentioned parts. Don't forget to also delete the appropriate *EXSR* calls. They're commented out by default, but why keep unneeded crap?
 

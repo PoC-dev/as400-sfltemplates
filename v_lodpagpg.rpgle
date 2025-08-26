@@ -623,7 +623,7 @@
      C     STRLEN_MAX    SUB       3             STRLEN_MIN
      C*
      C* Derive maximum ID from data area.
-     C     *DTAARA       DEFINE    MAXIDAREA     NEWID             4 0
+     C*    *DTAARA       DEFINE    MAXIDAREA     NEWID             4 0
      C*
      C* Force Cursor into search field.
      C                   MOVE      *ON           *IN41
