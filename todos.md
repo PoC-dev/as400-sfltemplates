@@ -1,6 +1,5 @@
 ## Check/Revise
 - Check Help panel text assignments to screen locations for correctness
-- Why is there a DLTND for load-paged but not for load-all?
 - Probably use RNQxxxx for IBM provided translations of file status error codes
 
 ## Probable bug
