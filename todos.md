@@ -4,9 +4,10 @@
 
 ## Probable bug
 - Load-Paged, more records than one page
+- Set display to first page (IN34 set)
 - Use pos-to for placing list start on a record which exactly is on the first
   line of the last page of data)
-  - No scrolling back!
+  - No scrolling back, IN34 is still set on!
 
 ## More...
 - Rework error handling - this will be really hard!
