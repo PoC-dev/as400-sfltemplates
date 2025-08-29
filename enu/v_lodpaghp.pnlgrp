@@ -77,7 +77,7 @@ area:
 :PD.More records are available which can be shown by pressing the PgDown key.
 :PT.End
 :PD.The end of the list is reached. No more records are available.
-:PARML.
+:EPARML.
 :NOTE.Opt-Selections are lost while paging through the list.:ENOTE.
 :EHELP.
 .* -----------------------------------------------------------------------------

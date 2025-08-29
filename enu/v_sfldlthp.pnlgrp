@@ -34,7 +34,7 @@ view.
 :PD.More records are available which can be shown by pressing the PgDown key.
 :PT.End
 :PD.The end of the list is reached. No more records are available.
-:PARML.
+:EPARML.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/SFLDTA'.Data Display Area
