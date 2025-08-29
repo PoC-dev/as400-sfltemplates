@@ -60,10 +60,15 @@ selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
 :P.Hier sind einige Datensätze aus der Gesamtheit aller vorhandenen Datensätze
 sichtbar. Änderungen können nicht direkt vorgenommen werden. Dazu sind die
 bereits erwähnten Selektionen in der Opt-Spalte da.
+:P.Am unteren rechten Rand des Datenbereichs ist ein Indikator eingeblendet:
+:PARML.
+:PT.Weitere ...
+:PD.Es sind weitere Sätze vorhanden, die mit der PgDown-Taste abgerufen werden
+können.
+:PT.Ende
+:PD.Das Ende der Liste wurde erreicht.
+:PARML.
 :NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.:ENOTE.
-:P.Eine Anzeige am rechten unteren Ende des scrollbaren Bereichs macht darauf
-aufmerksam, wenn die Liste der dargestellten Datensätze am Ende angekommen ist
-und keine weiteren Datensätze mehr vorhanden sind.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLBTM'.Funktionstasten

@@ -21,6 +21,8 @@ dieser auf der anfragenden Arbeitsstation nicht gelöscht werden.:ENOTE.
 :XH3.Spalte Opt
 :P.In diese Spalte eine Auswahlziffer eingegeben, um den Datensatz zum einen zu
 selektieren und zum anderen vorzugeben, was das System mit diesem Satz tun soll.
+:P.Standardmäßig sind alle aus der vorherigen Listenansicht markierten Sätze zum
+Löschen markiert.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/FIELDS'.Weitere Spalten
@@ -33,6 +35,14 @@ Haupt-Listenansicht dargestellt.
 :XH3.Datenbereich
 :P.Hier sind die Datensätze aus der Gesamtheit aller zum Löschen markierten
 Datensätze sichtbar.
+:P.Am unteren rechten Rand des Datenbereichs ist ein Indikator eingeblendet:
+:PARML.
+:PT.Weitere ...
+:PD.Es sind weitere Sätze vorhanden, die mit der PgDown-Taste abgerufen werden
+können.
+:PT.Ende
+:PD.Das Ende der Liste wurde erreicht.
+:PARML.
 :NOTE.Die Opt-Selektionen werden über Scrollgrenzen hinweg beibehalten.:ENOTE.
 :P.Diese Bildschirmmaske dient dazu, einen Löschvorgang entweder zu bestätigen
 oder abzubrechen, bzw. dies in Teilen zu tun.

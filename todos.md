@@ -1,5 +1,4 @@
 ## Check/Revise
-- Check Help panel text assignments to screen locations for correctness
 - Probably use RNQxxxx for IBM provided translations of file status error codes: See QRNXMSG, e. g. RNQ1218.
   - Is this comprehensive to users?
 

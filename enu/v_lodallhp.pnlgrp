@@ -60,9 +60,14 @@ specify what the system should do with this record.
 Changes cannot be made directly. The previously mentioned selections in the Opt
 column are there for this purpose. Changes to the records can't be done
 directly. These can be employed by specifying the proper :HP1.Opt:EHP1. value.
+:P.An indicator is shown at the bottom right corner of the tabular display area:
+:PARML.
+:PT.More ...
+:PD.More records are available which can be shown by pressing the PgDown key.
+:PT.End
+:PD.The end of the list is reached. No more records are available.
+:PARML.
 :NOTE.Opt-Selections are lost while paging through the list.:ENOTE.
-:P. An indicator at the bottom right of the scrollable area alerts you when the
-list of displayed records has reached its end and no more records are available.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLBTM'.Function Keys

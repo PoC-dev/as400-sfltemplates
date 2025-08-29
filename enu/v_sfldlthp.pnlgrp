@@ -20,12 +20,21 @@ workstation.:ENOTE.
 :XH3.Opt Column
 :P.A selection number is entered in this column to both select the record and
 specify what the system should do with this record.
+:P.By default, all tagged records from the previous screen are marked for
+deletion.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/FIELDS'.Further Columns
 :XH3.Further Columns
 :P.To identify the record, some fields are displayed similar to the main list
 view.
+:P.An indicator is shown at the bottom right corner of the tabular display area:
+:PARML.
+:PT.More ...
+:PD.More records are available which can be shown by pressing the PgDown key.
+:PT.End
+:PD.The end of the list is reached. No more records are available.
+:PARML.
 :EHELP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='DELETE/SFLDTA'.Data Display Area

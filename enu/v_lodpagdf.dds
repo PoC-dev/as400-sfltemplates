@@ -77,6 +77,8 @@
      A          H                           HLPARA(*CNST 3)
      A                                      HLPPNLGRP('SFLHDR/VALFLD'
      A                                      V_LODPAGHP)
+     A          H                           HLPARA(9 1 22 80)
+     A                                      HLPPNLGRP('MAIN/SFLDTA' V_LODPAGHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
      A            SFLSIZ         5S 0P
      A*         ##End of definitions. Here be real screen elements.
@@ -161,7 +163,7 @@
      A          H                           HLPARA(6 7 6 80)
      A                                      HLPPNLGRP('DELETE/FIELDS'
      A                                      V_SFLDLTHP)
-     A          H                           HLPARA(7 1 21 80)
+     A          H                           HLPARA(7 1 22 80)
      A                                      HLPPNLGRP('DELETE/SFLDTA'
      A                                      V_SFLDLTHP)
      A            SFLDLTNBR      3S 0H      SFLRCDNBR(CURSOR)

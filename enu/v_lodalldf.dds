@@ -72,7 +72,7 @@
      A          H                           HLPARA(*CNST 3)
      A                                      HLPPNLGRP('SFLHDR/VALFLD'
      A                                      V_LODALLHP)
-     A          H                           HLPARA(7 1 21 80)
+     A          H                           HLPARA(7 1 22 80)
      A                                      HLPPNLGRP('MAIN/SFLDTA' V_LODALLHP)
      A            SFLRCDNBR      3S 0H      SFLRCDNBR(CURSOR)
      A            SFLCSRRRN      5S 0H
@@ -143,7 +143,7 @@
      A          H                           HLPARA(6 7 6 80)
      A                                      HLPPNLGRP('DELETE/FIELDS'
      A                                      V_SFLDLTHP)
-     A          H                           HLPARA(7 1 21 80)
+     A          H                           HLPARA(7 1 22 80)
      A                                      HLPPNLGRP('DELETE/SFLDTA'
      A                                      V_SFLDLTHP)
      A            SFLDLTNBR      3S 0H      SFLRCDNBR(CURSOR)
