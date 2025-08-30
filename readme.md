@@ -72,7 +72,7 @@ At the programming level, subfiles (usually) work like this:
    - increment the *sflrcdnbr* variable by 1. Note that counting starts at 1, not 0.
    - check maximum subfile records have been handled already and subsequently exit the loop.
    - check if *EOF* or other database read error conditions happened. Use the DB *EOF* indicator to set *sflend*, so the user knows when he already scrolled the tabular subfile display all the way down. Then exit the loop.
-   - You `WRITE` the subfile record format, implicitly including *sflrcdnbr*. Because the subfile record format's field shares names and definitions with the database file, there is no intermediate copy step of database to screen buffer variables required.
+   - `WRITE` the subfile record format, implicitly including *sflrcdnbr*. Because the subfile record format's field shares names and definitions with the database file, there is no intermediate copy step of database to screen buffer variables required.
 - End loop.
 - Update the associated *sfldsp*/*sfldspctl* indicators, and `WRITE` the control record format to make the display appear on screen.
 
@@ -191,8 +191,8 @@ The logical file has two record formats, *fwdpos* and *bckpos*.
 
 See *Further Reading* below to learn more about logical files' capabilities.
 
-##### Display files
-Display files describe the appearance of screens. Screens are composed of textual elements at specific locations.
+##### Display file
+The display file describes the appearance of screens. Screens are composed of textual elements at specific locations.
 
 Said elements are grouped into *record formats*. These record formats can overwrite or overlay each other. Some limitations apply, though.
 
@@ -424,7 +424,7 @@ Finally, make appropriate changes by running PDM again against your new source P
 
 > **Note:** All changes have to be consistent across the involved files. No matter if outside or "inside" (text) of the affected files.
 
-A hint in advance. Compilation of objects might fail for various reasons. If there was an error, have a close look at the compiler output in the default output queue. Most often this is *qprint*. Type `WRKOUTQ` on a command line to list existing output queues and their content. Maybe first clear them of old entries with option *14*, and recompile to not search too long for the most recent output.
+A hint in advance. Compilation of objects might fail for various reasons. If there was an error, have a close look at the compiler output in the default output queue. Most often this is *qprint*. Type `WRKOUTQ` on a command line to list existing output queues and their content. Maybe first clear them of old entries with option 14, and recompile to not search too long for the most recent output.
 
 Compiler logs are extremely verbose and finding errors can be tricky. Especially when tackling syntax errors in RPG programs, just one error might create a chain of further errors in the log output. This usually happens when the compiler ignores a statement whose result is needed later. I recommend you to take time, patience and develop a strong spirit against rushing.
 
@@ -433,7 +433,7 @@ The PF customization procedure is the same for Load-All and Load-Paged variants 
 
 I assume you already copied *v_sflpf* into e. g. *mynewproj/sources* with a new member name as outlined above. I recommend to name the file "*xxx*pf", where *xxx* is a a string up to seven characters. OS-Restrictions about valid special characters and may-not-begin-with-a-digit apply.
 
-Edit the PF and rename the record format to be "*xxx*tbl"", or just *xxx* if *xxxtbl* exceeds the 10 character name length limit of a record format. Modify and add fields to match your requirements. See *Further Reading* below for valid data types in *DDS for Physical and Logical Files*.
+Edit the PF and rename the record format to be "*xxx*tbl", or just *xxx* if *xxxtbl* exceeds the 10 character name length limit of a record format. Modify and add fields to match your requirements. See *Further Reading* below for valid data types in *DDS for Physical and Logical Files*.
 
 After adding fields, I recommend to (manually) sort them by field size: Biggest first, smallest last, to minimize wasted space through padding. I presume that there might be a performance impact for older machines.
 
@@ -448,7 +448,7 @@ I assume you already copied *v_poslf* into e. g. *mynewproj/sources* with the sa
 
 Both measures lessen unneccessary work for the machine (and thus, yield faster response times).
 
-If done, save and exit. Type *14* into the *Opt* field in PDM to create your logical file.
+If done, save and exit. Type 14 into the *Opt* field in PDM to create your logical file.
 
 #### DSPF
 The fields created in the PF should be somehow presented on the screen display for viewing, and editing. My templates employ three distinct displays for that purpose:
@@ -523,7 +523,7 @@ When using the finished application, keep in mind:
 ##### Shortened text fields
 If you have *one* shortened field for the subfile (named with a *$* at the end), replace *valfld* with the appropriate name of your (original) field in both the *prepsfldta* and **inzsr* subroutines.
 
-If you have *more than one* field to be shortened, move the field length  calculation from **inzsr* to just before the calculation statements in *prepsfldta*. Duplicate and change the whole block for any to-be-shortened field. Or come up with your own, more efficient way of handling this case.
+If you have *more than one* field to be shortened, move the field length calculation from **inzsr* to just before the calculation statements in *prepsfldta*. Duplicate and change the whole block for any to-be-shortened field. Or come up with your own, more efficient way of handling this case.
 
 If you don't need this facility, delete the mentioned parts and `EXSR` calls.
 
@@ -571,7 +571,7 @@ To successfully understand these templates, I strongly recommend to get hold and
 - [DDS for Physical and Logical Files](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzakb/rzakbprint.htm) (Link to PDF)
 - [DDS for Display Files](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzakc/print.htm) (Link to PDF)
 - [ILE RPG Reference](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzasd/rzasdprintthis.htm) (Link to PDF)
-- [Source Entry Utility manual](https://try-as400.pocnet.net/wiki/File:Source_Entry_Utility-v4.pdf) (Editor) —  (Link to PDF)
+- [Source Entry Utility manual](https://try-as400.pocnet.net/wiki/File:Source_Entry_Utility-v4.pdf) (Editor) — (Link to PDF)
 - [Application Display Programming](http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf) (direct PDF download)
 
 ----
