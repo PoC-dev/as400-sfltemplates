@@ -30,7 +30,7 @@ V4R2 and earlier. A long term goal is to change the existing code to enable V3 c
 ### Basics
 Often, AS/400 programs are built with just these components:
 - Physical File (*PF*); a database table holding the actual records.
-- Logical File (*LF*, optional); allowing to access a subset of fields from the PF, or to apply different undexes (access aaths) to the data for different sorting of records.
+- Logical File (*LF*, optional); allowing to access a subset of fields from the PF, or to apply different undexes (access paths) to the data for different sorting of records.
 - Display File (*DSPF*); the definition of the form(s) appearing on screen. A subset of possibilities a DSPF offers are subfiles. That's what all this fuzz is about.
 - The "Driver" Program (*RPGLE*) is the entity that glues all components together. By referencing files in the program code, global variables will be created from the field names in the files. This has consequences:
    - Field definition attributes must be consistent over all files used. This is easily most easily achieved by defining the field once in the PF and reference the field from the DSPF. Notable exceptions are date/time fields.
