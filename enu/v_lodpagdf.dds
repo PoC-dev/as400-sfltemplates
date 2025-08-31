@@ -103,7 +103,6 @@
      A                                  6  3'2=Change  3=Copy
      A                                      4=Delete  5=Display'
      A                                      COLOR(BLU)
-     A  35                              7 70'Start ...' DSPATR(HI)
      A                                  8  2'Opt' DSPATR(HI) HLPID(1)
      A                                  8  7'Value' DSPATR(HI) HLPID(2)
      A                                  8 13'Text' DSPATR(HI) HLPID(3)

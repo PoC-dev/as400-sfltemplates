@@ -67,11 +67,7 @@ specify what the system should do with this record.
 Changes cannot be made directly. The previously mentioned selections in the Opt
 column are there for this purpose. Changes to the records can't be done
 directly. These can be employed by specifying the proper :HP1.Opt:EHP1. value.
-:P.An indicator is shown at the top right corner of the tabular display area. If
-:HP1.Start ...:EHP1. is shown there, no previous records are available for
-viewing with the PgUp key.
-:P.Another indicator is shown at the bottom right corner of the tabular display
-area:
+:P.An indicator is shown at the bottom right corner of the tabular display area:
 :PARML.
 :PT.More ...
 :PD.More records are available which can be shown by pressing the PgDown key.

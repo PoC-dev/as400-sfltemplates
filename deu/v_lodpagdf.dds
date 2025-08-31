@@ -105,7 +105,6 @@
      A                                  6  3'2=Ändern  3=Duplizieren  -
      A                                      4=Löschen  5=Anzeigen'
      A                                      COLOR(BLU)
-     A  35                              7 70'Beginn ...' DSPATR(HI)
      A                                  8  2'Opt' DSPATR(HI) HLPID(1)
      A                                  8  7'Wert' DSPATR(HI) HLPID(2)
      A                                  8 13'Eintrag' DSPATR(HI) HLPID(3)

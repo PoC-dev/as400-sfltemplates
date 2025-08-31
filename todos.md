@@ -2,13 +2,6 @@
 - Probably use RNQxxxx for IBM provided translations of file status error codes: See QRNXMSG, e. g. RNQ1218.
   - Is this comprehensive to users?
 
-## Probable bug
-- Load-Paged, more records than one page
-- Set display to first page (IN34 set)
-- Use pos-to for placing list start on a record which exactly is on the first
-  line of the last page of data)
-  - No scrolling back, IN34 is still set on!
-
 ## More...
 - Rework error handling - this will be really hard!
   - Current handler doesn't compile on V3
