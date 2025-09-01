@@ -634,7 +634,6 @@
      C                   ENDDO
      C*------------------
      C* Leave this loop also if there was EOF (all Records have been treated).
-     C*
      C     *IN71         IFEQ      *ON
      C                   MOVE      *OFF          *IN71
      C                   LEAVE
