@@ -1,23 +1,23 @@
-# Copyright 2007-2025 Patrik Schindler <poc@pocnet.net>.
-#
-# This file is part of a collection of templates for easy creation of
-#  subfile-based applications on AS/400, iSeries and IBM i.
-#
-# This is free software; you can redistribute it and/or modify it
-#  under the terms of the GNU General Public License as published by the
-#  Free Software Foundation; either version 2 of the License, or (at your
-#  option) any later version.
-#
-# It is distributed in the hope that it will be useful, but WITHOUT
-#  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-#  for more details.
-#
-# You should have received a copy of the GNU General Public License along
-#  with it; if not, write to the Free Software Foundation, Inc., 59
-#  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
-#  http://www.gnu.org/licenses/gpl.html
-# 
+quote noop   Copyright 2007-2025 Patrik Schindler <poc@pocnet.net>.
+quote noop  
+quote noop   This file is part of a collection of templates for easy creation of
+quote noop    subfile-based applications on AS/400, iSeries and IBM i.
+quote noop  
+quote noop   This is free software; you can redistribute it and/or modify it
+quote noop    under the terms of the GNU General Public License as published by the
+quote noop    Free Software Foundation; either version 2 of the License, or (at your
+quote noop    option) any later version.
+quote noop  
+quote noop   It is distributed in the hope that it will be useful, but WITHOUT
+quote noop    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+quote noop    FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+quote noop    for more details.
+quote noop  
+quote noop   You should have received a copy of the GNU General Public License along
+quote noop    with it; if not, write to the Free Software Foundation, Inc., 59
+quote noop    Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
+quote noop    http://www.gnu.org/licenses/gpl.html
+quote noop   
 ascii
 get QGPL/SFLVORLAGE.CRTMSGD     enu/crtmsgd.rexx
 get QGPL/SFLVORLAGE.V_LODALLDF  enu/v_lodalldf.dds
