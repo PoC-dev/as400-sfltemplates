@@ -489,6 +489,11 @@
      C                   ENDIF
      C                   ENDIF
      C*
+     C* Blindly deny scrolldown if we have exactly one page of records in PF.
+     C     DBRCDCNT      IFEQ      SFLSIZ
+     C                   MOVE      *ON           *IN34
+     C                   ENDIF
+     C*
      C* Blindly allow scrollback if we have enough records in PF.
      C     DBRCDCNT      IFGT      SFLSIZ
      C                   MOVE      *OFF          *IN35
@@ -552,7 +557,7 @@
      C     *LOVAL        SETLL     FWDPOS
      C*
      C                   EXSR      LOADDSPSFL
-     C                   MOVEA     '01'          *IN(34)
+     C                   MOVE      *ON           *IN35
      C*
      C                   ENDSR
      C*************************************************************************
