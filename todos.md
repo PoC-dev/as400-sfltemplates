@@ -1,6 +1,4 @@
 ## Bugs
-- If we have exactly SFLPAG number of records in the PF, we can scroll down
-  to see "no records".
 - Rework `INCLASTID`. We write to the table in there, which might be wrong.
 
 ## Check/Revise
