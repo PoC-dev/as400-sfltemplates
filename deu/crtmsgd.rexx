@@ -17,7 +17,7 @@
  *  with it; if not, write to the Free Software Foundation, Inc., 59
  *  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
  *  http://www.gnu.org/licenses/gpl.html
- * 
+ *
  * Create global message file
  * Run me with strrexprc srcfile(qgpl/sflvorlage) srcmbr(crtmsgd)
  */
