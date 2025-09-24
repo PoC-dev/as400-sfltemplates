@@ -129,7 +129,7 @@ display.
 :PARML.
 :PT.Add New Entry
 :PD.If :HP1.F6=Neu:EHP1. was issued, all data bearing fields are emptied. If Opt
-:HP1.3=Duplizieren:EHP1. was issued, all data bearing fields contain the data
+:HP1.3=Duplicate:EHP1. was issued, all data bearing fields contain the data
 from the selected base record. Pressing enter creates a new record in the
 database file.
 :PT.Change Entry
