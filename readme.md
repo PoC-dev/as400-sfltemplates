@@ -14,23 +14,22 @@ A huge thank you goes to "Mathias Peter IT-Systemhaus", my current employer who 
 ### What the heck is this all about?
 We're talking subfiles in an AS/400 (IBM i) context here.
 
-A subfile is most often used to present multiple records of data in a scrollable list, on a single text screen for easy viewing and maybe picking records to process further, a bit like a spreadsheet presents data.
+A subfile is most often used to present multiple records of data in a scrollable list, on a single text screen, for easy viewing and maybe picking records to process further, a bit like a spreadsheet presents data.
 
 Subfiles thus are useful to the user, but very tedious to be handled properly for the programmer. To master just their basic functionality needs fundamental expertise. Beginners in programming don't have expertise but maybe also want to exploit the usefulness of subfiles as user.
 
 This collection of files aims to provide tested and thus working templates for creating subfile-based applications with most expected features, as a starting point for experiencing a quick sense of achievement. Since the code is heavily commented, it should be fairly easy to get a grip on what's going on by reading code and at the same time have IBM documentation at hand for a quick lookup of details.
 
-This text is lengthy because I assume little or no reader's knowledge about the inner workings of OS/400. So I provide a rough overview (and sometimes oversimplified statements) about inner workings as long as it's necessary to understand this template's logic. IBM has tons of documentation online, covering any topic the AS/400 is capable of dealing with. Use it!
+This text is lengthy because I assume little or no reader's knowledge about the inner workings of OS/400. So I provide a rough overview (and sometimes oversimplified statements) about inner workings as long as it's necessary to understand this template's logic. IBM has tons of documentation online, covering any topic the AS/400 is capable of dealing with. Use it! A selection of the most important ones is listed at the end of this document.
 
 Programming style is outdated in many ways. The templates were developed on V4R5 of OS/400, and are currently expected to work on V4R4 and up. Actual tests with available machines show, they trigger strange compilation errors on i5/OS V5R4, and compile just fine for IBM i 7.2 (V7R2) and 7.3 (V7R3).
 
-In addition, some BIFs and exception handling functions are not available in
-V4R2 and earlier. A long term goal is to change the existing code to enable V3 compatibility. This is not yet done. Porting the code to V2R3 will not happen, though: It completely lacks RPG IV. Also, I currently lack a machine running this release.
+In addition, some BIFs (Built-In Functions) and exception handling functions are not available in V4R2 and earlier. A long term goal is to change the existing code to enable V3 compatibility. This is not yet done. Porting the code to V2R3 will not happen, though: It completely lacks RPG IV. Also, I currently lack a machine running this release in a stable manner.
 
 ### Basics
 Often, AS/400 programs are built with just these components:
-- Physical File (*PF*); a database table holding the actual records.
-- Logical File (*LF*, optional); allowing to access a subset of fields from the PF, or to apply different undexes (access paths) to the data for different sorting of records.
+- Physical Files (*PF*); database tables holding the actual records.
+- Logical File (*LF*, optional); linked to the PF, allowing to access a subset of fields from the PF, or to apply different indexes (access paths) to the data for different sorting of records.
 - Display File (*DSPF*); the definition of the form(s) appearing on screen. A subset of possibilities a DSPF offers are subfiles. That's what all this fuzz is about.
 - The "Driver" Program (*RPGLE*) is the entity that glues all components together. By referencing files in the program code, global variables will be created from the field names in the files. This has consequences:
    - Field definition attributes must be consistent over all files used. This is easily most easily achieved by defining the field once in the PF and reference the field from the DSPF. Notable exceptions are date/time fields.
@@ -44,64 +43,66 @@ Physical Files, Logical Files and Display Files are described in a text based fo
 
 The "Driver" program is written in (positional) ILE RPG IV, although I'm not making use of any ILE specific features, currently. RPG is the most used programming language on IBM i up to today. It nicely integrates the concept of external described files in an easy way. There are other native programming languages available, but they're not in scope of this document; namely COBOL, and C/C++.
 
-Nonetheless, there are a *lot* of edge cases to consider and make a subfile display behave in an expectable way. A lot of code is there to handle corner cases.
+Nonetheless, there are a *lot* of edge cases to consider and make a subfile display behave in an expectable way. A lot of code is there to handle these cases.
 
 #### What is a subfile, precisely?
-Basically, subfiles allow to present multiple records of data on a single screen display. In practice, this facility is used to show the user a tabular display of data, and a record specific choice field. The data helps the user to associate it with a given record in a database file, and the choice field enables the user to tell the system what he wants to do with the selected field. This display should be familiar with AS/400 users. Many "work with" screens present such a list view.
+Basically, subfiles allow to present multiple records of data on a single screen display. In practice, this facility is used to show the user a tabular display of data, and a record specific choice field. The data helps the user to associate it with a given record in a database file, and the choice field enables the user to tell the system what he wants to do with the selected field. This display should be familiar for AS/400 users. Many "work with" screens present such a list view.
 
-> **Note:** This is an interesting case of integrated choice, providing selection of the desired data element and what to do with it at the same time. Probably remotely reminiscent about GUI's "right klick" feature.
+> **Note:** This is an interesting case of *integrated choice*, providing selection of the desired data element and what to do with it at the same time. Probably remotely reminiscent about GUI's "right klick" feature.
 
 At the definition level, subfiles are comprised of two associated *record format*s.
 
 > A record format is one of many different ways to group and present objects on screen. A screen display might be composed of many record formats. Record formats are the basic building block for all kinds of DDS derived objects. See the *IBM DDS Reference* book for details.
 
-One part of the subfile is the *subfile record format* itself. It defines the layout of one record — usually one line —, while the system later will take care of the repetition of this one definition to fill the screen. I'm talking about a record and not a line, because one record is perfectly allowed to occupy multiple screen lines in a subfile.
+One part of the subfile is the *subfile record format* itself. It defines the layout of one record — usually one line —, while the system later will take care of the repetition of this one definition to the configured limit. I'm talking about a record and not a line, because one record is perfectly allowed to occupy multiple screen lines in a subfile.
 
 The second part is the *subfile control format*. This mainly defines the attributes and functioning of the subfile itself in regard of scrolling logic. Also, you assign a counting variable via the SFLRCDNBR statement. This serves the same purpose as the automatically generated "relative record number" in physical (database) files: You can address a certain record unambiguously. Note that subfiles cannot have an index field, thus the counting variable is the only way to randomly  address individual records in a subfile. The main challenge is to establish an association of a database record with a subfile record, because both facilities usually do not share a common field for addressing a record unambiguously. The subfile control format also may contain screen elements (such as headings, or a footer listing the allowed function keys), or even further, non tabular database fields, for displaying a user name, the system name, etc. You can't do nesting with subfiles.
 
 Subfile- and subfile control records are not allowed to overlap on a given screen.
 - Elements defined in the control record format define the location and area of the control record format. The control record format is allowed to occupy no screen space at all.
-- Elements defined in the subfile format, together with the `SFLPAG` parameter in the control record format, define the location and area of the subfile record format on screen.
+- Elements defined in the subfile format, together with the `SFLPAG` parameter in the control record format, define the starting and ending lines of the subfile record format on screen.
+   - A subfile area is always implicitly covering the complete width of a given screen display, even if only a fraction of the space in one line is used.
 
 Also, while subfile control records are allowed to contain actual screen elements, those elements must be grouped either above or below the subfile record. Otherwise the control area would overlap with the subfile itself, which is not allowed and will yield compile errors if tried. If you need elements above **and** below the subfile display, you need to introduce a separate, non-control record format containing the "leftover" screen elements. Often, the subfile control record format's elements are defined above the subfile itself, and elements below the subfile are defined as said separate record format.
 
 At the programming level, subfiles (usually) work like this:
 - You prepare the subfile by either clearing or initializing it (set the associated display file indicator to **ON*, write the control record format), and reset it subsequently in the same manner.
 - In a loop:
-   - `READ` the next record from a database file into the variables which have been created implicitly by referencing the database file.
+   - `READ` the next record from a database file into the variables which have been created at compile time implicitly by referencing the database file.
    - increment the *sflrcdnbr* variable by 1. Note that counting starts at 1, not 0.
-   - check maximum subfile records have been handled already and subsequently exit the loop.
+   - check if maximum subfile records have been handled already and subsequently exit the loop.
    - check if *EOF* or other database read error conditions happened. Use the DB *EOF* indicator to set *sflend*, so the user knows when he already scrolled the tabular subfile display all the way down. Then exit the loop.
    - `WRITE` the subfile record format, implicitly including *sflrcdnbr*. Because the subfile record format's field shares names and definitions with the database file, there is no intermediate copy step of database to screen buffer variables required.
 - End loop.
-- Update the associated *sfldsp*/*sfldspctl* indicators, and `WRITE` the control record format to make the display appear on screen.
+- Set the associated *sfldsp* and *sfldspctl* indicators to '1', and `WRITE` the control record format to make the display appear on screen.
 
 Net result: A subfile with data is displayed on screen. In case of a load-all subfile, you can already scroll through the data. See below for details.
 
-> **Note**: You need to make sure that the subfile itself contains at least one record. If an empty subfile is tried to be displayed (`SFLDSP` set), the application **will crash**. The subfile templates include code to deal with this condition, and instead display another record format stating there are no records in the PF.
+> **Note**: You need to make sure that the subfile itself contains at least one record. If an empty subfile is tried to be displayed (`SFLDSP` set), the application **will crash**. The subfile templates include code to deal with this condition, and instead display another record format stating there are no records to be shown.
 
 Handling user input from a subfile works like this:
 - Use `READC` in a loop to read (user) changed subfile records. It reads the complete record, not just the edited Opt field. *Sflrcdnbr* is implicitly set.
-- Branch to the desired program function, depending on the user's selection.
+- Branch to the desired program function, depending on the user's selection, clear the Opt field upon return-on-success.
 - Optional: If the user changed a record on disk by using the aforementioned function, you may choose to `UPDATE` the single changed record from disk into the subfile. This saves time and CPU-cycles compared to reloading the complete subfile, just to show just updated database record
 - Test for *EOF* to exit the loop.
+- Write the subfile control record format to reflect changed entries to the user's screen display.
 
 #### Flavors of subfiles
 The AS/400 basically supports two and a half variants of subfiles:
 
-1. Type *Load-All* will be fed all records in a database file at once. Advantages are: Scroll-handling is done by the OS. Preserving option values beyond scrolling boundaries is handled by the OS. Drawbacks are: The more records to load, the more delay until the subfile is eventually displayed. Fixed maximum number of records. Keeping Data in the PF and on screen in sync means frequent reloads. Implementing means to scroll to a certain record (find by primary key) is very cumbersome and needs help of some kind of intermediate table, array or other facilities to have a mapping of subfile line numbers (AKA: RRNs) to primary key values in the PF. It is not implemented in this example for the sake of simplicity.
+1. Type *Load-All* will be fed all records in a database file at once. Advantages are: Scroll-handling is done by the OS. Preserving option values beyond scrolling boundaries is handled by the OS. Drawbacks are: The more records to load, the more delay until the subfile is eventually displayed. Fixed (large!) maximum number of records. Keeping Data in the PF and on screen in sync means frequent reloads: other users might have changed a record meanwhile. Implementing means to scroll to a certain record (find by primary key) is very cumbersome and needs help of some kind of intermediate table, array or other facilities to have a mapping of subfile line numbers (AKA: RRNs) to primary key values in the PF. It is not implemented in this example for the sake of simplicity.
 
-   - A subtype of Load-All is the *Expandable Subfile*. The subfile gets loaded one screen worth of records. Thus, the delay until displaying this screen is small. Every keypress for page down instructs the program to load the next bunch of records. The subfile will be expanded in memory on the fly as needed. Scrollback is still handled by the OS. Scrolldown-Handling must be implemented by the programmer. All other restrictions from the Load-All variant still apply.
+   - A subtype of Load-All is the *Expandable Subfile*. The subfile gets loaded one screen worth of records. Thus, the delay until displaying the initial set of records is small. Every keypress for page down instructs the program to load the next bunch of records. The subfile will be expanded in memory on the fly as needed. Scrollback is still handled by the OS. Scrolldown-Handling (load more records) must be implemented by the programmer. All other restrictions from the Load-All variant still apply.
 
-2. Type *Load-Paged* means that the subfile is as small as one screen of data. Hence, the subfile is displayed as quickly as an expandable subfile. Drawback is, about 200 lines of additional code are needed to make handling the subfile approximately as neat as with a Load-All subfile. For the user, that is. Keeping displayed data in sync with the database on disk is seemingly automatic, because the table on disk must be read into the subfile for every scroll anyway, forcing frequent reloads naturally. Also, it's relatively easy to implement a position-to feature for jumping to a certain record. In addition, there is no limit to the apparently displayed number of records. Since data is re-read from disk with every scroll, any selection (Opt-Field) what to do with the record(s) in question are usually lost with every scroll. There are different means how to save the selection values and refill them when needed, but for the sake of simplicity, there is no selection saver implemented (yet).
+2. Type *Load-Paged* means that the subfile is as small as one screen of data, usually 13 lines. Hence, the subfile is displayed as quickly as an expandable subfile. Drawback is, about 200 lines of additional code are needed to make handling the subfile approximately as neat as with a Load-All subfile. For the user, that is. Keeping displayed data in sync with the database on disk is seemingly automatic, because the table on disk must be read into the subfile for every scroll anyway, forcing frequent reloads naturally. Also, it's relatively easy to implement a position-to feature for jumping to a certain record. In addition, there is no limit to the apparently displayed number of records. Since data is re-read from disk with every scroll, any selection (Opt-Field) what to do with the record(s) in question are usually lost with every scroll. There are different means how to save the selection values and refill them when needed, but for the sake of simplicity, there is no selection saver implemented (yet).
 
 This project provides definitions for both Load-All and Load-Paged subfiles. Expandable subfiles can be created by extending the Load-All Subfile with elements from the Load-Paged DSPF and Code, and is left as an exercise to the reader.
 
 Additionally, there are definitions for a prompting screen when records are to be deleted. This is always a type Load-All, because normally, only a few records at once are to be deleted.
 
-Finally, there is a *details* record format containing all fields contained in the PF, for creation, duplication, editing, and viewing a single record.
+Finally, there is a *details* record format containing all fields contained in the PF, for creation, duplication, editing, and viewing a single record's fields.
 
-For reasons stated above, Load-All subfiles are best when there are only a few records to be handled, maybe less than about half dozen scrolls, 13 records each. That's most likely small enough number to not need a position-to feature, and the delay between loading and displaying for Load-All stays bearable even on machines from the last century.
+For reasons stated above, Load-All subfiles are best when there are only a few records to be handled, maybe less than about half dozen scrolls, 13 records each. That's most likely a small enough number to not need a position-to feature, and the delay between loading and displaying for Load-All stays bearable even on machines from the last century.
 
 On a side note, Load-All flavors are most likely the ones to be used when records are to be selected with SQL, as a result set, and presented in a subfile. While there's no big difference in dealing with a file pointer compared to a SQL cursor, Load-Paged adds complexity without any additional benefit.
 
@@ -146,7 +147,7 @@ In general, files are better called objects. Files are always objects, but not a
 ###### File query options
 The AS/400 platform supports SQL as query option since V1R1M0, released in late 1988. Deliberately ignoring this capability, this example focuses on classical API calls to read/write/update/delete database file contents mainly for performance reasons.
 
-SQL introduces additional application startup delay, delayed handling of `F5=Refresh`, and other delays. On very old and thus comparably slow machines, this frequent waiting quickly becomes annoying. Also, the integration of SQL in RPG is somewhat clumsy and this project aims to provide a reasonably feature-complete template with as little complexity as possible.
+SQL introduces additional application startup delay, delayed display when pressing`F5=Refresh`, and other waiting time. On very old and thus comparably slow machines, this frequent waiting quickly becomes annoying. Also, the integration of SQL in RPG is somewhat clumsy and this project aims to provide a reasonably feature-complete template with as little complexity as possible.
 
 In this regard, it's important to realize that in contrast to SQL (that always operates on a *set* of records), the classical API operates with a *file pointer* that marks one certain record. Operations like update, or delete are done by calling RPG functions and take place only on that particular record. The pointer can be positioned to other records by other RPG calls, such as SetLL, Read, or Chain.
 
@@ -160,7 +161,7 @@ This simple interface is blazingly fast even on old machines, because the databa
 
 Somewhat oversimplified, the DB2 Engine on oder OS/400 releases is using more or less the primitives explained above to access data: Some kind of SQL to classical API translator. While this isn't exactly correct, it's true enough to help understanding what's approximately going on under the hood.
 
-It is also important to really get the hang of that we're talking about a *file* pointer. This means, that the position of the Physical File's pointer is completely independent of any accompanying Logical File's pointer. Multiple record formats of a logical file share a common file pointer, because it's a file pointer and not a record format pointer. This fact is exploited to ease handling of the Load-Paged subfile, see below.
+It is also important to really get the hang of that we're talking about a *file* pointer. This means, that the position of the Physical File's pointer is completely independent of any accompanying Logical File's pointer. In contrast, multiple record formats of a logical file share a common file pointer, because it's a file pointer and not a record format pointer. This fact is exploited to ease handling of the Load-Paged subfile, see below.
 
 ###### The physical file
 Physical Files may contain only one Record Format. Here it is called *sfltbl*.
@@ -226,11 +227,11 @@ There is no communication taking place between host/server and terminal (emulati
 ###### Using record formats to group screen elements
 Screen elements to be shown on a screen are grouped into a so called *record formats*. Display files can contain multiple record formats. There are different types of record formats, the most important ones being regular ones and subfile record formats, with the accompanying subfile control record format.
 
-A simple record format usually fills the entire display, but it's also possible to create record formats occupying only parts of a screen display. This possibility is exploited with Subfiles, so one screen can show headings for the subfile along with the subfile itself. Finally, it's possible to draw windows on a screen. Each window can contain at least one or more record formats itself. Hence, almost arbitrarily complex screen displays can be developed, assisting the user by not obscuring the base data display with a new screen, but only partly with a window.
+A simple record format usually fills the entire display, but it's also possible to create record formats occupying only parts of a screen display. This possibility is exploited with subfiles, so one screen can show headings for the subfile along with the subfile itself. Finally, it's possible to draw windows on a screen. Each window can contain at least one or more record formats itself, including subfiles. Confining a subfile into a window is the only way to limit the horizontal expansion of a subfile over the complete display width. Hence, almost arbitrarily complex screen displays can be developed, assisting the user by not obscuring the base data display with a new screen, but only partly with a window.
 
 With some effort of creativity, it's possible to create sort of pseudo graphics output, commonly known as *ASCII Art* (but in this case, it's *EBCDIC Art*). Capabilities are somewhat limited with the given screen estate, though.
 
-The DSPF provided has record formats for a list- and a details screen, both in 24×80 display mode only. The sole other supported mode is 27×132.
+The DSPF provided has record formats for a list- and a details screen, both in 24×80 display mode only. The sole other supported mode by OS/400 and successors is 27×132.
 
 Some restrictions apply when dynamically switching display modes, so this capability is out of scope for this project.
 
@@ -239,13 +240,11 @@ Help facilities should enable an untrained user to properly use an application, 
 
 The help facility basically shows fragments of help panel group objects associated with either a rectangular screen position, or with "objects" on a given screen. See below for details.
 
-A very negative example of not helpful online help is Microsoft Windows NT 4. Often, help for a dialog with several fields to fill out provides a terse description about the function a dialog serves, with no or just terse further explanation about the fields and which kind of data is expected there, lest how to derive the expected data.
-
 In general, IBM online help on the AS/400 often shines by
 - providing extensive details about the meaning of each field and what type of data is expected,
-- some safe default to assume if it's still unclear what data to provide.
+- safe defaults to use if it's still unclear what data to provide.
 
-I suggest to see these as base requirements for your own help facilities to introduce a professional touch to your applications.
+I suggest to see these as base requirements for your own help facilities, to introduce a professional touch to your applications.
 
 ##### The driver program
 This one references the PF, possibly the LF (in case of Load-Paged), the DSPF, and basically handles moving of data between the database and the screen in both directions.
@@ -256,17 +255,15 @@ Since this whole thing revolves about subfiles, the central routine to understan
 
 Scrolling backwards in a Load-Paged subfile is more tricky than scrolling forward. There are multiple ways to derive the proper file pointer position in the database file to re-load the subfile from there. This is how I've done it.
 
-A Load-Paged subfile is all about relative positioning of records compared to the records being in the subfile before. This is most apparent when simply loading a subfile "forward". But similar logic can be applied when reading backwards.
+A Load-Paged subfile is all about relative positioning of records compared to the records being in the subfile from the last bunch of read-write cycles. This is most apparent when simply loading a subfile "forward": the file pointer for the database files stays at the last record read, and a PgDown key just triggers another subfile reload. Similar logic can be applied when reading backwards.
 
-The database engine allows us to do relative positioning (aka, read *n* records forward or backwards). So, my solution to the problem is to basically read two times the subfile's size of previous records (counted from the end of a scrolldown-cycle) and do a forward subfile load from that point. This relative-read approach enables scrollback even after using a position-to function to set the initial database file pointer position, and also copes perfectly with meanwhile deleted or added records.
+The database engine allows us to do relative positioning (aka, read *n* records forward *or backwards*). So, my solution to the problem is to basically read two times the subfile's size of previous records (counted from the end of a scrolldown-cycle) and do a forward subfile load from that point. This relative-read approach enables scrollback even after using a position-to function to set the initial database file pointer position, and also copes with meanwhile deleted or added records in a non-erratic way.
 
-A drawback of this approach is additional necessary code to check for *BOF* condition, and use this to completely start from scratch for loading records.
+A drawback of this approach is additional necessary code to check for the *BOF* condition, and use this to completely start from scratch for loading records.
 
 So far, reading backwards twice the amount and then loading the subfile forward may seem like a waste of CPU resources. Here I trade efficiency for comprehensibility of the underlying code.
 
-The logical file (positioning-aid) contains the two record formats *bckpos* and *fwdpos*, as discussed in the section about the Logical File above.
-
-This enables us to do reads in both directions more efficiently. Since both record formats are in the same file and thus share the same file pointer, they can be used for their designated directions of reading, but in the end always point to the same record in the database file.
+The logical file (positioning-aid) contains the two record formats *bckpos* and *fwdpos*, as discussed in the section about the Logical File above. This enables us to do reads in both directions more efficiently. Since both record formats are in the same file and thus share the same file pointer, they can be used for their designated directions of reading, but in the end always point to the same record in the database file.
 
 See *Further Reading* below for a reference to the ILE RPG language.
 
@@ -282,7 +279,7 @@ Help Panels are written in something that resembles HTML in a crude way, called 
 You can add references from screen elements to help entries by
 - absolute screen positions (rectangle), as used in the details record format
 - numbered static screen elements, as used for the subfile headings in the subfile control format,
-- whole record, as used in the "no data", and "bottom" (function key display) record formats.
+- whole record format area, as used in the "no data", and "bottom" (function key display) record formats.
 
 The mentioned references are only part of all possibilities because these are used in the example display files.
 
@@ -340,7 +337,7 @@ Some components (text) of menus are always the same. For that reason, I have est
 
 Additionally, the subfile template includes a template menu named *menu* as a starting point for your own menus. The members above are included at convenient spots within that file.
 
-Menu contents, including help texts, are heavily influenced by IBM standard menus and help texts, to create a consistent menu experience for the user.
+Menu contents, including help texts, are heavily influenced by IBM standard menus and help texts, to provide a consistent menu experience for the user.
 
 ##### Menu hierarchy
 With the given menu example, it's possible to create a custom menu hierarchy for displaying at signon time, and branch to the respective submenus of your projects from there.
@@ -572,11 +569,8 @@ To successfully understand these templates, I strongly recommend to get hold and
 - [DDS for Display Files](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzakc/print.htm) (Link to PDF)
 - [ILE RPG Reference](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzasd/rzasdprintthis.htm) (Link to PDF)
 - [Source Entry Utility manual](https://try-as400.pocnet.net/wiki/File:Source_Entry_Utility-v4.pdf) (Editor) — (Link to PDF)
+- [Database programming](https://www.ibm.com/docs/en/ssw_ibm_i_74/dbp/rbafopdf.pdf) (Link to PDF)
 - [Application Display Programming](http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf) (direct PDF download)
 
 ----
-poc@pocnet.net, 2025-08-28
-
-```
-vim: textwidth=78 autoindent
-```
+poc@pocnet.net, 2025-10-15
