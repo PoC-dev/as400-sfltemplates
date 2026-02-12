@@ -1,4 +1,4 @@
-.* Copyright 2007-2025 Patrik Schindler <poc@pocnet.net>.
+.* Copyright 2007-2026 Patrik Schindler <poc@pocnet.net>.
 .*
 .* This file is part of a collection of templates for easy creation of
 .*  subfile-based applications on AS/400, iSeries and IBM i.
@@ -21,11 +21,11 @@
 :PNLGRP.
 .* -----------------------------------------------------------------------------
 :HELP NAME='GLOBAL'.Subfile-Templates
-:P. The Load-All template serves as an example of a sufficiently complete
+:P.The Load-All template serves as an example of a sufficiently complete
 application for simple database table maintenance, with the usual functions of
 modifying, duplicating, deleting (with query!), viewing, and creating a new
 entry.
-:P. This text is part of the global help, which is displayed as extended help
+:P.This text is part of the global help, which is displayed as extended help
 text before all other referenced help sections. Hence it's a good place to
 provide a brief overview about the application's purpose.
 :EHELP.
@@ -76,7 +76,7 @@ specify what the system should do with this record.
 .* -----------------------------------------------------------------------------
 :HELP NAME='MAIN/SFLDTA'.Data Display Area
 :XH3.Data Display Area
-:P. Here, some records from the entire set of existing records are displayed.
+:P.Here, some records from the entire set of existing records are displayed.
 Changes cannot be made directly. The previously mentioned selections in the Opt
 column are there for this purpose. Changes to the records can't be done
 directly. These can be employed by specifying the proper :HP1.Opt:EHP1. value.

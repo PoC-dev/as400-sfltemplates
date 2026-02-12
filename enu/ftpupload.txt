@@ -1,4 +1,4 @@
-quote noop   Copyright 2007-2025 Patrik Schindler <poc@pocnet.net>.
+quote noop   Copyright 2007-2026 Patrik Schindler <poc@pocnet.net>.
 quote noop  
 quote noop   This file is part of a collection of templates for easy creation of
 quote noop    subfile-based applications on AS/400, iSeries and IBM i.

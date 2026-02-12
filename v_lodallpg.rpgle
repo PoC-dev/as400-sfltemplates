@@ -1,4 +1,4 @@
-     HCOPYRIGHT('2007-2025 Patrik Schindler <poc@pocnet.net>')
+     HCOPYRIGHT('2007-2026 Patrik Schindler <poc@pocnet.net>')
      H*
      H* This file is part of a collection of templates for easy creation of
      H*  subfile-based applications on AS/400, i5/OS and IBM i.
