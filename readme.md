@@ -580,4 +580,4 @@ To successfully understand these templates, I strongly recommend to get hold and
 - [Application Display Programming](http://public.dhe.ibm.com/systems/power/docs/systemi/v6r1/en_US/sc415715.pdf) (direct PDF download)
 
 ----
-poc@pocnet.net, 2025-10-15
+poc@pocnet.net, 2026-05-01
