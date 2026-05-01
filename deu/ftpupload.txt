@@ -2,22 +2,31 @@ quote noop   Copyright 2007-2026 Patrik Schindler <poc@pocnet.net>.
 quote noop  
 quote noop   This file is part of a collection of templates for easy creation of
 quote noop    subfile-based applications on AS/400, iSeries and IBM i.
+quote noop
+quote noop   Redistribution and use in source and binary forms, with or without
+quote noop   modification, are permitted provided that the following conditions
+quote noop   are met:
+quote noop
+quote noop   1. Redistributions of source code must retain the above copyright
+quote noop      notice, this list of conditions and the following disclaimer.
+quote noop   2. Redistributions in binary form must reproduce the above
+quote noop      copyright notice, this list of conditions and the following
+quote noop      disclaimer in the documentation  and/or other materials provided
+quote noop      with the distribution.
+quote noop
+quote noop   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+quote noop   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOTi
+quote noop   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+quote noop   FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+quote noop   COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+quote noop   INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+quote noop   (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+quote noop   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+quote noop   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+quote noop   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+quote noop   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+quote noop   OF THE POSSIBILITY OF SUCH DAMAGE.
 quote noop  
-quote noop   This is free software; you can redistribute it and/or modify it
-quote noop    under the terms of the GNU General Public License as published by the
-quote noop    Free Software Foundation; either version 2 of the License, or (at your
-quote noop    option) any later version.
-quote noop  
-quote noop   It is distributed in the hope that it will be useful, but WITHOUT
-quote noop    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-quote noop    FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-quote noop    for more details.
-quote noop  
-quote noop   You should have received a copy of the GNU General Public License along
-quote noop    with it; if not, write to the Free Software Foundation, Inc., 59
-quote noop    Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
-quote noop    http://www.gnu.org/licenses/gpl.html
-quote noop   
 ascii
 
 put deu/crtmsgd.rexx QGPL/SFLVORLAGE.CRTMSGD

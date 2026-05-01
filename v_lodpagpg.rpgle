@@ -3,24 +3,30 @@
      H* This file is part of a collection of templates for easy creation of
      H*  subfile-based applications on AS/400, i5/OS and IBM i.
      H*
-     H* This is free software; you can redistribute it and/or modify it
-     H*  under the terms of the GNU General Public License as published by the
-     H*  Free Software Foundation; either version 2 of the License, or (at your
-     H*  option) any later version.
+     H* Redistribution and use in source and binary forms, with or without
+     H* modification, are permitted provided that the following conditions are
+     H* met:
      H*
-     H* It is distributed in the hope that it will be useful, but WITHOUT
-     H*  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-     H*  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-     H*  for more details.
+     H* 1. Redistributions of source code must retain the above copyright
+     H*    notice, this list of conditions and the following disclaimer.
+     H* 2. Redistributions in binary form must reproduce the above copyright
+     H*    notice, this list of conditions and the following disclaimer in the
+     H*    documentation  and/or other materials provided with the distribution.
      H*
-     H* You should have received a copy of the GNU General Public License along
-     H*  with it; if not, write to the Free Software Foundation, Inc., 59
-     H*  Temple Place, Suite 330, Boston, MA 02111-1307 USA or get it at
-     H*  http://www.gnu.org/licenses/gpl.html
+     H* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+     H* IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+     H* TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+     H* PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+     H* OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     H* SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+     H* LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+     H* DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+     H* THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+     H* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+     H* THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      H*
      H* This is an example program for a program to handle subfile-related
      H*  tasks, for a load-paged SFL.
-     H*
      H*
      H* Compiler flags.
      H* You may add CVTOPT(*DATETIME) and ALWNULL(*USRCTL) if you need to deal
